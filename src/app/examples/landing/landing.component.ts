@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faBible } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-landing',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class LandingComponent implements OnInit {
   focus: any;
   focus1: any;
-
+  faBible = faBible;
   constructor() { }
 
   ngOnInit() {}
