@@ -10,8 +10,15 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
-import { ExamplesModule } from './examples/examples.module';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { PagesModule } from './pages/pages.module';
+
+import { ServicesModule } from './service/service.module';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -26,9 +33,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     RouterModule,
     ComponentsModule,
-    ExamplesModule,
+    PagesModule,
     AppRoutingModule,
     FontAwesomeModule,
+    ServicesModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
