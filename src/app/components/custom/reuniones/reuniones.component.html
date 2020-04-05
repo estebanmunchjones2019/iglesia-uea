@@ -1,0 +1,14 @@
+<div class="container">
+    <h2 class="title">Reuniones</h2>
+    <div class="row">
+        <div class="col-md-3" *ngFor="let reunion of reuniones" >
+            <app-reunion 
+            [img]="reunion.img"
+            [time]="reunion.time"
+            [title]="reunion.title"
+            [content]="reunion.content">
+            </app-reunion>
+        </div>
+       
+    </div>
+</div>

@@ -21,11 +21,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
