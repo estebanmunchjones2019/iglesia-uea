@@ -11,7 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderComponent } from '../components/custom/header/header.component';
 import { ContainerIntroComponent } from '../components/custom/container-intro/container-intro.component';
 import { ReunionesComponent } from '../components/custom/reuniones/reuniones.component';
-import { ReunionComponent } from '../components/custom/reunion/reunion.component';
+import { ReunionComponent } from '../components/custom/reuniones/reunion/reunion.component';
 import { FormComponent } from '../components/custom/form/form.component';
 
 
