@@ -1,142 +1,28 @@
-<!-- -----------------------------------------------Header start---------------------------------------------- -->
-<div class="page-header" data-parallax="true" style="background-image: url('./assets/img/united-states-mobile-worship-hand.jpg');">
-    <div class="filter"></div>
-    <div class="container">
-        <div class="motto text-center">
-            <h1>¡Bienvenido!</h1>
-            <h3>Iglesia de la Unión Evangelica de Coronel Suárez.</h3>
-            <br />
-            <a href="https://www.youtube.com/channel/UCsbRYUJ9c8rBaistyvLOyhQ" target="_blank" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestro canal de youtube</a>
-            <!--<button type="button" class="btn btn-outline-neutral btn-round">Download</button>-->
-        </div>
-    </div>
-</div>
-<!-- -----------------------------------------------Header end---------------------------------------------- -->
 
-<!-- -----------------------------------------------Main start---------------------------------------------- -->
+<app-header></app-header>
 <div class="main">
+    
+    <div class="section text-center">
+        <app-container-intro [title]="title1" [content]="content1"></app-container-intro>
+        <app-container-intro [title]="title2" [content]="content2"></app-container-intro>
+    </div>
 
+    <div class="section section-dark text-center">
+        <app-reuniones></app-reuniones>
+    </div>
 
     <div class="section text-center">
-<!-- -----------------------------------------------Quienes somos start---------------------------------------------- -->           
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 mr-auto ml-auto">
-                    <h2 class="title">Somos una gran familia</h2>
-                    <hr class="divider" size="5rem"/>
-                    <br >
-                    <h5 class="description">Queremos vivir y mostrar el mismo amor que Dios tuvo por nosotros teniendo una conciencia social y amor por los necesitados.</h5>
-                    <br>
-                    
-                </div>
-            </div>
-        </div>
-<!-- -----------------------------------------------Quienes somos end---------------------------------------------- -->   
-
-<!-- -----------------------------------------------Mensaje salvacion start---------------------------------------------- -->   
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 mr-auto ml-auto">
-                    <h2 class="title">Nuestro mensaje para vos</h2>
-                    <hr class="divider" size="5rem"/>
-                    <br >
-                    <h5 class="description">La biblia nos ense&#241;a que desde el comienzo de la humanidad el hombre se apart&#243; de Dios perdiendo as&#237; la relaci&#243;n con su creador. Pero &#201;l a trav&#233;s de su infinita misericordia y gran amor quiso reconciliarnos en la persona de su hijo Jes&#250;s, para todo aquel que decida creer en &#201;l.</h5>
-                    <br>
-                </div>
-            </div>
-        </div>
-<!-- -----------------------------------------------Mensaje salvacion end---------------------------------------------- -->   
-   
-</div>
-<!-- -----------------------------------------------Horarios Reuniones start---------------------------------------------- -->         
-    <div class="section section-dark text-center">
-        <div class="container">
-            <h2 class="title">Reuniones</h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a href="#avatar"><img src="./assets/img/reunion-oracion.jpg" alt="..."></a>
-                        </div>
-                        <div class="card-block">
-                            <a href="#paper-kit">
-                                <div class="author">
-                                    <h4 class="card-title">Miercoles 20:00hs</h4>
-                                    <h6 class="card-category">Reunion de Oraci&#243;n</h6>
-                                </div>
-                            </a>
-                            <p class="card-description text-center">
-                            Oraci&#243;n y reflexi&#243;n b&#237;blica.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a href="#avatar"><img src="./assets/img/reunion-general.jpg" alt="..."></a>
-                        </div>
-                        <div class="card-block">
-                            <a href="#paper-kit">
-                                <div class="author">
-                                    <h4 class="card-title">S&#225;bados 20:30hs</h4>
-                                    <h6 class="card-category">Reunion de J&#243;venes</h6>
-                                </div>
-                            </a>
-                            <p class="card-description text-center">
-                            Encuentro de j&#243;venes y adolescentes.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a href="#avatar"><img src="./assets/img/escuela-biblica.jpg" alt="..."></a>
-                        </div>
-                        <div class="card-block">
-                            <a href="#paper-kit">
-                                <div class="author">
-                                    <h4 class="card-title">Domingos 10:00hs</h4>
-                                    <h6 class="card-category">Escuela b&#237;blica</h6>
-                                </div>
-                            </a>
-                            <p class="card-description text-center">
-                            Ense&#241;anza b&#237;blica para todas las edades.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a href="#avatar"><img src="./assets/img/reunion-general.jpg" alt="..."></a>
-                        </div>
-                        <div class="card-block">
-                            <a href="#paper-kit">
-                                <div class="author">
-                                    <h4 class="card-title">Domingos 20:00hs</h4>
-                                    <h6 class="card-category">Reuni&#243;n general</h6>
-                                </div>
-                            </a>
-                            <p class="card-description text-center">
-                            Canciones y reflexi&#243;n b&#237;blica.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <app-form></app-form>
     </div>
-<!-- -----------------------------------------------Horarios Reuniones end---------------------------------------------- -->         
-
+    
 </div>
 
-<!-- -----------------------------------------------Main end---------------------------------------------- -->
+
+
+
+
+
+
 
 
 
@@ -171,44 +57,6 @@
 
 
 
-<!-- <div class="section landing-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 mr-auto ml-auto">
-                <h2 class="text-center">Keep in touch?</h2>
-                <form class="contact-form">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Name</label>
-                            <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Name" (focus)="focus=true" (blur)="focus=false" >
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Email</label>
-                            <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false" >
-                            </div>
-                        </div>
-                    </div>
-                    <label>Message</label>
-                    <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
-                    <div class="row">
-                        <div class="col-md-4 mr-auto ml-auto">
-                            <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 
