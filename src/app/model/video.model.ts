@@ -5,4 +5,7 @@ export class VideoModel {
   public url: string;
   public type: string;
   public date: Moment;
+  public title: string;
+  public description: string;
+  public preacher: string;
 }

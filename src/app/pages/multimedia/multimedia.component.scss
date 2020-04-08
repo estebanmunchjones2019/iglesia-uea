@@ -1,7 +1,6 @@
 .iframe {
-  height: 315px;
-  width: 100%;
-  //max-width: 560px;
+  height: 160px;
+  width: 300px;
 }
 
 .paginator {
@@ -16,15 +15,9 @@
 
 .custom-pagination .page-number{
   display: inline-block;
-  /* padding: 5px 12px; */
   background: white;
   margin: 0px 4px;
   border-radius: 5px;
-}
-
-.page-number.current{
-  //background: green !important;
-  //color: white;
 }
 
 .page-number span{
