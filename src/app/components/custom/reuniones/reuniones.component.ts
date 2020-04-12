@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ReunionesComponent implements OnInit {
   reuniones = [
     {
-      img: `./assets/img/reunion-general.jpg`,
+      img: `./assets/img/reunion-oracion.jpg`,
       time: `Miércoles 20:00hs`,
       title: `Reunion de Oración`,
       content: `Oración y reflexión bíblica.`

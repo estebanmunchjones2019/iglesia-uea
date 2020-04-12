@@ -13,6 +13,7 @@ import { ContainerIntroComponent } from '../components/custom/container-intro/co
 import { ReunionesComponent } from '../components/custom/reuniones/reuniones.component';
 import { ReunionComponent } from '../components/custom/reuniones/reunion/reunion.component';
 import { FormComponent } from '../components/custom/form/form.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FormComponent } from '../components/custom/form/form.component';
         ContainerIntroComponent,
         ReunionesComponent,
         ReunionComponent,
-        FormComponent
+        FormComponent,
+        NosotrosComponent
     ]
 })
 export class PagesModule { }

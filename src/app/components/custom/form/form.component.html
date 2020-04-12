@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8 mr-auto ml-auto">
                 <h2 class="text-center">Contactanos</h2>
-                <form class="contact-form">
+                <form class="contact-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
                     <div class="row">
                         <div class="col-md-6">
                             <label>Nombre</label>
@@ -11,7 +11,15 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Nombre" (focus)="focus=true" (blur)="focus=false" >
+                                <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Tu nombre" 
+                                (focus)="focus=true" 
+                                (blur)="focus=false"
+                                name="name"
+                                ngModel
+                                required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -20,20 +28,39 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false" >
+                                <input 
+                                type="email" 
+                                class="form-control" 
+                                placeholder="Tu email" 
+                                (focus)="focus1=true" 
+                                (blur)="focus1=false"
+                                name="email"
+                                email
+                                ngModel
+                                required>
                             </div>
                         </div>
                     </div>
                     <label>Mensaje</label>
-                    <textarea class="form-control" rows="4" placeholder="Tu mensaje..."></textarea>
+                    <textarea 
+                    class="form-control" 
+                    rows="4" 
+                    placeholder="Tu mensaje..."
+                    name="message"
+                    minlength="1"
+                    [(ngModel)]="message"
+                    required ></textarea>
                     <div class="row">
                         <div class="col-md-4 mr-auto ml-auto">
-                            <button class="btn btn-danger btn-lg btn-fill">Enviar Mensaje</button>
+                            <button 
+                            class="btn btn-danger btn-lg btn-fill"
+                            type="submit"
+                            [disabled]="!f.valid" >Enviar Mensaje</button>
                         </div>
-                    </div>
+                    </div> 
                 </form>
             </div>
-        </div>
+        </div> 
     </div>
 </div>
 
