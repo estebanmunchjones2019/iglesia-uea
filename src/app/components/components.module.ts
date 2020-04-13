@@ -14,6 +14,7 @@ import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
+import { VideoComponent } from './custom/video/video.component';
 // import { FormComponent } from './custom/form/form.component';
 // import { HeaderComponent } from './custom/header/header.component';
 // import { ContainerIntroComponent } from './custom/container-intro/container-intro.component';
@@ -38,6 +39,7 @@ import { NgbdModalContent } from './modal/modal.component';
         NotificationComponent,
         NgbdModalComponent,
         NgbdModalContent,
+        VideoComponent
         // FormComponent,
         // HeaderComponent,
         // ContainerIntroComponent,

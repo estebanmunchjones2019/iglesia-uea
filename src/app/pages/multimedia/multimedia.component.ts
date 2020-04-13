@@ -6,6 +6,9 @@ import { VideoService } from '../../service/video/video.service';
 import { VideoModel } from '../../model/video.model';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { VideoComponent } from 'app/components/custom/video/video.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-multimedia',
@@ -35,7 +38,9 @@ export class MultimediaComponent implements OnInit, OnDestroy {
 
   constructor(private videoService: VideoService,
               private _sanitizer: DomSanitizer,
-              private changeDetectorRef: ChangeDetectorRef) {
+              private changeDetectorRef: ChangeDetectorRef,
+              private modalService: NgbModal,
+              private router: Router) {
 
                 this.getCountVideos(null);
   }
@@ -123,4 +128,15 @@ export class MultimediaComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
+  public openModal(video: VideoModel) {
+    const modalRef = this.modalService.open(VideoComponent, { windowClass: 'my-class'});
+    modalRef.componentInstance.video = video;
+  }
+
+  public openOnYoutube(video: VideoModel) {
+    debugger;
+    let results = video.url.match('[\\?&]v=([^&#]*)');
+    let show = 'https://www.youtube.com/' + results[1];
+    this.router.navigate([show]);
+  }
 }

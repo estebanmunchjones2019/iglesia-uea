@@ -34,3 +34,19 @@
   display: inline-block;
   font-weight: bold;
 }
+
+::ng-deep .my-class .modal-dialog { 
+     max-width: 98%;
+     width: 98%;
+}
+
+.a-button {
+  color: inherit;
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 700px){
+  .card-profile {
+    margin-top: 5px;
+  }
+}

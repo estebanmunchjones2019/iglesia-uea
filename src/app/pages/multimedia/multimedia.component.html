@@ -15,27 +15,32 @@
         <div class="col-md-4" *ngFor="let video of videos; let i = index">
           <div class="card card-profile">
               <div class="card-block">
-                <div class="card-video">
-                  <iframe class="iframe" [src]="urlVideosSat[i]" frameborder="0" allowfullscreen></iframe>
-                </div>  
-                <a href="">
+                <a href="#/multimedia">
                     <div class="author">
                       <h4 class="card-title">{{video.preacher}}</h4>
-                      <h6 class="card-category">{{video.title}}</h6>
+                      <!--<h6 class="card-category">{{video.title}}</h6>-->
+                      <h6 class="card-category">{{video.date | date:'fullDate'}}</h6>
                     </div>
+                    <p class="card-description text-center">
+                      <!--{{video.description}}
+                      <br>
+                      {{video.date | date:'fullDate'}}-->
+                    </p>
                   </a>
-                  <p class="card-description text-center">
-                    {{video.description}}
-                    <br>
-                    {{video.date | date:'dd-MM-yyyy'}}
-                  </p>
+                  <button type="button" class="btn btn btn-outline-primary btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en esta pagina">
+                    <a class="a-button" (click)="openModal(video)">VER AQU&#205;</a>
+                  </button>
+                  <button type="button" class="btn btn btn-outline-primary btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en youtube">
+                    <a class="a-button" href="{{video.url}}" target="_blank">YOUTUBE</a>
+                  </button>
+                  
               </div>
             </div>
           </div>
       
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
           <div class="col-md-12">
 
             <ngb-pagination [collectionSize]="config.totalItems" [(page)]="config.currentPage" [maxSize]="2" [pageSize]="config.itemsPerPage" (pageChange)="pageChanged($event)" 

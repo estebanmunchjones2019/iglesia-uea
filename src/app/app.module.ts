@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -19,9 +20,9 @@ import { ServicesModule } from './service/service.module';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import localeEsAR from '@angular/common/locales/es-AR';
 
-
-
+registerLocaleData(localeEsAR, 'es-Ar');
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ServicesModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
