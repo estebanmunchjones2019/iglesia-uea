@@ -8,19 +8,19 @@ import { Component, OnInit } from '@angular/core';
 export class ReunionesComponent implements OnInit {
   reuniones = [
     {
-      img: `./assets/img/reunion-oracion.jpg`,
+      img: `./assets/img/oracion.jpg`,
       time: `Miércoles 20:00hs`,
       title: `Reunion de Oración`,
       content: `Oración y reflexión bíblica.`
     },
     {
-      img: `./assets/img/reunion-general.jpg`,
+      img: `./assets/img/jovenes.jpg`,
       time: `Sábados 20:30hs`,
-      title: `Reunion de Jóvenes`,
+      title: `Reunion de Jóvenes`, 
       content: `Encuentro de jóvenes y adolescentes.`
     },
     {
-      img: `./assets/img/reunion-general.jpg`,
+      img: `./assets/img/escuelaBiblica.jpg`,
       time: `Domingos 10:00hs`,
       title: `Escuela bíblica`,
       content: `Enseñanza bíblica para todas las edades.`
