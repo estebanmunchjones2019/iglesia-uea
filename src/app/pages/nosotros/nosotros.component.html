@@ -5,8 +5,34 @@
     </div>
 <!------------------------------------header end-------------------------------------->
     <div class="section text-center">
-        <app-container-intro [title]="title1" [content]="content1"></app-container-intro> 
-        <app-container-intro [title]="title2" [content]="content2"></app-container-intro>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mr-auto ml-auto">
+                    <h2 class="title">{{ title }}</h2>
+                    <hr class="divider" size="5rem"/>
+                    <br >
+                    <h5 class="description">{{ content1 }}</h5>
+                    <hr class="divider" size="5rem"/>
+                    <br>
+                    <h5 class="description">{{ content2 }}</h5>
+                    <hr class="divider" size="5rem"/>
+                    <br>
+                    <h5 class="description">{{ content3 }}</h5>
+                    <hr class="divider" size="5rem"/>
+                    <br>
+                    <h5 class="description">{{ content4}}
+                        <a href="https://www.bible.com/en-GB/bible/176/1CO.15.TLA">(1 corintios 15:1-11)</a>
+                    </h5>
+                    <hr class="divider" size="5rem"/>
+                    <br>
+                    <h5 class="description">{{ content5 }} <b>salvación eterna y una vida nueva.</b>
+                    </h5>
+                    <hr class="divider" size="5rem"/>
+                    <br>
+                </div> 
+            </div>
+        </div>
+        
     </div>
     
 </div>
