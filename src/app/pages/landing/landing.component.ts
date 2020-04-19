@@ -19,8 +19,13 @@ export class LandingComponent implements OnInit {
     de Dios perdiendo así la relación con su creador. 
     Pero Él, a través de su infinita misericordia y 
     gran amor quiso reconciliarnos en la persona de su hijo Jesús, 
-    para todo aquel que decida creer en Él.`
+    para todo aquel que decida creer en Él.`;
+  
+  novedades: boolean = true;
 
+  title3: string = 'Novedades';
+  content3: string = `El próximo evento es este domingo 19 a las 19:00hs
+   por nuestro canal de Youtube. Te esperamos, no te lo pierdas.`;
 
   focus: any;
   focus1: any;

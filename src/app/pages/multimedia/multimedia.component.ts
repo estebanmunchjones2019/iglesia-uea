@@ -139,4 +139,8 @@ export class MultimediaComponent implements OnInit, OnDestroy {
     let show = 'https://www.youtube.com/' + results[1];
     this.router.navigate([show]);
   }
+
+  onClick(url: string) {
+    window.location.href= url; 
+  }
 }

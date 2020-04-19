@@ -21,6 +21,7 @@ import { ServicesModule } from './service/service.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import localeEsAR from '@angular/common/locales/es-AR';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeEsAR, 'es-Ar');
 
@@ -40,7 +41,8 @@ registerLocaleData(localeEsAR, 'es-Ar');
     AppRoutingModule,
     FontAwesomeModule,
     ServicesModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]

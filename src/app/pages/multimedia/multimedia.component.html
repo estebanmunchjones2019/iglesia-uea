@@ -4,7 +4,7 @@
   </div>
   <div class="section text-center">
     <div class="container">
-      <h2 class="title">Predicaciones</h2>
+      <h2 class="title">Mensajes</h2>
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="col-md-4" *ngFor="let video of videos; let i = index">
-          <div class="card card-profile">
+          <div class="card card-profile card-light"(click)="onClick(video.url)">
               <div class="card-block">
                 <a href="#/multimedia">
                     <div class="author">
@@ -27,11 +27,8 @@
                       {{video.date | date:'fullDate'}}-->
                     </p>
                   </a>
-                  <button type="button" class="btn btn btn-outline-primary btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en esta pagina">
-                    <a class="a-button" (click)="openModal(video)">VER AQU&#205;</a>
-                  </button>
-                  <button type="button" class="btn btn btn-outline-primary btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en youtube">
-                    <a class="a-button" href="{{video.url}}" target="_blank">YOUTUBE</a>
+                  <button type="button" class="btn btn btn-outline-danger btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en youtube">
+                    <a class="a-button" href="{{video.url}}" target="_blank">VER</a>
                   </button>
                   
               </div>
