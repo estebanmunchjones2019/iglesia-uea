@@ -10,6 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+
   data = {
     service_id: 'yahoo',
     template_id: 'contact_form',
@@ -19,7 +20,7 @@ export class FormComponent implements OnInit {
         'user_email': '',
         'message': '' 
     }
-  }; 
+  };
 
   constructor(private http: HttpClient) { }
 

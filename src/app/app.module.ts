@@ -23,6 +23,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import localeEsAR from '@angular/common/locales/es-AR';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
 registerLocaleData(localeEsAR, 'es-Ar');
 
 @NgModule({
@@ -42,7 +46,9 @@ registerLocaleData(localeEsAR, 'es-Ar');
     FontAwesomeModule,
     ServicesModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]

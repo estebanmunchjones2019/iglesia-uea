@@ -9,6 +9,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { VideoComponent } from 'app/components/custom/video/video.component';
 import { Router } from '@angular/router';
+import { PreacherModel } from '../../model/preacher.model';
 
 @Component({
   selector: 'app-multimedia',
@@ -17,15 +18,12 @@ import { Router } from '@angular/router';
 })
 export class MultimediaComponent implements OnInit, OnDestroy {
 
-  @ViewChild('multimedia')
-  multimedia: ElementRef;
-
   private showAnimations = false;
 
-  public lastSearch: string;
+  public lastSearch: PreacherModel = new PreacherModel;
 
-  private videos : VideoModel[];
-  private preachers : string[];
+  public videos : VideoModel[];
+  private preachers : PreacherModel[];
   private urlVideosSat: SafeResourceUrl[] = [];
   private loading = false;
 
@@ -36,12 +34,15 @@ export class MultimediaComponent implements OnInit, OnDestroy {
     totalItems: 0
   };
 
+  formatter = (result: PreacherModel) => result.preacher.toUpperCase();
+
   constructor(private videoService: VideoService,
               private _sanitizer: DomSanitizer,
               private changeDetectorRef: ChangeDetectorRef,
               private modalService: NgbModal,
               private router: Router) {
 
+                this.lastSearch.preacher = '';
                 this.getCountVideos(null);
   }
 
@@ -89,7 +90,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
     return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
   }
 
-  pageChanged(event, p) {
+  pageChanged(event) {
     this.config.currentPage = event
     this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, this.lastSearch);
     this.changeDetectorRef.detectChanges();
@@ -100,23 +101,28 @@ export class MultimediaComponent implements OnInit, OnDestroy {
       debounceTime(200),
       distinctUntilChanged(),
       map(term => term.length === 0 ? this.preachers
-        : this.preachers.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+        : this.preachers.filter(v => v.preacher.toLowerCase().indexOf(term.toLowerCase()) > -1)
           .slice(0, 10))
     )
 
   selectedItem(event: any) {
-    this.lastSearch = event.item;
+    debugger;
+    this.lastSearch.preacher = event.item.preacher;
     this.config.currentPage = 1;
-    this.getCountVideos(this.lastSearch);
+    this.getCountVideos(this.lastSearch.preacher);
     this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, this.lastSearch);
   }
 
   onChange(event: any) {
-    console.log("onchange input");
-    if (this.lastSearch !== null && this.lastSearch !== undefined && this.lastSearch.length == 0) {
-      this.config.currentPage = 1;
-      this.getCountVideos(this.lastSearch);
-      this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, this.lastSearch);
+    debugger;
+    this.lastSearch.preacher = event;
+    // Cuando se borra la busqueda y queda vacía volvemos a cargar todos los predicadores
+    if (this.lastSearch !== null && this.lastSearch !== undefined 
+      && this.lastSearch.preacher !== null && this.lastSearch.preacher !== undefined 
+      && this.lastSearch.preacher.length == 0) {
+        this.config.currentPage = 1;
+        this.getCountVideos(this.lastSearch.preacher);
+        this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, this.lastSearch);
     }
   }
 
@@ -134,7 +140,6 @@ export class MultimediaComponent implements OnInit, OnDestroy {
   }
 
   public openOnYoutube(video: VideoModel) {
-    debugger;
     let results = video.url.match('[\\?&]v=([^&#]*)');
     let show = 'https://www.youtube.com/' + results[1];
     this.router.navigate([show]);
