@@ -26,7 +26,7 @@ export class ReunionesComponent implements OnInit {
       content: `Enseñanza bíblica para todas las edades.`
     },
     {
-      img: `./assets/img/reunion-general.jpg`,
+      img: `./assets/img/reunionGeneral.jpeg`,
       time: `Domingos 20:00hs`,
       title: `Reunión general`,
       content: `Canciones y reflexión bíblica.`
