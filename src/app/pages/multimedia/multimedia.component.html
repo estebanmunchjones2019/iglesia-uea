@@ -8,19 +8,19 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-              <input type="text" class="form-control" [ngModel]="lastSearch.preacher" [ngbTypeahead]="search" 
-                (selectItem)="selectedItem($event)" (ngModelChange)="onChange($event)" [resultFormatter]="formatter" 
-                (focus)="onFocus($event)"  placeholder="Buscar predicaci&#243;n">
+              <input type="text" class="form-control" [(ngModel)]="preacher" [ngbTypeahead]="search" 
+                (selectItem)="selectedItem($event)" [resultFormatter]="formatter" 
+                (focus)="onFocus($event)" (ngModelChange)="onChange($event)" placeholder="Buscar predicaci&#243;n">
           </div>
         </div>
         <div class="col-md-4" *ngFor="let video of videos; let i = index">
-          <div class="card card-profile card-light"(click)="onClick(video.url)">
+          <div class="card card-profile card-light"(click)="onClick(video.data.url)">
               <div class="card-block">
                 <a href="#/multimedia">
                     <div class="author">
-                      <h4 class="card-title">{{video.preacher}}</h4>
+                      <h4 class="card-title">{{video.data.preacher}}</h4>
                       <!--<h6 class="card-category">{{video.title}}</h6>-->
-                      <h6 class="card-category">{{video.date | date:'fullDate'}}</h6>
+                      <h6 class="card-category">{{video.data.date | date:'fullDate'}}</h6>
                     </div>
                     <p class="card-description text-center">
                       <!--{{video.description}}
@@ -29,7 +29,7 @@
                     </p>
                   </a>
                   <button type="button" class="btn btn btn-outline-danger btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en youtube">
-                    <a class="a-button" href="{{video.url}}" target="_blank">VER</a>
+                    <a class="a-button" href="{{video.data.url}}" target="_blank">VER</a>
                   </button>
                   
               </div>

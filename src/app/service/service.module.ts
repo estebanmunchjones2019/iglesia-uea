@@ -6,6 +6,7 @@ import {AuthGuard} from './auth-guard/auth-guard.service';
 import {VideoService} from './video/video.service';
 import {HeaderInterceptor} from './header-interceptor/header-interceptor.service';
 import {SidebarScrollService} from './sidebar-scroll/sidebar-scroll.service';
+import { FirebaseService } from './firebase/firebase.service';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {SidebarScrollService} from './sidebar-scroll/sidebar-scroll.service';
    AuthGuard,
    VideoService,
    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
-   SidebarScrollService
+   SidebarScrollService,
+   FirebaseService
   ]
 })
 export class ServicesModule {}

@@ -10,6 +10,8 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { VideoComponent } from 'app/components/custom/video/video.component';
 import { Router } from '@angular/router';
 import { PreacherModel } from '../../model/preacher.model';
+import { environment } from 'environments/environment';
+import { FirebaseService } from 'app/service/firebase/firebase.service';
 
 @Component({
   selector: 'app-multimedia',
@@ -22,10 +24,11 @@ export class MultimediaComponent implements OnInit, OnDestroy {
 
   public lastSearch: PreacherModel = new PreacherModel;
 
-  public videos : VideoModel[];
+  public videos : any[];
   private preachers : PreacherModel[];
   private urlVideosSat: SafeResourceUrl[] = [];
   private loading = false;
+  public preacher: string;
 
   config = {
     id: 123456,
@@ -37,13 +40,17 @@ export class MultimediaComponent implements OnInit, OnDestroy {
   formatter = (result: PreacherModel) => result.preacher.toUpperCase();
 
   constructor(private videoService: VideoService,
+              private firebaseService: FirebaseService,
               private _sanitizer: DomSanitizer,
               private changeDetectorRef: ChangeDetectorRef,
               private modalService: NgbModal,
               private router: Router) {
 
-                this.lastSearch.preacher = '';
-                this.getCountVideos(null);
+              this.getCountVideos(null);
+              /*this.videoService.getAllVideos(null, null, null)
+              .subscribe((response: VideoModel[]) => {
+                response.forEach(video => this.firebaseService.addVideo(video).then((v)=>console.log(v)));
+              });*/
   }
 
   ngOnInit() {
@@ -55,17 +62,24 @@ export class MultimediaComponent implements OnInit, OnDestroy {
   }
 
   getAllVideosPaginated(page, size, search) {
-    this.videoService.getAllVideos(page, size, search)
-      .subscribe((response) => {
-        this.videos = response;
-        for(let v of response) {
-          this.urlVideosSat.push(this.getVideoIframe(v.url));
-        }
+    this.firebaseService.getAllVideos(page, size, search)
+      .then((response) => {
+        this.videos = new Array();
+        response.forEach(data => {
+          this.videos.push({
+            id: data.id,
+            data: data.data()
+          });
+        });
+
+        //for(let v of response) {
+        //  this.urlVideosSat.push(this.getVideoIframe(v.url));
+        //}
       })
   }
 
   getAllPreachers() {
-    this.videoService.getAllPreachers()
+    this.firebaseService.getAllPreachers()
       .subscribe((response) => {
         this.preachers = response;
       })
@@ -108,22 +122,37 @@ export class MultimediaComponent implements OnInit, OnDestroy {
   selectedItem(event: any) {
     debugger;
     this.lastSearch.preacher = event.item.preacher;
+      //this.preacher = this.lastSearch.preacher;
+    
     this.config.currentPage = 1;
     this.getCountVideos(this.lastSearch.preacher);
-    this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, this.lastSearch);
+    this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, this.lastSearch.preacher);
+  
   }
 
   onChange(event: any) {
     debugger;
-    this.lastSearch.preacher = event;
+
+    if (event !== null && event !== undefined) {
+      if (event == "") {
+        this.config.currentPage = 1;
+        this.getCountVideos("");
+        this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, "");
+      } else if(event.preacher !== null && event.preacher !== undefined && event.preacher.length > 0) {
+        this.preacher = event.preacher;
+      }
+    }
+
+    /*this.preacher = this.lastSearch.preacher;
     // Cuando se borra la busqueda y queda vacía volvemos a cargar todos los predicadores
     if (this.lastSearch !== null && this.lastSearch !== undefined 
       && this.lastSearch.preacher !== null && this.lastSearch.preacher !== undefined 
       && this.lastSearch.preacher.length == 0) {
         this.config.currentPage = 1;
         this.getCountVideos(this.lastSearch.preacher);
-        this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, this.lastSearch);
-    }
+        this.getAllVideosPaginated(this.config.currentPage - 1, this.config.itemsPerPage, this.lastSearch.preacher);
+    }*/
+   
   }
 
   public onFocus(e: Event): void {
@@ -146,6 +175,6 @@ export class MultimediaComponent implements OnInit, OnDestroy {
   }
 
   onClick(url: string) {
-    window.location.href= url; 
+    window.open(url, '_blank'); 
   }
 }

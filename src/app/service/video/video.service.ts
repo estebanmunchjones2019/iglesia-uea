@@ -8,13 +8,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
 export class VideoService {
-  private baseUrl: string = "/assets/json/videos.json"
+  private baseUrl: string = "/assets/json/videos.json";
 
   constructor(private httpClient: HttpClient,
     private firestore: AngularFirestore) {
   }
 
-  /*getAllVideos(page, size, search: string) {
+  getAllVideos(page, size, search: string) {
 
     return this.httpClient.get(this.baseUrl)
       .pipe(
@@ -27,25 +27,13 @@ export class VideoService {
             console.log("page: " + page + " size: " + size);
             console.log(response);
           }
-          this.mapDate(response);
+          //this.mapDate(response);
           return response;
         })
       );
-  }*/
-
-  getAllVideos(page, size, search: string) {
-
-    return this.firestore.collection('videos').valueChanges()
-    .pipe(
-      map(response => {
-        let videos : any[] = new Array();
-        response.forEach(v => videos.push(v));
-        return videos;
-      })
-    );
   }
 
-  /*getAllPreachers() {
+  getAllPreachers() {
 
     return this.httpClient.get(this.baseUrl)
       .pipe(
@@ -56,20 +44,6 @@ export class VideoService {
         })
       );
   }
-  */
-
-  getAllPreachers() {
-
-    return this.firestore.collection('predicadores').valueChanges()
-    .pipe(
-      map(response => {
-        let predicadores : any[] = new Array();
-        response.forEach(p => predicadores.push(p));
-        return predicadores;
-      })
-    );
-  }
-
 
   getCount(search: string) {
     return this.httpClient.get(this.baseUrl)
