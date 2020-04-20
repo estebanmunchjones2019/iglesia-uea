@@ -14,6 +14,7 @@ import { ReunionesComponent } from '../components/custom/reuniones/reuniones.com
 import { ReunionComponent } from '../components/custom/reuniones/reunion/reunion.component';
 import { FormComponent } from '../components/custom/form/form.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
+import { LoadingComponent } from 'app/components/custom/loading/loading.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
         ReunionesComponent,
         ReunionComponent,
         FormComponent,
-        NosotrosComponent
+        NosotrosComponent,
+        LoadingComponent
     ]
 })
 export class PagesModule { }

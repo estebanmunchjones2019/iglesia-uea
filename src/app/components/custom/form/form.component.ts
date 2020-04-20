@@ -22,6 +22,10 @@ export class FormComponent implements OnInit {
     }
   };
 
+  focus = false;
+  focus1 = false;
+
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {       

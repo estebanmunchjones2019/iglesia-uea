@@ -15,33 +15,30 @@ export class FirebaseService {
     private firestore: AngularFirestore) {
   }
 
-  getAllVideos(page, size, search: string) {
+  getAllVideos(video, page, size: number, search: string) {
 
+    debugger;
     let videosRef = this.firestore.firestore.collection('videos');
     let queryRef;
-    if (search !== null && search !== undefined && search.length > 0) {
+    
+    // Filtramos por predicador
+    if (search !== null && search !== undefined && search.length > 0 && 'todos'.localeCompare(search) !== 0) {
       queryRef = videosRef.where('preacher', '==', search).orderBy('date', 'desc');
     } else {
       queryRef = videosRef.orderBy('date', 'desc');
     }
 
+    // Aplicamos paginado
+    if (video == null) {
+      queryRef = queryRef.limit(size);
+    } else {
+      if (page === 'next') {
+          queryRef = queryRef.startAfter(video.data.date).limit(size);
+      } else if (page === 'previous') {
+          queryRef = queryRef.endBefore(video.data.date).limitToLast(size);
+      }
+    }
     return queryRef.get();
-        
-    
-    //snapshotChanges();
-    //return videosRef.where('preacher', '==', search).get()
-    /*return videosRef.get()
-    .then(response => {
-        debugger;
-        let videos : any[] = new Array();
-        response.forEach(v => {
-          let d = v.data
-          console.log(v.id + ' --- ' + v.data.apply);
-          console.log(d);
-          videos.push(v.data);
-        });
-        return videos;
-      })*/
   }
 
   addVideo(video: VideoModel) {
@@ -67,15 +64,17 @@ export class FirebaseService {
 
 
   getCount(search: string) {
-    return this.httpClient.get(this.baseUrl)
-      .pipe(
-         map((response: VideoModel[]) => {
-            if (search != null && search !== undefined && search.length > 0) {
-              response = response.filter(v => v.preacher === search);
-            }
-            return response.length;
-        })
-      );
+    debugger;
+   let videosRef = this.firestore.firestore.collection('videos');
+   let queryRef;
+    
+    // Filtramos por predicador
+    if (search !== null && search !== undefined && search.length > 0 && 'todos'.localeCompare(search) !== 0) {
+      queryRef = videosRef.where('preacher', '==', search);
+    } else {
+      queryRef = videosRef;
+    }
+    return queryRef.get();
   }
 
   mapDate(videos: VideoModel[]) {
