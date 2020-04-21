@@ -1,3 +1,18 @@
+/*!
+
+ =========================================================
+ * Paper Kit 2 Angular - v1.3.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/paper-kit-2-angular
+ * Copyright 2017 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/timcreative/paper-kit/blob/master/LICENSE.md)
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ */
+
 import {
   Component, ElementRef, OnInit, OnDestroy, ViewChild, ChangeDetectorRef
 } from '@angular/core';
@@ -20,15 +35,12 @@ import { FirebaseService } from 'app/service/firebase/firebase.service';
 })
 export class MultimediaComponent implements OnInit, OnDestroy {
 
-  private showAnimations = false;
-
   public lastSearch: PreacherModel = new PreacherModel;
 
   public videos : any[];
   private preachers : PreacherModel[];
-  private loading = true;
+  public loading = true;
   public preacher: string;
-  public localCurrentPage = 1;
 
   config = {
     id: 123456,
@@ -41,16 +53,12 @@ export class MultimediaComponent implements OnInit, OnDestroy {
 
   constructor(private videoService: VideoService,
               private firebaseService: FirebaseService,
-              private _sanitizer: DomSanitizer,
               private changeDetectorRef: ChangeDetectorRef,
               private modalService: NgbModal,
               private router: Router) {
 
               this.getCountVideos(null);
-              /*this.videoService.getAllVideos(null, null, null)
-              .subscribe((response: VideoModel[]) => {
-                response.forEach(video => this.firebaseService.addVideo(video).then((v)=>console.log(v)));
-              });*/
+              this.importVideos();
   }
 
   ngOnInit() {
@@ -61,9 +69,17 @@ export class MultimediaComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  getAllVideosPaginated(video, page, size, search) {
-    this.firebaseService.getAllVideos(video, page, size, search)
+  /**
+   * Get all videos paginated and filterd.
+   * @param video 
+   * @param page 
+   * @param size 
+   * @param search 
+   */
+  getAllVideosPaginated(video, action, size, search) {
+    this.firebaseService.getAllVideos(video, action, size, search)
       .then((response) => {
+        
         this.videos = new Array();
         response.forEach(data => {
           this.videos.push({
@@ -75,6 +91,9 @@ export class MultimediaComponent implements OnInit, OnDestroy {
       })
   }
 
+  /**
+   * Get all preachers in the database.
+   */
   getAllPreachers() {
     this.firebaseService.getAllPreachers()
       .subscribe((response) => {
@@ -82,6 +101,10 @@ export class MultimediaComponent implements OnInit, OnDestroy {
       })
   }
 
+  /**
+   * Get total count of videos.
+   * @param search 
+   */
   getCountVideos(search: string) {
     let count = 0;
     this.config.totalItems = this.firebaseService.getCount(search)
@@ -90,28 +113,58 @@ export class MultimediaComponent implements OnInit, OnDestroy {
         count += 1;
       })
       this.config.totalItems = count;
+      console.log("Count of videos: " + count);
     });
   }
 
+  /**
+   * If count of videos is 0 then import videos from json.
+   */
+  importVideos() {
+    this.firebaseService.getCount(null)
+      .then(response => {
+        let count = 0;
+        response.forEach(resp => {
+          count += 1;
+        });
+        console.log("Count of videos: " + count);
+        if (count === 0) {
+          console.log("Importing videos");
+          this.videoService.getAllVideos(null, null, null)
+            .subscribe((response: VideoModel[]) => {
+              response.forEach(video => this.firebaseService.addVideo(video).then((v)=>console.log(v)));
+            });
+        } else {
+          console.log("Not importing");
+        }
+      })
+  }
+
+  /**
+   * Method to move pagination forward and backward.
+   * @param event 
+   */
   pageChanged(event) {
-    if (event === 0 || (event * this.config.itemsPerPage - event > this.config.totalItems) ) {
+    if (event === 0 || (event * this.config.itemsPerPage - this.config.itemsPerPage >= this.config.totalItems) ) {
       return;
     }
     let lastVideo;
-    let p;
-    if ( event > this.localCurrentPage) {
+    let action;
+    if ( event > this.config.currentPage) {
       lastVideo = this.videos[this.videos.length - 1];
-      p = "next"
+      action = "next"
     } else {
       lastVideo = this.videos[0];
-      p = "previous";
+      action = "previous";
     }
-    this.config.currentPage = event
-    this.localCurrentPage = event;
-    this.getAllVideosPaginated(lastVideo, p , this.config.itemsPerPage, this.lastSearch);
+    this.config.currentPage = event;
+    this.getAllVideosPaginated(lastVideo, action , this.config.itemsPerPage, this.lastSearch.preacher);
     this.changeDetectorRef.detectChanges();
   }
 
+  /**
+   * Type ahead of preacher search.
+   */
   search = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(200),
@@ -121,25 +174,31 @@ export class MultimediaComponent implements OnInit, OnDestroy {
           .slice(0, 10))
     )
 
+    /**
+     * 
+     * @param event Event trigger when a preacher is selected.
+     */
   selectedItem(event: any) {
+    event.preventDefault();
     this.lastSearch.preacher = event.item.preacher;
+    this.preacher = this.lastSearch.preacher;
     this.config.currentPage = 1;
     this.getCountVideos(this.lastSearch.preacher);
     this.getAllVideosPaginated(null, null, this.config.itemsPerPage, this.lastSearch.preacher);
   }
 
-  onChange(event: any) {
-    if (event !== null && event !== undefined) {
-      if (event == "") {
-        this.config.currentPage = 1;
-        this.getCountVideos("");
-        this.getAllVideosPaginated(null, null, this.config.itemsPerPage, "");
-      } else if(event.preacher !== null && event.preacher !== undefined && event.preacher.length > 0) {
-        this.preacher = event.preacher;
-      }
-    }
+  /**
+   * Format when item selected on search
+   * @param value 
+   */
+  resultFormatBandListValue(value: any) {
+    return value.preacher;
   }
 
+  /**
+   * Event trigger when touch input search.
+   * @param e 
+   */
   public onFocus(e: Event): void {
     e.stopPropagation();
     setTimeout(() => {
@@ -148,17 +207,23 @@ export class MultimediaComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
+  /*deprecated */
   public openModal(video: VideoModel) {
     const modalRef = this.modalService.open(VideoComponent, { windowClass: 'my-class'});
     modalRef.componentInstance.video = video;
   }
 
+  /*deprecated*/
   public openOnYoutube(video: VideoModel) {
     let results = video.url.match('[\\?&]v=([^&#]*)');
     let show = 'https://www.youtube.com/' + results[1];
     this.router.navigate([show]);
   }
 
+  /**
+   * Open link in a different tab.
+   * @param url 
+   */
   onClick(url: string) {
     window.open(url, '_blank'); 
   }

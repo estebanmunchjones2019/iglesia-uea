@@ -15,9 +15,8 @@ export class FirebaseService {
     private firestore: AngularFirestore) {
   }
 
-  getAllVideos(video, page, size: number, search: string) {
+  getAllVideos(video, action, size: number, search: string) {
 
-    debugger;
     let videosRef = this.firestore.firestore.collection('videos');
     let queryRef;
     
@@ -32,9 +31,9 @@ export class FirebaseService {
     if (video == null) {
       queryRef = queryRef.limit(size);
     } else {
-      if (page === 'next') {
+      if (action === 'next') {
           queryRef = queryRef.startAfter(video.data.date).limit(size);
-      } else if (page === 'previous') {
+      } else if (action === 'previous') {
           queryRef = queryRef.endBefore(video.data.date).limitToLast(size);
       }
     }
@@ -62,9 +61,12 @@ export class FirebaseService {
     );
   }
 
+  getNews() {
+     return this.firestore.firestore.collection('novedades').doc('novedad').get()
+  }
+
 
   getCount(search: string) {
-    debugger;
    let videosRef = this.firestore.firestore.collection('videos');
    let queryRef;
     

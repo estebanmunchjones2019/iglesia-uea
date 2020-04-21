@@ -56,6 +56,16 @@
     position: relative;
 
 }
+.page-header .shift{
+    text-align: left;
+    z-index: 3;
+    color: #fff;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
 .landing-section{
     padding: 100px 0;
     z-index: 1;

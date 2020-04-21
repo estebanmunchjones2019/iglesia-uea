@@ -10,7 +10,7 @@
           <div class="form-group">
               <input type="text" class="form-control" [(ngModel)]="preacher" [ngbTypeahead]="search" 
                 (selectItem)="selectedItem($event)" [resultFormatter]="formatter" 
-                (focus)="onFocus($event)" (ngModelChange)="onChange($event)" placeholder="Buscar predicaci&#243;n">
+                (focus)="onFocus($event)" placeholder="Buscar mensajes">
           </div>
         </div>
 
@@ -42,14 +42,17 @@
         <div class="row mt-5">
           <div class="col-md-12">
 
-            <!--<ngb-pagination [collectionSize]="config.totalItems" [(page)]="config.currentPage" [maxSize]="1" [pageSize]="config.itemsPerPage" (pageChange)="pageChanged($event)" 
-                [rotate]="false"></ngb-pagination>
-            -->
-            <button type="button" class="btn btn-danger btn-just-icon" (click)="pageChanged(localCurrentPage - 1)"><i class="fa fa-angle-left"></i></button>
-
-            <button type="button" class="btn btn-danger btn-just-icon" (click)="pageChanged( localCurrentPage + 1)"><i class="fa fa-angle-right"></i></button>
+            <button type="button" class="btn btn-danger btn-just-icon" (click)="pageChanged(config.currentPage - 1)"><i class="fa fa-angle-left"></i></button>
+            <button type="button" class="btn btn-danger btn-round">{{config?.currentPage}}</button>              
+            <button type="button" class="btn btn-danger btn-just-icon" (click)="pageChanged( config.currentPage + 1)"><i class="fa fa-angle-right"></i></button>
 
           </div>
+
+          <div class="col-md-12">
+            <hr class="divider" size="5rem"/>
+            <button type="button" class="btn btn-danger btn-link">{{config?.totalItems}} mensajes</button>
+          </div>
+
         </div>
 
     </div>

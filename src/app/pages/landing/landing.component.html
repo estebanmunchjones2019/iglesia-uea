@@ -1,6 +1,5 @@
-
 <app-header></app-header>
-<div class="main">
+<div #main class="main">
     
     <div class="section text-center">
         <app-container-intro [title]="title1" [content]="content1"></app-container-intro>
@@ -18,7 +17,7 @@
                     <h2 class="title">{{ title3 }}</h2>
                     <hr class="divider" size="5rem"/>
                     <br >
-                    <h5 class="description">{{ content3 }}</h5>
+                    <h5 class="description">{{ message }}</h5>
                     <br>
                     <hr class="divider" size="5rem"/>
                 </div>

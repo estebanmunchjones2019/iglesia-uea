@@ -1,5 +1,21 @@
+/*!
+
+ =========================================================
+ * Paper Kit 2 Angular - v1.3.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/paper-kit-2-angular
+ * Copyright 2017 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/timcreative/paper-kit/blob/master/LICENSE.md)
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { faBible } from '@fortawesome/free-solid-svg-icons';
+import { FirebaseService } from 'app/service/firebase/firebase.service';
 
 @Component({
     selector: 'app-landing',
@@ -21,7 +37,8 @@ export class LandingComponent implements OnInit {
     gran amor quiso reconciliarnos en la persona de su hijo Jesús, 
     para todo aquel que decida creer en Él.`;
   
-  novedades: boolean = true;
+  novedades: boolean = false;
+  message: string;
 
   title3: string = 'Novedades';
   content3: string = `El próximo evento es este domingo 19 a las 19:00hs
@@ -30,8 +47,19 @@ export class LandingComponent implements OnInit {
   focus: any;
   focus1: any;
   faBible = faBible;
-  constructor() { }
+  constructor(private firebaseService: FirebaseService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getNews();
+  }
+
+  getNews() {
+    this.firebaseService.getNews()
+    .then(response => {
+      debugger;
+      this.novedades = response.data().show;
+      this.message = response.data().message;
+    })
+  }
 
 }
