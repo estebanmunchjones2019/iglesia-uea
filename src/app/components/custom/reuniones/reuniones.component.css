@@ -1,3 +1,8 @@
-h4 {
-    color: #e99810 !important;
+h4, a {
+    color:#ffff00 !important;
+}
+
+a {
+    text-decoration: underline;
+    font-weight: bold; 
 }
