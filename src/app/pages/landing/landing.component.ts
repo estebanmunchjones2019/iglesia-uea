@@ -56,7 +56,6 @@ export class LandingComponent implements OnInit {
   getNews() {
     this.firebaseService.getNews()
     .then(response => {
-      debugger;
       this.novedades = response.data().show;
       this.message = response.data().message;
     })
