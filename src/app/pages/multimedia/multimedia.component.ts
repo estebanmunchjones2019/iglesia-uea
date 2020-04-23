@@ -113,7 +113,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
         count += 1;
       })
       this.config.totalItems = count;
-      console.log("Count of videos: " + count);
+      //console.log("Count of videos: " + count);
     });
   }
 
@@ -129,7 +129,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
         });
         console.log("Count of videos: " + count);
         if (count === 0) {
-          console.log("Importing videos");
+          //console.log("Importing videos");
           this.videoService.getAllVideos(null, null, null)
             .subscribe((response: VideoModel[]) => {
               response.forEach(video => this.firebaseService.addVideo(video).then((v)=>console.log(v)));
@@ -145,6 +145,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    * @param event 
    */
   pageChanged(event) {
+  
     if (event === 0 || (event * this.config.itemsPerPage - this.config.itemsPerPage >= this.config.totalItems) ) {
       return;
     }
@@ -152,7 +153,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
     let action;
     if ( event > this.config.currentPage) {
       lastVideo = this.videos[this.videos.length - 1];
-      action = "next"
+      action = "next";
     } else {
       lastVideo = this.videos[0];
       action = "previous";

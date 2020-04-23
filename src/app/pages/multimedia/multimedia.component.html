@@ -17,8 +17,10 @@
         <div class="col-md-12">
           <app-loading *ngIf="loading"></app-loading>
         </div>
-        <div class="col-md-4" *ngFor="let video of videos; let i = index">
-          <div class="card card-profile card-light"(click)="onClick(video.data.url)">
+
+      
+        <div class="col-md-4 animated fadeIn" *ngFor="let video of videos; let i = index">
+          <div class="card card-profile card-light pointer" (click)="onClick(video.data.url)">
               <div class="card-block">
                 <a href="#/multimedia">
                     <div class="author">
@@ -28,10 +30,10 @@
                     <p class="card-description text-center">
                       
                     </p>
-                  </a>
-                  <button type="button" class="btn btn btn-outline-danger btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en youtube">
-                    <a class="a-button" href="{{video.data.url}}" target="_blank">VER</a>
-                  </button>
+                </a>
+                <button type="button" class="btn btn btn-outline-danger btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en youtube">
+                  <a class="a-button" href="{{video.data.url}}" target="_blank">VER</a>
+                </button>
                   
               </div>
             </div>
