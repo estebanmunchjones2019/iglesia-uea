@@ -107,13 +107,12 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    */
   getCountVideos(search: string) {
     let count = 0;
-    this.config.totalItems = this.firebaseService.getCount(search)
+    this.firebaseService.getCount(search)
     .then(response => {
       response.forEach(resp => {
         count += 1;
       })
       this.config.totalItems = count;
-      //console.log("Count of videos: " + count);
     });
   }
 
