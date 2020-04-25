@@ -7,6 +7,7 @@ import {VideoService} from './video/video.service';
 import {HeaderInterceptor} from './header-interceptor/header-interceptor.service';
 import {SidebarScrollService} from './sidebar-scroll/sidebar-scroll.service';
 import { FirebaseService } from './firebase/firebase.service';
+import { FirebaseFunctionsService } from './firebase-functions/firebase-functions.service';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FirebaseService } from './firebase/firebase.service';
    VideoService,
    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
    SidebarScrollService,
-   FirebaseService
+   FirebaseService,
+   FirebaseFunctionsService
   ]
 })
 export class ServicesModule {}

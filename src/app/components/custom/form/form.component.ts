@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FirebaseFunctionsService } from 'app/service/firebase-functions/firebase-functions.service';
 
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-form',
@@ -26,28 +27,58 @@ export class FormComponent implements OnInit {
   focus1 = false;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private firebaseFunctionsService: FirebaseFunctionsService) { }
 
   ngOnInit() {       
+
   }
 
   onSubmit(f: NgForm) {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  
-    this.data.template_params.user_name = f.value.name;
-    this.data.template_params.user_email = f.value.email;
-    this.data.template_params.message = f.value.message;
-    console.log(this.data);
-    this.http.post<any>(
-      'https://api.emailjs.com/api/v1.0/email/send',
-        JSON.stringify(this.data),
-        {headers}
-    ) 
-      .subscribe(data => {
-        console.log(data); 
+
+    Swal.fire({
+      title: 'Enviando!',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      timer: 20000,
+      onOpen: () => {
+        Swal.showLoading();
+      },
+      showClass: {
+        popup: 'animated fadeInDown faster'
+      },
+      hideClass: {
+        popup: 'animated fadeOutUp faster'
+      }
     })
-     
-    f.reset();     
+
+    // TODO: ver si se puede hacer algun control sobre los valores de los campos
+    this.firebaseFunctionsService.sendEmail(f.value.email, f.value.name, f.value.message)
+    .subscribe((response) => {
+      debugger;
+      Swal.close();
+        Swal.fire({
+          title: 'Email enviado!',
+          timer: 1500,
+          showClass: {
+            popup: 'animated fadeInDown faster'
+          },
+          hideClass: {
+            popup: 'animated fadeOutUp faster'
+          }
+        })
+    }, (error) => {
+      debugger;
+      Swal.close();
+        Swal.fire({
+          title: 'Por favor intente mas tarde!',
+          showClass: {
+            popup: 'animated fadeInDown faster'
+          },
+          hideClass: {
+            popup: 'animated fadeOutUp faster'
+          }
+        })
+    });
   }
 
 } 
