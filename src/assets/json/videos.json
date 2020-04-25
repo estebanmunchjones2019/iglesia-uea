@@ -968,11 +968,382 @@
   }
   ,
   {
-    "url":"https://youtu.be/-YHaob1VaEw?t=1663",
+    "url":"https://youtu.be/-YHaob1VaEw?t=1671",
     "date": "2017-02-08",
-    "preacher": "Claudi Silva" 
+    "preacher": "Claudio Silva" 
   }
-    
+  ,
+  {
+    "url":"https://youtu.be/KaFCsQfo-7k?t=1681",
+    "date": "2016-12-18",
+    "preacher": "Claudio Silva" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=MOKE5Jr27Dw",
+    "date": "2016-12-11",
+    "preacher": "Guillermo Frias" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=LGknFXSE0wE",
+    "date": "2016-12-04",
+    "preacher": "Guillermo Frias" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/2JAHblwqvew?t=49",
+    "date": "2016-11-27",
+    "preacher": "Mario Gonzalia" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/LIhU9urkt8Q?t=465",
+    "date": "2016-11-13",
+    "preacher": "Invitado" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=9iUvPqnn2pU",
+    "date": "2016-12-06",
+    "preacher": "Emilio Yaggi" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=-yfQHiMudYQ",
+    "date": "2016-10-30",
+    "preacher": "Guillermo Frias" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=XSs9rL7Msj4",
+    "date": "2016-12-16",
+    "preacher": "Haroldo Aguirre" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=wxFrtZfF-74",
+    "date": "2016-10-09",
+    "preacher": "Rodrigo Fernandez" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=ft2IBGd_6tI",
+    "date": "2016-10-02",
+    "preacher": "Hugo Gallardo" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=-rj28_ZHzd4",
+    "date": "2016-09-25",
+    "preacher": "Ruben Rielo" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=2j2sDvIYIL0",
+    "date": "2016-09-18",
+    "preacher": "Fernando Yaggi" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=lkRZigGfc3g",
+    "date": "2016-09-11",
+    "preacher": "Claudio Silva" 
+  }
+  ,
+  {
+    "url":"https://www.youtube.com/watch?v=XzJUZb0-IWc",
+    "date": "2016-09-04",
+    "preacher": "Mario Gonzalia" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/KQuDqToVrp8?t=1790",
+    "date": "2016-08-28",
+    "preacher": "Jorge Rodriguez" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/q5kHI04Jx5Y?t=1924",
+    "date": "2016-08-14",
+    "preacher": "Guillermo Frias" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/OZWxSHbZ95Q?t=2071",
+    "date": "2016-08-07",
+    "preacher": "Hugo Gallardo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/yhB-u2PkuCU?t=2613",
+    "date": "2016-07-31",
+    "preacher": "Haroldo Aguirre" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/R1BootQaag4?t=2278",
+    "date": "2016-07-24",
+    "preacher": "Susana Malcom" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/L531_ZIUqBk?t=2269",
+    "date": "2016-07-17",
+    "preacher": "Ruben Rielo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/2_KXL7x8zRU?t=2321",
+    "date": "2016-07-10",
+    "preacher": "Mario Gonzalia" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/cgMlT48YPHQ?t=1659",
+    "date": "2016-06-26",
+    "preacher": "Claudio Silva" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/K9lz5POc-lk?t=2102",
+    "date": "2016-06-19",
+    "preacher": "Jorge Rodriguez" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/amE9XCsPq60?t=2211",
+    "date": "2016-06-12",
+    "preacher": "Emilio Yaggi" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/ePNc2qUvICU?t=1850",
+    "date": "2016-06-05",
+    "preacher": "Haroldo Aguirre" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/6ivqUI2D4uw?t=1251",
+    "date": "2016-05-29",
+    "preacher": "Juani Fedrigo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/vL9o01azT7k?t=2345",
+    "date": "2016-05-22",
+    "preacher": "Guillermo Frias" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/CCPArAub8Tw?t=1883",
+    "date": "2016-05-15",
+    "preacher": "Rodrigo Fernandez" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/lgBOn2mHRQQ?t=1568",
+    "date": "2016-05-08",
+    "preacher": "Hugo Gallardo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/3KfA3hrJW4s?t=1627",
+    "date": "2016-05-01",
+    "preacher": "Ruben Rielo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/0qjc0Y4gBWc?t=2231",
+    "date": "2016-04-24",
+    "preacher": "Invitado" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/iiacwF-mHts?t=1581",
+    "date": "2016-04-23",
+    "preacher": "Invitado" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/WnnJRN31HlQ?t=1795",
+    "date": "2016-04-17",
+    "preacher": "Fernando Yaggi" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/wWym6f5btEI?t=2134",
+    "date": "2016-04-10",
+    "preacher": "Mario Gonzalia" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/SuR5ruFCOBk?t=1445",
+    "date": "2016-04-03",
+    "preacher": "Jorge Rodriguez" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/n6cIH8edf1g?t=1912",
+    "date": "2016-03-27",
+    "preacher": "Invitado" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/AIz9xSSzvHM?t=2057",
+    "date": "2016-03-26",
+    "preacher": "Invitado" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/FdWrzLiQOEg?t=2217",
+    "date": "2016-03-25",
+    "preacher": "Emilio Yaggi" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/eQ1dsVFVRHM?t=1695",
+    "date": "2016-03-20",
+    "preacher": "Haroldo Aguirre" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/apqnO4PwMOQ?t=2500",
+    "date": "2016-03-06",
+    "preacher": "Guillermo Frias" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/THj4fYqQL7M?t=1581",
+    "date": "2016-02-28",
+    "preacher": "Hugo Gallardo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/QTHM7Zl_dM8?t=2287",
+    "date": "2016-02-14",
+    "preacher": "Juani Fedrigo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/koor0YFqlqQ?t=2489",
+    "date": "2016-02-07",
+    "preacher": "Claudio Silva" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/ghPOjNYvmFM?t=1856",
+    "date": "2016-01-31",
+    "preacher": "Fernando Yaggi" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/osF2obrBS5s?t=1845",
+    "date": "2016-01-17",
+    "preacher": "Mario Gonzalia" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/o39q3sKTv-I?t=1242",
+    "date": "2016-01-10",
+    "preacher": "Emilio Yaggi" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/zt1RhgJloyE?t=2055",
+    "date": "2016-01-03",
+    "preacher": "Jorge Rodriguez" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/Fc042XLZ9LA?t=3182",
+    "date": "2015-12-27",
+    "preacher": "Haroldo Aguirre" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/peeIYEfx0NM?t=2221",
+    "date": "2015-12-13",
+    "preacher": "Ruben Rielo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/LQ2p2AMkxzk?t=1900",
+    "date": "2015-11-29",
+    "preacher": "Invitado" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/V8r6N-hFo3o?t=2254",
+    "date": "2015-11-22",
+    "preacher": "Fernando Yaggi" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/Z8lXyOzD1lE?t=1712",
+    "date": "2015-11-08",
+    "preacher": "Mario Gonzalia" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/VlPPP6lRiL4?t=1358",
+    "date": "2015-11-01",
+    "preacher": "Jorge Rodriguez" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/t-5gvD4z-N4?t=1717",
+    "date": "2015-10-25",
+    "preacher": "Emilio Yaggi" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/hUYnRnDkaHM?t=3683",
+    "date": "2015-10-18",
+    "preacher": "Juani Fedrigo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/JdIfJnI9XSE?t=1285",
+    "date": "2015-10-11",
+    "preacher": "Haroldo Aguirre" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/R5rhAfHxuek?t=2178",
+    "date": "2015-10-04",
+    "preacher": "Hugo Gallardo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/D2PJrz2lfX8?t=1616",
+    "date": "2015-09-27",
+    "preacher": "Invitado" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/5Krd5BvA7Hs?t=2038",
+    "date": "2015-09-20",
+    "preacher": "Invitado" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/cvKEnTG74is?t=2405",
+    "date": "2015-09-13",
+    "preacher": "Ruben Rielo" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/UPKtvqy-fT8?t=1936",
+    "date": "2015-09-06",
+    "preacher": "Claudio Silva" 
+  }
+  ,
+  {
+    "url":"https://youtu.be/6AQ8XwDTAlU?t=2428",
+    "date": "2015-08-30",
+    "preacher": "Guillermo Frias" 
+  }
     
   ]
     
