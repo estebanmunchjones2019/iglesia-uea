@@ -13,12 +13,12 @@ export class FirebaseFunctionsService {
   }
 
   
-  sendEmail(from, name, text: string) {
+  sendEmail(from, dest, name, subject, text: string) {
     const callable = this.firebase.httpsCallable('sendMail');
     return callable({ from : from, 
                       name: name,
                       text: text,
-                      dest: 'sebas_gallardo@hotmail.com',
-                      subject: 'Iglesia Cononel Suarez'});
+                      dest: dest,
+                      subject: subject});
   }
 }

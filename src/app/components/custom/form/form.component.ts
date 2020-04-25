@@ -52,7 +52,7 @@ export class FormComponent implements OnInit {
     })
 
     // TODO: ver si se puede hacer algun control sobre los valores de los campos
-    this.firebaseFunctionsService.sendEmail(f.value.email, f.value.name, f.value.message)
+    this.firebaseFunctionsService.sendEmail(f.value.email, 'sebas_gallardo@hotmail.com', f.value.name, 'Iglesia Cononel Suarez', f.value.message)
     .subscribe((response) => {
       debugger;
       Swal.close();

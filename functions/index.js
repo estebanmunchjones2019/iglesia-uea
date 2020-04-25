@@ -173,7 +173,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
         // returning result
         return transporter.sendMail(mailOptions, (erro, info) => {
             if(erro){
-                return res.status(200).send({
+                return res.status(500).send({
                     data:
                     {
                         "status": 500,
@@ -181,10 +181,10 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                     }})
                 }
             
-            return res.status(500).send( {
+            return res.status(200).send( {
                 data:
                 {
-                    "status": 500,
+                    "status": 200,
                     "message": "sended"
             }});
         });
