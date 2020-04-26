@@ -29,20 +29,47 @@ export class LandingComponent implements OnInit {
   y mostrar el mismo amor que Dios tuvo por nosotros 
   teniendo una conciencia social y 
   amor por los necesitados.`;
+  
   title2: string = 'Nuestro mensaje para vos';
   content2: string = `La biblia nos enseña que desde el comienzo
    de la humanidad el hombre se apartó
     de Dios perdiendo así la relación con su creador. 
     Pero Él, a través de su infinita misericordia y 
-    gran amor quiso reconciliarnos en la persona de su hijo Jesús, 
+    gran amor, quiso reconciliarnos en la persona de su hijo Jesús, 
     para todo aquel que decida creer en Él.`;
   
+ 
   novedades: boolean = false;
   message: string;
 
-  title3: string = 'Novedades';
-  content3: string = `El próximo evento es este domingo 19 a las 19:00hs
-   por nuestro canal de Youtube. Te esperamos, no te lo pierdas.`;
+  
+
+   reuniones = [
+    {
+      img: `./assets/img/oracion.jpg`,
+      time: `Miércoles 20:00hs`,
+      title: `Reunión de Oración`,
+      content: `Tiempo de oración y reflexión bíblica`
+    },
+    {
+      img: `./assets/img/jovenes.jpg`,
+      time: `Sábados 20:30hs`,
+      title: `Reunión de Jóvenes`, 
+      content: `Encuentro de jóvenes y adolescentes`
+    },
+    {
+      img: `./assets/img/escuelaBiblica.jpg`,
+      time: `Domingos 10:00hs`,
+      title: `Escuela bíblica`,
+      content: `Enseñanza bíblica para todas las edades`
+    },
+    {
+      img: `./assets/img/reunionGeneral.jpeg`,
+      time: `Domingos 20:00hs`,
+      title: `Reunión general`,
+      content: `Canciones y reflexión bíblica` 
+    }
+  ];
 
   focus: any;
   focus1: any;
@@ -51,6 +78,10 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.getNews();
+  }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({behavior: 'smooth'});
   }
 
   getNews() {

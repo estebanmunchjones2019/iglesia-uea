@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { VideoModel } from 'app/model/video.model';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-video',
@@ -32,4 +32,4 @@ export class VideoComponent implements OnInit {
     return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
   }
 
-}
+} 

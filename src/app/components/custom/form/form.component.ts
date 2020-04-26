@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FirebaseFunctionsService } from 'app/service/firebase-functions/firebase-functions.service';
 
 import Swal from 'sweetalert2'
+import { reduce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form',
@@ -12,16 +13,6 @@ import Swal from 'sweetalert2'
 })
 export class FormComponent implements OnInit {
 
-  data = {
-    service_id: 'yahoo',
-    template_id: 'contact_form',
-    user_id: 'user_6yx3jrdwPKiLzFWr1vTe2',
-    template_params: {
-        'user_name': '',
-        'user_email': '',
-        'message': '' 
-    }
-  };
 
   focus = false;
   focus1 = false;
@@ -36,9 +27,12 @@ export class FormComponent implements OnInit {
   onSubmit(f: NgForm) {
 
     Swal.fire({
-      title: 'Enviando!',
+      title: 'Enviando mensaje',
       allowEscapeKey: false,
       allowOutsideClick: false,
+      // customClass: {
+      //   title: 'custom'
+      // },
       timer: 20000,
       onOpen: () => {
         Swal.showLoading();
@@ -48,16 +42,18 @@ export class FormComponent implements OnInit {
       },
       hideClass: {
         popup: 'animated fadeOutUp faster'
-      }
+      },
     })
 
     // TODO: ver si se puede hacer algun control sobre los valores de los campos
-    this.firebaseFunctionsService.sendEmail(f.value.email, 'sebas_gallardo@hotmail.com', f.value.name, 'Iglesia Cononel Suarez', f.value.message)
+    this.firebaseFunctionsService.sendEmail(f.value.email, 'estebanmunch_23@hotmail.com', f.value.name + ' (' + f.value.email + ')', 'Iglesia Coronel Suárez', f.value.message)
     .subscribe((response) => {
       debugger;
       Swal.close();
         Swal.fire({
-          title: 'Email enviado!',
+          title: 'Mensaje enviado!',
+          icon: 'success',
+          showConfirmButton: false,
           timer: 1500,
           showClass: {
             popup: 'animated fadeInDown faster'
@@ -65,12 +61,19 @@ export class FormComponent implements OnInit {
           hideClass: {
             popup: 'animated fadeOutUp faster'
           }
-        })
+        });
+      f.reset(); // reset the form upon success
     }, (error) => {
       debugger;
       Swal.close();
         Swal.fire({
-          title: 'Por favor intente mas tarde!',
+          title: 'Por favor, intente mas tarde',
+          icon: 'error',
+          confirmButtonColor: '#dc3545',
+          buttonsStyling: false,
+          customClass: {
+            confirmButton: 'btn btn-danger'
+          },
           showClass: {
             popup: 'animated fadeInDown faster'
           },
@@ -79,6 +82,8 @@ export class FormComponent implements OnInit {
           }
         })
     });
+
+
   }
 
 } 

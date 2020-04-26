@@ -1,20 +1,85 @@
-<app-header></app-header>
+<!----------------------------------------------- Header-start-------------------------------------------->
+<div class="page-header" data-parallax="true" style="background-image: url('./assets/img/frente.jpg');">
+    <div class="filter"></div>
+    <div class="container">
+        <div class="motto text-center">
+            <h1>Bienvenido</h1>
+            <h3>Iglesia de la Unión Evangelica de Coronel Suárez.</h3>
+            <br />
+            <a href="#/multimedia" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
+        </div>
+        
+        <div class="shift text-center">
+            <a (click)="scroll(main)" class="btn btn-link"><i class="fa fa-angle-down"></i>Desplazar hacia abajo<i class="fa fa-angle-down"></i></a>
+            <div #main></div>
+        </div>
+    </div>
+</div>
+<!----------------------------------------------- Header-end---------------------------------------------->
+
 <div #main class="main">
-    
+<!----------------------------------------------- Intro-start--------------------------------------------->    
     <div class="section text-center">
-        <app-container-intro [title]="title1" [content]="content1"></app-container-intro>
-        <app-container-intro [title]="title2" [content]="content2"></app-container-intro>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mr-auto ml-auto">
+                    <h2 class="title">{{ title1 }}</h2>
+                    <hr class="divider" size="5rem"/>
+                    <br >
+                    <h5 class="description">{{ content1 }}</h5>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mr-auto ml-auto">
+                    <h2 class="title">{{ title2 }}</h2>
+                    <hr class="divider" size="5rem"/>
+                    <br >
+                    <h5 class="description">{{ content2 }}</h5>
+                    <br>
+                </div>
+            </div>
+        </div>
     </div>
+<!----------------------------------------------- Intro-end---------------------------------------------->
 
+<!----------------------------------------------- Reuniones-start---------------------------------------->
     <div class="section section-dark text-center">
-        <app-reuniones></app-reuniones>
+        <div class="container">
+            <h2 class="title">Reuniones</h2>
+            <h4 class="covid19" >Suspendidas todas las reuniones por el Covid-19. Estas invitado a sumarte a nuestras reuniones virtuales los domingos a las 19:00hs a través de nuestro canal de Youtube.</h4> 
+            <div class="row">
+                
+                <div class="col-md-3" *ngFor="let reunion of reuniones" >
+                    <div class="card card-profile card-plain">
+                        <div class="card-avatar">
+                            <a href="#avatar"><img src="{{ reunion.img }}" alt="..."></a>
+                        </div>
+                        <div class="card-block">
+                            <a href="#paper-kit">
+                                <div class="author">
+                                    <h4 class="card-title">{{ reunion.time }}</h4>
+                                    <h6 class="card-category">{{reunion.title }}</h6>
+                                </div>
+                            </a>
+                            <p class="card-description text-center">{{ reunion.content}}</p>
+                        </div>
+                    </div>    
+                </div>
+               
+            </div>
+        </div>
     </div>
-
-    <div class="section text-center">
+<!----------------------------------------------- Reuniones-end------------------------------------------>
+    
+<div class="section text-center">
+<!----------------------------------------------- Novedades-start---------------------------------------------->
         <div *ngIf="novedades"  class="container">
             <div class="row">
                 <div class="col-md-10 mr-auto ml-auto">
-                    <h2 class="title">{{ title3 }}</h2>
+                    <h2 class="title">Novedades</h2>
                     <hr class="divider" size="5rem"/>
                     <br >
                     <h5 class="description">{{ message }}</h5>
@@ -23,10 +88,15 @@
                 </div>
             </div>
         </div>
+<!----------------------------------------------- Novedades-end---------------------------------------------->
+
+<!----------------------------------------------- Form-start---------------------------------------------->
         <app-form></app-form>
+<!----------------------------------------------- Form-end---------------------------------------------->
     </div>
 
 </div>
+
 
 
 

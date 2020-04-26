@@ -10,13 +10,16 @@
           <div class="form-group">
               <input type="text" class="form-control" [(ngModel)]="preacher" [ngbTypeahead]="search" 
                 (selectItem)="selectedItem($event)" [resultFormatter]="formatter" 
-                (focus)="onFocus($event)" placeholder="Buscar mensajes">
+                (focus)="onFocus($event)" placeholder="Buscar por predicador">
           </div>
         </div>
-
-        <div class="col-md-12">
-          <app-loading *ngIf="loading"></app-loading>
-        </div>
+        
+          <div class="col-md-12">
+            <!-- <app-loading *ngIf="loading"></app-loading> -->
+            <app-spinner></app-spinner>
+          </div>
+       
+        
 
       
         <div class="col-md-4 animated fadeIn" *ngFor="let video of videos; let i = index">
@@ -35,7 +38,7 @@
                   <a class="a-button" href="{{video.data.url}}" target="_blank">VER</a>
                 </button>
                   
-              </div>
+              </div> 
             </div>
           </div>
       
