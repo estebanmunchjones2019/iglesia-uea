@@ -14,13 +14,7 @@ import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
-import { VideoComponent } from './custom/video/video.component';
-import { LoadingComponent } from './custom/loading/loading.component';
-// import { FormComponent } from './custom/form/form.component';
-// import { HeaderComponent } from './custom/header/header.component';
-// import { ContainerIntroComponent } from './custom/container-intro/container-intro.component';
-// import { ReunionesComponent } from './custom/reuniones/reuniones.component';
-// import { ReunionComponent } from './custom/reunion/reunion.component';
+
 
 @NgModule({
     imports: [
@@ -39,8 +33,7 @@ import { LoadingComponent } from './custom/loading/loading.component';
         NucleoiconsComponent,
         NotificationComponent,
         NgbdModalComponent,
-        NgbdModalContent,
-        VideoComponent
+        NgbdModalContent
     ],
     entryComponents: [NgbdModalContent],
     exports:[ ComponentsComponent ]

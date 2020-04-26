@@ -1,11 +1,18 @@
-/* .ng-valid.required {
-    border-left: 5px solid #42A948; 
-} */
-
 input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
     border-left: 5px solid red; 
 }
 
-/* input.ng-valid.ng-touched, textarea.ng-valid.ng-touched {
-    border-left: 5px solid green; 
+.captcha {
+    margin-top: 15px;
+}
+
+/* button.swal2-confirm.swal2-styled  {
+    border-left-color: #808080 !important;
+    border-left-color: #808080 !important;
 } */
+/* button.swal2-confirm.swal2-styled element has inline styles, that overwrites this css rule :( */
+
+/* h2#swalt2-title.swal2-title {
+    font-weight: normal !important;
+}  */
+
