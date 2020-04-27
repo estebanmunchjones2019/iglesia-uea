@@ -8,20 +8,12 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-              <input type="text" class="form-control" [(ngModel)]="preacher" [ngbTypeahead]="search" 
+              <input #preacherInput type="text" class="form-control" [(ngModel)]="preacher" [ngbTypeahead]="search" 
                 (selectItem)="selectedItem($event)" [resultFormatter]="formatter" 
                 (focus)="onFocus($event)" placeholder="Buscar por predicador">
           </div>
         </div>
-        
-          <div class="col-md-12">
-            <!-- <app-loading *ngIf="loading"></app-loading> -->
-            <app-spinner></app-spinner>
-          </div>
-       
-        
 
-      
         <div class="col-md-4 animated fadeIn" *ngFor="let video of videos; let i = index">
           <div class="card card-profile card-light pointer" (click)="onClick(video.data.url)">
               <div class="card-block">
@@ -41,15 +33,19 @@
               </div> 
             </div>
           </div>
-      
         </div>
 
-        <div class="row mt-5">
-          <div class="col-md-12">
+        <div class="row mt-1">
+          
+         <div class="col-md-12">
+            <app-spinner *ngIf="loading"></app-spinner>
+            <div class="spinner-height" *ngIf="!loading"></div>
+          <div>
 
-            <button type="button" class="btn btn-danger btn-just-icon" (click)="pageChanged(config.currentPage - 1)"><i class="fa fa-angle-left"></i></button>
+          <div class="col-md-12">
+            <button type="button" [disabled]="prevDisabled" class="btn btn-danger btn-just-icon" (click)="pageChanged(config.currentPage - 1)"><i class="fa fa-angle-left"></i></button>
             <button type="button" class="btn btn-danger btn-round">{{config?.currentPage}}</button>              
-            <button type="button" class="btn btn-danger btn-just-icon" (click)="pageChanged( config.currentPage + 1)"><i class="fa fa-angle-right"></i></button>
+            <button type="button" [disabled]="nextDisabled" class="btn btn-danger btn-just-icon" (click)="pageChanged( config.currentPage + 1)"><i class="fa fa-angle-right"></i></button>
 
           </div>
 

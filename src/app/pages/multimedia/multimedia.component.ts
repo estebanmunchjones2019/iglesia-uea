@@ -35,12 +35,16 @@ import { FirebaseService } from 'app/service/firebase/firebase.service';
 })
 export class MultimediaComponent implements OnInit, OnDestroy {
 
+  @ViewChild("preacherInput") preacherInput: ElementRef;
+
   public lastSearch: PreacherModel = new PreacherModel;
 
   public videos : any[];
   private preachers : PreacherModel[];
   public loading = true;
   public preacher: string;
+  public nextDisabled = false;
+  public prevDisabled = true;
 
   config = {
     id: 123456,
@@ -113,6 +117,12 @@ export class MultimediaComponent implements OnInit, OnDestroy {
         count += 1;
       })
       this.config.totalItems = count;
+      if (this.config.itemsPerPage < count) {
+        this.nextDisabled = false;
+      } else {
+        this.nextDisabled = true;
+      }
+      this.prevDisabled = true;
     });
   }
 
@@ -145,8 +155,19 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    */
   pageChanged(event) {
   
+    this,this.loading = true;
     if (event === 0 || (event * this.config.itemsPerPage - this.config.itemsPerPage >= this.config.totalItems) ) {
       return;
+    }
+    if (event === 1) {
+      this.prevDisabled = true;
+    } else {
+      this.prevDisabled = false;
+    }
+    if (event * this.config.itemsPerPage  >= this.config.totalItems) {
+      this.nextDisabled = true;
+    } else {
+      this.nextDisabled = false;
     }
     let lastVideo;
     let action;
@@ -179,6 +200,9 @@ export class MultimediaComponent implements OnInit, OnDestroy {
      * @param event Event trigger when a preacher is selected.
      */
   selectedItem(event: any) {
+    debugger;
+    this.preacherInput.nativeElement.blur();
+
     event.preventDefault();
     this.lastSearch.preacher = event.item.preacher;
     this.preacher = this.lastSearch.preacher;
