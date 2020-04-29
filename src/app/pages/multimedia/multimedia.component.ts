@@ -248,7 +248,5 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    * Open link in a different tab.
    * @param url 
    */
-  onClick(url: string) {
-    window.open(url, '_blank'); 
-  }
+  
 }
