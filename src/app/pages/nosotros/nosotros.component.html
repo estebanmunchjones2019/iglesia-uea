@@ -4,36 +4,60 @@
         <div class="filter"></div>
     </div>
 <!------------------------------------header end-------------------------------------->
-    <div class="section text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 mr-auto ml-auto">
-                    <h2 class="title">{{ title }}</h2>
-                    <hr class="divider" size="5rem"/>
-                    <br >
-                    <h5 class="description">{{ content1 }}</h5>
-                    <hr class="divider" size="5rem"/>
-                    <br>
-                    <h5 class="description">{{ content2 }}</h5>
-                    <hr class="divider" size="5rem"/>
-                    <br>
-                    <h5 class="description">{{ content3 }}</h5>
-                    <hr class="divider" size="5rem"/>
-                    <br>
-                    <h5 class="description">{{ content4}}
-                        <a href="https://www.bible.com/en-GB/bible/176/1CO.15.TLA">(1 corintios 15:1-11)</a>.
-                    </h5>
-                    <hr class="divider" size="5rem"/>
-                    <br>
-                    <h5 class="description">{{ content5 }} <b>salvación eterna y una vida nueva.</b>
-                    </h5>
-                    <hr class="divider" size="5rem"/>
-                    <br>
-                </div> 
+<div class="section" id="carousel">
+    <div class="container">
+        <div class="nosotros-title">
+            <h2 class="title">Nuestras creencias</h2> 
+        </div>
+        <div class="row">
+            <div class="col-md-8 mr-auto ml-auto">  
+                <div class="card page-carousel">
+                    <ngb-carousel keyboard="true" showNavigationArrows="true" paused="true" > 
+                        <ng-template class="carousel-div"ngbSlide>
+                            <h5 class="carousel-card">La Biblia en su totalidad fue inspirada por Dios. El Espíritu Santo guio a los autores a escribir cada palabra sin error. Ella es verdad en toda materia, ya sea de fe o de historia <a href="https://www.bible.com/es/bible/176/2pe.1.20">(2 Pedro 1:20-21)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">La Biblia es la autoridad final de fe, conducta y doctrina para nuestra congregación y cada creyente que la compone <a href="https://www.bible.com/es/bible/176/2ti.3.16">(2 Timoteo 3:16)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Creemos en un solo Dios verdadero que existe eternamente en tres personas: Padre, Hijo y Espíritu Santo <a href="https://www.bible.com/es/bible/176/mat.28.19">(Mateo 28:19</a>, <a href="">2 Corintios 13:14, chequear)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">El Hijo de Dios se encarnó en la persona de Jesús, fue engendrado milagrosamente por el Espíritu Santo, vivió sin pecado y fue completamente Dios y completamente hombre.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Jesus murió en una cruz y resucitó al tercer día, presentándose como evidencia a más de quinientas personas a la vez <a href="https://www.bible.com/es/bible/176/1CO.15.TLA">(1 Corintios 15:1-11)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">En Adán toda la humanidad participó del pecado original y, por consecuencia, todo hombre está muerto espiritualmente y separado de Dios <a href="https://www.bible.com/es/bible/176/rom.3.23">(Romanos 3:23)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Pero Jesús cargó con el castigo que merecía nuestro pecado. Él tomó nuestro lugar y nos devolvió la posibilidad de restablecer la relación con el Padre <a href="https://www.bible.com/es/bible/176/1pe.2.24">(1 Pedro 2:24)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Ahora, al creer en Jesús y en su obra, tenemos salvación eterna y una vida nueva (Juan 3:16).</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Creemos que todos los que reciben por fe al Señor Jesús nacen de nuevo mediante la obra del Espíritu Santo y, de esta manera, son hechos hijos de Dios <a href="https://www.bible.com/es/bible/176/gal.4.4">(Gálatas 4: 4-7)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Creemos en el bautismo en el nombre del Padre, del Hijo, y del Espíritu Santo, acto solemne que evidencia el arrepentimiento del hombre y su fe en el Señor Jesús <a href="https://www.bible.com/es/bible/176/mat.28.19">(Mateo 28: 19)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Compartimos juntos la Cena del Señor, instituida por Jesús para conmemorar su muerte. Creemos que el pan y el vino simbolizan su cuerpo y su sangre.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Participar de la Cena del Señor es deber de los creyentes; demostrando así su fe en el sacrificio de Cristo y su esperanza en la vida eterna <a href="https://www.bible.com/es/bible/176/luk.22.17">(Lucas 22:17-20)</a>.</h5>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <h5 class="carousel-card">Creemos que Jesús volverá y establecerá un reinado, permanente y eterno, de justicia y paz <a href="https://www.bible.com/es/bible/176/luk.21.25">(Lucas 21:25-28)</a>.</h5>
+                        </ng-template> 
+                    </ngb-carousel>
+                </div>
             </div>
         </div>
-        
     </div>
+</div>
     
 </div>
   

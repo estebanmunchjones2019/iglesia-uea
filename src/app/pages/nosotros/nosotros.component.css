@@ -1,3 +1,24 @@
 b {
     font-weight: bold !important;
 }
+
+.nosotros-title {
+    text-align: center;
+}
+
+#carousel {
+    margin-top: 70px;
+}
+
+.carousel-card {
+    margin: 70px;
+}
+
+
+.card {
+    background-image: linear-gradient(#f8f8f8,#e3e3e3);
+}
+
+a {
+    color: #f5593d;
+}

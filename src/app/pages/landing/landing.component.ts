@@ -24,23 +24,27 @@ import { FirebaseService } from 'app/service/firebase/firebase.service';
 })
 
 export class LandingComponent implements OnInit {
-  title1: string = 'Somos una gran familia';
-  content1: string = `Queremos vivir 
-  y mostrar el mismo amor que Dios tuvo por nosotros 
-  teniendo una conciencia social y 
-  amor por los necesitados.`;
+  title1: string = 'Sobre nosotros';
+  content1: string = `Somos una comunidad con valores radicados en la palabra de Dios.
+    Nuestro propósito es compartir a otros acerca del amor y la verdad de Jesucristo.`;
+  knowMoreContent1:string = `Siguiendo las enseñanzas de la Biblia, procuramos vivir 
+  y demostrar a los demás el mismo amor que hemos recibido.`;
+  knowMoreContent2:string = `Disfrutamos encontrarnos regularmente para conocer más de Dios y enaltecer su nombre, 
+  así como para compartir nuestras alegrías y tristezas.`;
+  knowMoreContent3:string = `Cada vez que nos reunimos, nos alegramos de tener entre nosotros personas que nos 
+  visitan por primera vez.`
+  knowMoreContent4:string = `Si estás leyendo esto, no dudes en acercarte. 
+  ¡Nos encantaría conocerte!`;
   
-  title2: string = 'Nuestro mensaje para vos';
-  content2: string = `La biblia nos enseña que desde el comienzo
-   de la humanidad el hombre se apartó
-    de Dios perdiendo así la relación con su creador. 
-    Pero Él, a través de su infinita misericordia y 
-    gran amor, quiso reconciliarnos en la persona de su hijo Jesús, 
-    para todo aquel que decida creer en Él.`;
+  
+  title2: string = 'El regalo más grande';
+  // content2: string = `El problema más grande de la humanidad fue resuelto por Dios,
+  //  a través de un plan, cuyo resultado nos da el regalo más grande que podríamos imaginar.`;
   
  
   novedades: boolean = false;
   message: string;
+  isKnowMore: boolean = false;
 
   
 
@@ -53,19 +57,19 @@ export class LandingComponent implements OnInit {
     },
     {
       img: `./assets/img/jovenes.jpg`,
-      time: `Sábados 20:30hs`,
+      time: `Sábado 20:30hs`,
       title: `Reunión de Jóvenes`, 
       content: `Encuentro de jóvenes y adolescentes`
     },
     {
       img: `./assets/img/escuelaBiblica.jpg`,
-      time: `Domingos 10:00hs`,
+      time: `Domingo 10:00hs`,
       title: `Escuela bíblica`,
-      content: `Enseñanza bíblica para todas las edades`
+      content: `Enseñanza bíblica para todas las edades` 
     },
     {
       img: `./assets/img/reunionGeneral.jpeg`,
-      time: `Domingos 20:00hs`,
+      time: `Domingo 20:00hs`,
       title: `Reunión general`,
       content: `Canciones y reflexión bíblica` 
     }
@@ -90,6 +94,10 @@ export class LandingComponent implements OnInit {
       this.novedades = response.data().show;
       this.message = response.data().message;
     })
+  }
+
+  onKnowMore() {
+    this.isKnowMore = !this.isKnowMore;
   }
 
 }

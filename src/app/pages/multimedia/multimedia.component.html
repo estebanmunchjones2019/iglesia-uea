@@ -12,7 +12,7 @@
                 (selectItem)="selectedItem($event)" [resultFormatter]="formatter" 
                 (focus)="onFocus($event)" placeholder="Buscar por predicador">
           </div>
-        </div>
+        </div> 
 
         <div class="col-md-4 animated fadeIn" *ngFor="let video of videos; let i = index">
           <div class="card card-profile card-light pointer" (click)="onClick(video.data.url)">
