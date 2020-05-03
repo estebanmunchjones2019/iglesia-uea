@@ -26,6 +26,9 @@ export class FormComponent implements OnInit {
 
   onSubmit(f: NgForm) {
 
+    if (f.value.test) {
+      return
+    }
     Swal.fire({
       title: 'Enviando mensaje',
       allowEscapeKey: false,
@@ -46,7 +49,7 @@ export class FormComponent implements OnInit {
     })
 
     // TODO: ver si se puede hacer algun control sobre los valores de los campos
-    this.firebaseFunctionsService.sendEmail(f.value.email, 'estebanmunch_23@hotmail.com', f.value.name + ' (' + f.value.email + ')', 'Iglesia Coronel Suárez', f.value.message)
+    this.firebaseFunctionsService.sendEmail(f.value.email, 'sebas_gallardo@hotmail.com', f.value.name + ' (' + f.value.email + ')', 'Iglesia Coronel Suárez', f.value.message)
     .subscribe((response) => {
       debugger;
       Swal.close();

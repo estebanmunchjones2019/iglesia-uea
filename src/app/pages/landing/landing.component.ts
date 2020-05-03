@@ -78,6 +78,9 @@ export class LandingComponent implements OnInit {
   focus: any;
   focus1: any;
   faBible = faBible;
+
+  isLive = false;
+  liveUrl = '';
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
@@ -90,10 +93,16 @@ export class LandingComponent implements OnInit {
 
   getNews() {
     this.firebaseService.getNews()
-    .then(response => {
-      this.novedades = response.data().show;
-      this.message = response.data().message;
-    })
+      .then(response => {
+        this.novedades = response.data().show;
+        this.message = response.data().message;
+      });
+    this.firebaseService.isLive()
+      .then(response => {
+        debugger;
+          this.isLive = response.data().isLive;
+          this.liveUrl = response.data().url;
+      });
   }
 
   onKnowMore() {

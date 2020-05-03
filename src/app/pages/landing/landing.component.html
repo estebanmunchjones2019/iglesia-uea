@@ -6,7 +6,8 @@
             <h1>Bienvenido</h1>
             <h3>Iglesia de la Unión Evangelica de Coronel Suárez.</h3>
             <br />
-            <a href="#/multimedia" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
+            <a href="#/multimedia" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
+            <a href="{{liveUrl}}" target="_blank" *ngIf="isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
         </div>
         
         <div class="shift text-center">

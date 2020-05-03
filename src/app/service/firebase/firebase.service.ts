@@ -65,6 +65,9 @@ export class FirebaseService {
      return this.firestore.firestore.collection('novedades').doc('novedad').get()
   }
 
+  isLive() {
+    return this.firestore.firestore.collection('novedades').doc('envivo').get()
+  }
 
   getCount(search: string) {
    let videosRef = this.firestore.firestore.collection('videos');
