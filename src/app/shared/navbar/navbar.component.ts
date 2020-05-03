@@ -1,5 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Inject } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
+import { PageScrollService } from 'ngx-page-scroll-core';
+import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -10,7 +13,12 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, 
+        private element : ElementRef,
+        private pageScrollService: PageScrollService,
+        private router: Router,
+        private route: ActivatedRoute,
+        @Inject(DOCUMENT) private document: any) {  
         this.sidebarVisible = false;
     }
 
@@ -71,4 +79,26 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
+    scroll(el: HTMLElement) {
+        el.scrollIntoView({behavior: 'smooth'}); 
+      }
+
+  onClick() {
+      console.log(this.router.url);
+    if (this.router.url == '/') {
+        this.pageScrollService.scroll({
+            document: this.document,
+            scrollTarget: '#contacto', 
+        }); 
+    } else {
+        this.router.navigate(['/']);
+        setTimeout(() => {
+            this.pageScrollService.scroll({
+                document: this.document,
+                scrollTarget: '#contacto', 
+            });
+        }, 1000)
+    }
+  } 
 }

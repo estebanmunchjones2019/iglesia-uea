@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -39,6 +40,7 @@ registerLocaleData(localeEsAR, 'es-Ar');
     BrowserModule,
     NgbModule,
     FormsModule,
+    NgxPageScrollCoreModule.forRoot({duration: 500}),
     RouterModule,
     ComponentsModule,
     PagesModule,

@@ -24,9 +24,16 @@ import { FirebaseService } from 'app/service/firebase/firebase.service';
 })
 
 export class LandingComponent implements OnInit {
-  title1: string = 'Sobre nosotros';
-  content1: string = `Somos una comunidad con valores radicados en la palabra de Dios.
-    Nuestro propósito es compartir a otros acerca del amor y la verdad de Jesucristo.`;
+  title1: string = '¡Hola!';
+  content1a: string = `Te damos la bienvenida a nuestro sitio web. Aquí encontrarás una breve
+   reseña sobre nosotros y lo que creemos. Además, podrás escuchar los mensajes, 
+   informarte sobre los días y horarios de las actividades y conocer distintos medios para contactarnos.`;
+  content1b: string = `¡Gracias por tu visita!`;
+
+  covid19Content: string = `Mientras esperamos para abrazarnos de nuevo, te invitamos 
+  a participar de nuestras reuniones virtuales todos los domingos, a las 19:00 h,
+   a través de nuestro canal de YouTube.`;
+  
   knowMoreContent1:string = `Siguiendo las enseñanzas de la Biblia, procuramos vivir 
   y demostrar a los demás el mismo amor que hemos recibido.`;
   knowMoreContent2:string = `Disfrutamos encontrarnos regularmente para conocer más de Dios y enaltecer su nombre, 
@@ -35,11 +42,7 @@ export class LandingComponent implements OnInit {
   visitan por primera vez.`
   knowMoreContent4:string = `Si estás leyendo esto, no dudes en acercarte. 
   ¡Nos encantaría conocerte!`;
-  
-  
-  title2: string = 'El regalo más grande';
-  // content2: string = `El problema más grande de la humanidad fue resuelto por Dios,
-  //  a través de un plan, cuyo resultado nos da el regalo más grande que podríamos imaginar.`;
+ 
   
  
   novedades: boolean = false;
@@ -51,25 +54,25 @@ export class LandingComponent implements OnInit {
    reuniones = [
     {
       img: `./assets/img/oracion.jpg`,
-      time: `Miércoles 20:00hs`,
+      time: `Miércoles 20:00`,
       title: `Reunión de Oración`,
       content: `Tiempo de oración y reflexión bíblica`
     },
     {
       img: `./assets/img/jovenes.jpg`,
-      time: `Sábado 20:30hs`,
+      time: `Sábado 20:30`,
       title: `Reunión de Jóvenes`, 
       content: `Encuentro de jóvenes y adolescentes`
     },
     {
       img: `./assets/img/escuelaBiblica.jpg`,
-      time: `Domingo 10:00hs`,
+      time: `Domingo 10:00`,
       title: `Escuela bíblica`,
       content: `Enseñanza bíblica para todas las edades` 
     },
     {
       img: `./assets/img/reunionGeneral.jpeg`,
-      time: `Domingo 20:00hs`,
+      time: `Domingo 20:00`,
       title: `Reunión general`,
       content: `Canciones y reflexión bíblica` 
     }

@@ -20,7 +20,7 @@
     color: #f5593d;  
 }
 
-.knowMore {
+a.knowMore {
     color: #f5593d;
     cursor: pointer;
 }
@@ -28,10 +28,14 @@
 .nav-tabs-navigation a {
     color: #f5593d; 
 }
-
 .live {
 
 }
+
+span {
+    text-transform: lowercase;
+}
+
 
 
 

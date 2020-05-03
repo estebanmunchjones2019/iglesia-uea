@@ -2,9 +2,11 @@ b {
     font-weight: bold !important;
 }
 
-.nosotros-title {
+.nosotros-title, .regalo {
     text-align: center;
 }
+
+
 
 #carousel {
     margin-top: 70px;
@@ -21,4 +23,12 @@ b {
 
 a {
     color: #f5593d;
+}
+
+.section.text-center {
+    padding-top: 0px; 
+}
+
+.nav-tabs-navigation p {
+    font-size: 1.35em !important;
 }

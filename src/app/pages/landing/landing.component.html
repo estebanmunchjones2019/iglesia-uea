@@ -4,7 +4,7 @@
     <div class="container">
         <div class="motto text-center">
             <h1>Bienvenido</h1>
-            <h3>Iglesia de la Unión Evangelica de Coronel Suárez.</h3>
+            <h3>Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
             <br />
             <a href="#/multimedia" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
             <a href="{{liveUrl}}" target="_blank" *ngIf="isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
@@ -18,71 +18,58 @@
 </div>
 <!----------------------------------------------- Header-end---------------------------------------------->
 
-<div #main class="main">
-<!----------------------------------------------- Intro-start--------------------------------------------->    
+<div #main class="main">    
     <div class="section text-center">
         <div class="container">
+<!----------------------------------------------- Welcome-start--------------------------------------------->
             <div class="row">
-                <div class="col-md-10 mr-auto ml-auto">
+                <div  class="col-md-10 mr-auto ml-auto">
                     <h2 class="title">{{ title1 }}</h2>
                     <hr class="divider" size="5rem"/>
                     <br >
-                    <h5 class="description">{{ content1 }}</h5>
-                    <h5 class="knowMore" (click)="onKnowMore()">{{ !isKnowMore ? '+Saber más' : 'Ver menos' }}</h5>
+                    <h5 class="description">{{ content1a }} <a *ngIf="!isKnowMore" class="knowMore" (click)="onKnowMore()">+Saber más</a></h5>
+                    
                     <div  *ngIf="isKnowMore">
+                        <h5 class="description"><a class="knowMore" (click)="onKnowMore()">Ver menos</a></h5>
                         <h5 class="description"> {{ knowMoreContent1 }}</h5>
                         <h5 class="description"> {{ knowMoreContent2 }}</h5>
                         <h5 class="description"> {{ knowMoreContent3 }}</h5>
-                        <h5 class="description"> {{ knowMoreContent4 }}</h5>
+                        <h5 class="description"> {{ knowMoreContent4 }}</h5>  
                     </div> 
                     <br>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 mr-auto ml-auto">
-                    <h2 class="title">{{ title2 }}</h2>
-                    <!-- <hr class="divider" size="5rem"/>
-                    <br >
-                    <h5 class="description">{{ content2 }}</h5> --> 
+                    <h5 class="description">{{ content1b }}</h5>
                     
-                    <div class="nav-tabs-navigation">
-                        <div class="nav-tabs-wrapper">
-                            <ngb-tabset [justify]="'center'">
-                                <ngb-tab title="El problema">
-                                    <ng-template ngbTabContent>
-                                        <p>La Biblia nos enseña que, desde el comienzo de la humanidad, el hombre se apartó de Dios perdiendo así la relación con su Creador<a href="https://www.bible.com/es/bible/176/rom.3.23" target="_blank">(Romanos 3:23)</a> . El precio que debíamos pagar era la muerte <a href="https://www.bible.com/es/bible/176/rom.6.23" target="_blank">(Romanos 6:23)</a>. </p>
-                                    </ng-template>
-                                </ngb-tab>
-                                <ngb-tab title="El plan">
-                                    <ng-template ngbTabContent>
-                                        <p>Pero Dios nos amó tanto que ideó un plan perfecto para salvarnos: envió a su Hijo Jesús, que murió por cada uno de nosotros, cargando toda nuestra maldad <a href="https://www.bible.com/es/bible/176/1pe.2.24" target="_blank">(1 Pedro 2:24)</a>. </p>
-                                    </ng-template>
-                                </ngb-tab>
-                                <ngb-tab title="El regalo">
-                                    <ng-template ngbTabContent>
-                                        <p>Y la historia no terminó ahí, ¡Jesús resucitó! <a href="https://www.bible.com/es/bible/176/1co.15.3" target="_blank">(1 Corintios 15:3-4)</a> Venció la muerte y ascendió al cielo <a href="https://www.bible.com/es/bible/176/mrk.16.9" target="_blank">(Marcos 16:9)</a>. 
-                                            Hoy, está esperando que creas en Él y recibas por fe el regalo más grande: 
-                                            <strong>la salvación</strong>.
-                                            </p>
-                                    </ng-template>
-                                </ngb-tab>
-                            </ngb-tabset>
-                        </div>
-                    </div>
-
+                    <br> 
                 </div>
             </div>
+<!----------------------------------------------- Welcome-end--------------------------------------------->
+
+<!----------------------------------------------- News-start--------------------------------------------->
+            <div *ngIf="novedades" class="row">
+                <div class="col-md-10 mr-auto ml-auto">
+                    <h2 class="title">Novedades</h2>
+                    <hr class="divider" size="5rem"/>
+                    <br >
+                    <h5 class="description">{{ message }}</h5>
+                </div>
+            </div>
+<!------------------------------------------------News-end--------------------------------------------->
         </div>
-    </div>
+    </div>  
+             
+                    
+                    
+
+                
+        
+    
 <!----------------------------------------------- Intro-end---------------------------------------------->
 
 <!----------------------------------------------- Reuniones-start---------------------------------------->
     <div class="section section-dark text-center">
         <div class="container">
             <h2 class="title">Actividades</h2>
-            <h4 class="covid19" >Suspendidas todas las actividades por el Covid-19. Estás invitado a sumarte a nuestras reuniones virtuales los domingos a las 19:00hs a través de nuestro canal de Youtube.</h4> 
+            <h4 class="covid19" >{{ covid19Content }}</h4> 
             <div class="row">
                 
                 <div class="col-md-3" *ngFor="let reunion of reuniones" >
@@ -94,7 +81,7 @@
                             <a href="#paper-kit">
                                 <div class="author">
                                     <h4 class="card-title">{{ reunion.title }}</h4>
-                                    <h6 class="card-category">{{reunion.time }}</h6>
+                                    <h6 class="card-category">{{reunion.time }} <span>h</span></h6>
                                 </div>
                             </a>
                             <p class="card-description text-center">{{ reunion.content}}</p>
@@ -107,28 +94,18 @@
     </div>
 <!----------------------------------------------- Reuniones-end------------------------------------------>
     
-<div class="section text-center">
-<!----------------------------------------------- Novedades-start---------------------------------------------->
-        <div *ngIf="novedades"  class="container">
-            <div class="row">
-                <div class="col-md-10 mr-auto ml-auto">
-                    <h2 class="title">Novedades</h2>
-                    <hr class="divider" size="5rem"/>
-                    <br >
-                    <h5 class="description">{{ message }}</h5>
-                    <br>
-                    <hr class="divider" size="5rem"/>
-                </div>
-            </div>
-        </div>
-<!----------------------------------------------- Novedades-end---------------------------------------------->
+
+
+
 
 <!----------------------------------------------- Form-start---------------------------------------------->
+    <div class="section text-center">   
         <app-form></app-form>
+    </div>  
 <!----------------------------------------------- Form-end---------------------------------------------->
-    </div>
 
-</div>
+
+</div> 
 
 
 
