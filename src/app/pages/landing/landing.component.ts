@@ -13,9 +13,11 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
 import { faBible } from '@fortawesome/free-solid-svg-icons';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
+import { CdkScrollable } from "@angular/cdk/scrolling";
+
 
 @Component({
     selector: 'app-landing',
@@ -84,10 +86,51 @@ export class LandingComponent implements OnInit {
 
   isLive = false;
   liveUrl = '';
-  constructor(private firebaseService: FirebaseService) { }
+
+  public showTitle = false;
+  public showForm = false;
+  public showMeetings = false;
+
+  @HostListener('window:scroll', ['$event'])
+  handleScroll($event) {
+    this.showAnimations();
+  }
+
+  @ViewChild('title')
+  title: ElementRef;
+
+  @ViewChild('meetings')
+  mettings: ElementRef;
+
+  @ViewChild('form')
+  form: ElementRef;
+  
+  constructor(private firebaseService: FirebaseService,
+    private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.getNews();
+  }
+
+  showAnimations() {
+    let sizeTitle = this.title.nativeElement.getBoundingClientRect();
+    console.log(sizeTitle.y);
+    if (sizeTitle.y < (sizeTitle.height / 2)) {
+      this.showTitle = true;
+    } 
+
+    let sizeMettings = this.mettings.nativeElement.getBoundingClientRect();
+    console.log(sizeMettings.y);
+    if (sizeMettings.y < (sizeMettings.height / 2)) {
+      this.showMeetings = true;
+    } 
+
+    let sizeForm = this.form.nativeElement.getBoundingClientRect();
+    console.log(sizeForm.y);
+    if (sizeForm.y < (sizeForm.height / 2)) {
+      this.showForm = true;
+    } 
+    this.changeDetectorRef.detectChanges();
   }
 
   scroll(el: HTMLElement) {
@@ -102,7 +145,6 @@ export class LandingComponent implements OnInit {
       });
     this.firebaseService.isLive()
       .then(response => {
-        debugger;
           this.isLive = response.data().isLive;
           this.liveUrl = response.data().url;
       });
@@ -111,5 +153,4 @@ export class LandingComponent implements OnInit {
   onKnowMore() {
     this.isKnowMore = !this.isKnowMore;
   }
-
 }
