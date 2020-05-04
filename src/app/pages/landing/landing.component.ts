@@ -114,20 +114,17 @@ export class LandingComponent implements OnInit {
 
   showAnimations() {
     let sizeTitle = this.title.nativeElement.getBoundingClientRect();
-    console.log(sizeTitle.y);
-    if (sizeTitle.y < (sizeTitle.height / 2)) {
+    if (sizeTitle.y < (sizeTitle.height * 0.8)) {
       this.showTitle = true;
     } 
 
     let sizeMettings = this.mettings.nativeElement.getBoundingClientRect();
-    console.log(sizeMettings.y);
-    if (sizeMettings.y < (sizeMettings.height / 2)) {
+    if (sizeMettings.y < (sizeMettings.height * 0.8)) {
       this.showMeetings = true;
     } 
 
     let sizeForm = this.form.nativeElement.getBoundingClientRect();
-    console.log(sizeForm.y);
-    if (sizeForm.y < (sizeForm.height / 2)) {
+    if (sizeForm.y < (sizeForm.height * 0.8)) {
       this.showForm = true;
     } 
     this.changeDetectorRef.detectChanges();
