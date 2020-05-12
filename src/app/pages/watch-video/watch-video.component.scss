@@ -1,0 +1,95 @@
+/*!
+
+ =========================================================
+ * Paper Kit 2 Angular - v1.3.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/paper-kit-2-angular
+ * Copyright 2017 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/timcreative/paper-kit/blob/master/LICENSE.md)
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ */
+ 
+ .pointer {
+   cursor: pointer;
+ }
+
+ .iframe {
+  height: 700px !important;
+  width: 100% !important;
+}
+
+@media screen and (max-width: 700px){
+.iframe {
+  height: 300px !important;
+  width: 100% !important;
+}
+}	
+a {
+color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+.paginator {
+  width: 100%;
+  margin-bottom: 2rem;
+  margin-left: 0;
+}
+
+.mat-elevation-z8 {
+  width: 90%;
+}
+
+.custom-pagination .page-number{
+  display: inline-block;
+  background: white;
+  margin: 0px 4px;
+  border-radius: 5px;
+}
+
+.page-number span{
+  display: block;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  cursor: pointer;
+  padding-left: 0.5rem;
+  padding-top: 2px;
+}
+
+.pagination-previous,.pagination-next{
+  display: inline-block;
+  font-weight: bold;
+}
+
+::ng-deep .my-class .modal-dialog { 
+     max-width: 98%;
+     width: 98%;
+}
+
+.a-button {
+  color: inherit;
+  font-weight: bolder;
+}
+
+.card-category {
+  color: #66615B !important;
+}
+
+.card-light {
+  background-image: linear-gradient(#f8f8f8,#e3e3e3);
+}
+
+@media screen and (max-width: 700px){
+  .card-profile {
+    margin-top: 5px;
+  }
+}
+
+.spinner-height {
+  height: 85px !important;
+  clear: both;
+}

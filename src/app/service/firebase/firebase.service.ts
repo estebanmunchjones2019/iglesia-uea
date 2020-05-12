@@ -40,6 +40,10 @@ export class FirebaseService {
     return queryRef.get();
   }
 
+  getVideoById(id) {
+    return this.firestore.firestore.collection('videos').doc(id).get();
+  }
+
   addVideo(video: VideoModel) {
 
     return this.firestore.firestore.collection('videos').add({

@@ -92,6 +92,17 @@ export class MultimediaComponent implements OnInit, OnDestroy {
           });
         });
         this.loading = false;
+
+        if (this.config.currentPage === 1) {
+          this.prevDisabled = true;
+        } else {
+          this.prevDisabled = false;
+        }
+        if (this.config.currentPage * this.config.itemsPerPage  >= this.config.totalItems) {
+          this.nextDisabled = true;
+        } else {
+          this.nextDisabled = false;
+        }
       })
   }
 
@@ -155,20 +166,14 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    */
   pageChanged(event) {
   
-    this,this.loading = true;
+    this.loading = true;
     if (event === 0 || (event * this.config.itemsPerPage - this.config.itemsPerPage >= this.config.totalItems) ) {
       return;
     }
-    if (event === 1) {
-      this.prevDisabled = true;
-    } else {
-      this.prevDisabled = false;
-    }
-    if (event * this.config.itemsPerPage  >= this.config.totalItems) {
-      this.nextDisabled = true;
-    } else {
-      this.nextDisabled = false;
-    }
+
+    this.prevDisabled = true;
+    this.nextDisabled = true;
+
     let lastVideo;
     let action;
     if ( event > this.config.currentPage) {
@@ -242,6 +247,10 @@ export class MultimediaComponent implements OnInit, OnDestroy {
     let results = video.url.match('[\\?&]v=([^&#]*)');
     let show = 'https://www.youtube.com/' + results[1];
     this.router.navigate([show]);
+  }
+
+  public onClick(video: VideoModel) {
+    this.router.navigate(['/video', video.id]);
   }
 
   /**

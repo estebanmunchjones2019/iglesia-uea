@@ -15,9 +15,9 @@
         </div> 
 
         <div class="col-md-4 animated fadeIn slow" *ngFor="let video of videos; let i = index">
-          <div class="card card-profile card-light pointer">
+          <div class="card card-profile card-light pointer" (click)="onClick(video)">
               <div class="card-block">
-                <a href="{{video.data.url}}" target="_blank">
+                <a href="#video/{{video.id}}">
                     <div class="author">
                       <h4 class="card-title">{{video.data.preacher}}</h4>
                       <h6 class="card-category">{{video.data.date | date:'fullDate'}}</h6>
@@ -26,8 +26,8 @@
                       
                     </p>
                 </a>
-                <button type="button" class="btn btn btn-outline-danger btn-round btn-sm" placement="top" ngbTooltip="Abrir el video en youtube">
-                  <a class="a-button" href="{{video.data.url}}" target="_blank">VER</a>
+                <button type="button" class="btn btn btn-outline-danger btn-round btn-sm" placement="top" ngbTooltip="Ver el video">
+                  <a class="a-button" href="#video/{{video.id}}" >VER</a>
                 </button>
                   
               </div> 

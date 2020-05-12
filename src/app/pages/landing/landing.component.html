@@ -7,10 +7,20 @@
             <h3>Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
             <br />
             <a href="#/multimedia" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
-            <a href="{{liveUrl}}" target="_blank" *ngIf="isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
+            <!--<a href="{{liveUrl}}" target="_blank" *ngIf="isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>-->
+            <div class="col-md-12 animated fadeIn slow" *ngIf="isLive">
+                <div class="d-flex justify-content-center">
+                    <p class="live w-100">EN VIVO!</p>
+                    <p class="live"><i class="fa fa-window-close fa-lg mr-1" (click)="isLive = !isLive"></i></p>
+                    
+                </div>
+                <div class="card-video">
+                  <iframe class="iframe" [src]="liveUrl" frameborder="0" allowfullscreen></iframe>
+                </div> 
+              </div>
         </div>
         
-        <div class="shift text-center">
+        <div class="shift text-center" *ngIf="!isLive">
             <a (click)="scroll(main)" class="btn btn-link"><i class="fa fa-angle-down"></i>Desplazar hacia abajo<i class="fa fa-angle-down"></i></a>
             <div #main></div>
         </div>

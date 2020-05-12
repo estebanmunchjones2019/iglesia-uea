@@ -17,6 +17,7 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener, ChangeDetectorR
 import { faBible } from '@fortawesome/free-solid-svg-icons';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
 import { CdkScrollable } from "@angular/cdk/scrolling";
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -85,7 +86,7 @@ export class LandingComponent implements OnInit {
   faBible = faBible;
 
   isLive = false;
-  liveUrl = '';
+  liveUrl;
 
   public showTitle = false;
   public showForm = false;
@@ -106,7 +107,8 @@ export class LandingComponent implements OnInit {
   form: ElementRef;
   
   constructor(private firebaseService: FirebaseService,
-    private changeDetectorRef: ChangeDetectorRef) { }
+    private changeDetectorRef: ChangeDetectorRef,
+    private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getNews();
@@ -143,11 +145,22 @@ export class LandingComponent implements OnInit {
     this.firebaseService.isLive()
       .then(response => {
           this.isLive = response.data().isLive;
-          this.liveUrl = response.data().url;
+          this.liveUrl = this.getVideoIframe(response.data().url);
       });
   }
 
   onKnowMore() {
     this.isKnowMore = !this.isKnowMore;
+  }
+
+  getVideoIframe(url: string) {
+    var video, results;
+
+    if (url === null) {
+      return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    video   = (results === null) ? results = url.substring(url.lastIndexOf('/') + 1, url.length) : results[1];
+    return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
   }
 }

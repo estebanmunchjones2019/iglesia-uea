@@ -29,13 +29,27 @@ a.knowMore {
     color: #f5593d; 
 }
 .live {
-
+    background-color: red !important;
+    color: white;
+    font-weight: bold;
+    //margin: 1px;
+    //padding: 4px;
 }
 
 span {
     text-transform: lowercase;
 }
 
-
+.iframe {
+    height: 500px !important;
+    width: 100% !important;
+  }
+  
+  @media screen and (max-width: 700px){
+  .iframe {
+    height: 250px !important;
+    width: 100% !important;
+  }
+  }	
 
 
