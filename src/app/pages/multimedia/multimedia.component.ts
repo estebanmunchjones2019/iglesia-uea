@@ -37,6 +37,8 @@ export class MultimediaComponent implements OnInit, OnDestroy {
 
   @ViewChild("preacherInput") preacherInput: ElementRef;
 
+  @ViewChild('videoContainer') videoContainer: ElementRef;
+
   public lastSearch: PreacherModel = new PreacherModel;
 
   public videos : any[];
@@ -103,6 +105,8 @@ export class MultimediaComponent implements OnInit, OnDestroy {
         } else {
           this.nextDisabled = false;
         }
+
+        this.videoContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
       })
   }
 

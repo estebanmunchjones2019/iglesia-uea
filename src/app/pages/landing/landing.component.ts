@@ -86,11 +86,13 @@ export class LandingComponent implements OnInit {
   faBible = faBible;
 
   isLive = false;
+  showLive = false;
   liveUrl;
 
   public showTitle = false;
   public showForm = false;
   public showMeetings = false;
+  public opacityValue = 1;
 
   @HostListener('window:scroll', ['$event'])
   handleScroll($event) {
@@ -105,6 +107,9 @@ export class LandingComponent implements OnInit {
 
   @ViewChild('form')
   form: ElementRef;
+
+  @ViewChild('header')
+  header: ElementRef;
   
   constructor(private firebaseService: FirebaseService,
     private changeDetectorRef: ChangeDetectorRef,
@@ -114,7 +119,18 @@ export class LandingComponent implements OnInit {
     this.getNews();
   }
 
-  showAnimations() {
+  showAnimations() {    
+    let sizeHeader = this.header.nativeElement.getBoundingClientRect();
+    debugger;
+    if (sizeHeader.y > -100) {
+      if (sizeHeader.y == 0) {
+        this.opacityValue = 1;
+      } else {
+        this.opacityValue = 1 - (-sizeHeader.y / 100);
+      }
+    } else {
+      this.opacityValue = 0;
+    }
     let sizeTitle = this.title.nativeElement.getBoundingClientRect();
     if (sizeTitle.y < (sizeTitle.height * 0.8)) {
       this.showTitle = true;
@@ -145,6 +161,7 @@ export class LandingComponent implements OnInit {
     this.firebaseService.isLive()
       .then(response => {
           this.isLive = response.data().isLive;
+          this.showLive= response.data().isLive;
           this.liveUrl = this.getVideoIframe(response.data().url);
       });
   }

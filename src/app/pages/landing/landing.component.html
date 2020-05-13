@@ -1,17 +1,17 @@
 <!----------------------------------------------- Header-start-------------------------------------------->
-<div class="page-header animated fadeIn slow" data-parallax="true" style="background-image: url('./assets/img/frente.jpg');">
+<div #header class="page-header animated fadeIn slow" data-parallax="true" style="background-image: url('./assets/img/frente.jpg');">
     <div class="filter"></div>
     <div class="container">
         <div class="motto text-center animated fadeIn slow">
-            <h1>Bienvenido</h1>
-            <h3>Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
+            <h1 [ngStyle]="{'opacity': opacityValue}">Bienvenido</h1>
+            <h3 [ngStyle]="{'opacity': opacityValue}">Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
             <br />
             <a href="#/multimedia" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
-            <!--<a href="{{liveUrl}}" target="_blank" *ngIf="isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>-->
-            <div class="col-md-12 animated fadeIn slow" *ngIf="isLive">
+            <a (click)="showLive = !showLive" *ngIf="!showLive && isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
+            <div class="col-md-12 animated fadeIn slow" *ngIf="showLive">
                 <div class="d-flex justify-content-center">
                     <p class="live w-100">EN VIVO!</p>
-                    <p class="live"><i class="fa fa-window-close fa-lg mr-1" (click)="isLive = !isLive"></i></p>
+                    <p class="live"><i class="fa fa-window-close fa-lg mr-1 pointer" (click)="showLive = !showLive"></i></p>
                     
                 </div>
                 <div class="card-video">
