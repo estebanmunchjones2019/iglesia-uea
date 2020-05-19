@@ -85,6 +85,7 @@ export class NavbarComponent implements OnInit {
       }
 
   onClick() {
+      this.sidebarToggle();
       console.log(this.router.url);
     if (this.router.url == '/') {
         this.pageScrollService.scroll({

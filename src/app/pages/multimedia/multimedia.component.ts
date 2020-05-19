@@ -14,7 +14,7 @@
  */
 
 import {
-  Component, ElementRef, OnInit, OnDestroy, ViewChild, ChangeDetectorRef
+  Component, ElementRef, OnInit, AfterViewInit, OnDestroy, ViewChild, ChangeDetectorRef
 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VideoService } from '../../service/video/video.service';
@@ -72,6 +72,9 @@ export class MultimediaComponent implements OnInit, OnDestroy {
     this.getAllPreachers();
   }
 
+  ngAfterViewInit() {
+    this.videoContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
   ngOnDestroy() {
   }
 
@@ -105,8 +108,6 @@ export class MultimediaComponent implements OnInit, OnDestroy {
         } else {
           this.nextDisabled = false;
         }
-
-        this.videoContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
       })
   }
 
