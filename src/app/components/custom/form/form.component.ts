@@ -51,7 +51,6 @@ export class FormComponent implements OnInit {
     // TODO: ver si se puede hacer algun control sobre los valores de los campos
     this.firebaseFunctionsService.sendEmail(f.value.email, 'sebas_gallardo@hotmail.com', f.value.name + ' (' + f.value.email + ')', 'Iglesia Coronel Suárez', f.value.message)
     .subscribe((response) => {
-      debugger;
       Swal.close();
         Swal.fire({
           title: 'Mensaje enviado!',
@@ -67,7 +66,6 @@ export class FormComponent implements OnInit {
         });
       f.reset(); // reset the form upon success
     }, (error) => {
-      debugger;
       Swal.close();
         Swal.fire({
           title: 'Por favor, intente mas tarde',

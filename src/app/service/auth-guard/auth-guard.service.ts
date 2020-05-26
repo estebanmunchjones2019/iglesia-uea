@@ -6,10 +6,9 @@ import {KeycloakAuthService} from "../keycloak-auth/keycloak-auth.service";
 @Injectable()
 export class AuthGuard implements AuthGuard {
 
-  constructor(private router: Router,
-              private keycloakAuthService: KeycloakAuthService) {}
+  constructor(private router: Router) {}
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  /*canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     const token = localStorage.getItem('access_token');
 
@@ -28,5 +27,5 @@ export class AuthGuard implements AuthGuard {
         );
     }
 
-  }
+  }*/
 }

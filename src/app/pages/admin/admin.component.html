@@ -1,0 +1,192 @@
+<div class="wrapper">
+  <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');">
+      <div class="filter"></div>
+  </div>
+  <div #main class="main">    
+    <div class="section section-with-space text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 mr-auto ml-auto">
+              <h2 class="title">Configurar contenido</h2>
+              <div class="info">
+                <div class="icon icon-danger">
+                  <i class="nc-icon nc-settings"></i>
+                </div>
+              </div>
+              <h5 class="description">En ésta página podés configurar el contenido de la aplicación, incluyendo los mensajes en vivo, los videos de predicaciones y las novedades</h5>
+            </div>     
+        </div>
+      </div>
+    </div>
+
+    <!----------------------------------------------- SECTION-ENVIVO---------------------------------------------->
+    <div class="section-gray section-with-space text-center">
+      <div class="container">
+        <!--<hr class="divider" size="5rem"/>
+        <div class="info">
+          <div class="icon icon-danger">
+            <i class="nc-icon nc-settings"></i>
+          </div>
+        </div>-->
+        <div class="row">
+          <div class="col-md-12 mr-auto ml-auto">
+            <h4 class="title">Podés agregar una reunión en vivo</h4>
+            <h5 class="description">Agregá un link de youtube para que se vea en la pantalla principal</h5>
+          </div>
+      
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <form class="contact-form" (ngSubmit)="saveIsLive(fLive)" #fLive="ngForm">
+              
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" name="isLive" type="checkbox" value="" checked="" [(ngModel)]="isLive">
+                  Mostrar la reunión en vivo?
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+
+              <div class="input-group" [ngClass]="{'input-group-focus':focusUrl===true}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="nc-icon nc-tv-2"></i>
+                  </span>
+                </div>
+
+                  <input type="text" name="liveUrl" class="form-control" placeholder="URL" (focus)="focusUrl=true" (blur)="focusUrl=false" [(ngModel)]="liveUrl" required >
+              </div>
+
+              <button [disabled]="!fLive.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i> Guardar</button>
+            </form>
+          </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-------------------------------------------------------------------------------------------------------->
+
+      <!------------------------------------------- SECTION - AGREGAR VIDEO-------------------------------------->
+
+      <div class="section section-with-space text-center">
+        <div class="container">
+          <!--<hr class="divider" size="5rem"/>
+          <div class="info">
+            <div class="icon icon-danger">
+              <i class="nc-icon nc-settings"></i>
+            </div>
+          </div>-->
+          <div class="row">
+            <div class="col-md-12 mr-auto ml-auto">
+              <h4 class="title">Podés gregar una predicación</h4>
+              <h5 class="description">Agregá un link de youtube para que se vea en los mensajes</h5>
+            </div>
+        
+            <div class="col-md-8 ml-auto mr-auto text-center">
+              <form class="contact-form" (ngSubmit)="addVideo(fAddVideo)" #fAddVideo="ngForm">
+  
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>URL del video</label>
+                    <div class="input-group" [ngClass]="{'input-group-focus':focusVideoUrl===true}">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="nc-icon nc-tv-2"></i>
+                        </span>
+                      </div>
+                        <input type="text" name="videoUrl" class="form-control" placeholder="URL" (focus)="focusVideoUrl=true" (blur)="focusVideoUrl=false" [(ngModel)]="videoUrl" required >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Predicador</label>
+                    <div class="input-group" [ngClass]="{'input-group-focus':focusPreacher===true}">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="nc-icon nc-tv-2"></i>
+                        </span>
+                      </div>
+      
+                        <select name="preacher" class="form-control preacher-select" (focus)="focusPreacher=true" (blur)="focusPreacher=false" [(ngModel)]="preacher" required >
+                          <option class="preacher-options" *ngFor="let preacher of preachers">{{preacher.preacher}}</option>
+                        </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Fecha</label>
+                    <div class="input-group date" [ngClass]="{'input-group-focus':focusDate===true}">                    
+                        <div class="input-group-prepend">
+                            <span class="glyphicon glyphicon-calendar input-group-text">
+                              <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+
+                        <input class="form-control" placeholder="yyyy-mm-dd"
+                              name="date" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focusDate=true" (blur)="focusDate=false" />
+                    </div>
+                  </div>
+                </div>
+  
+                <button [disabled]="!fAddVideo.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i>Guardar</button>
+              </form>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <!-------------------------------------------------------------------------------------------------------->
+  
+      <!----------------------------------------------- SECTION-NOVEDADES---------------------------------------------->
+      <div class="section-gray section-with-space text-center">
+        <div class="container">
+          <!--<hr class="divider" size="5rem"/>
+          <div class="info">
+            <div class="icon icon-danger">
+              <i class="nc-icon nc-settings"></i>
+            </div>
+          </div>-->
+          <div class="row">
+            <div class="col-md-12 mr-auto ml-auto">
+              <h4 class="title">Podés agregar una texto para que se vea en la página principal</h4>
+              <h5 class="description">Agregá un texto con lo que quieras que se vean en la página principal</h5>
+            </div>
+        
+            <div class="col-md-8 ml-auto mr-auto text-center">
+              <form class="contact-form" (ngSubmit)="saveShowNews(fNews)" #fNews="ngForm">
+                
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" name="showNews" type="checkbox" value="" checked="" [(ngModel)]="showNews">
+                    Mostrar las novedades?
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+
+                <!--<div class="input-group" [ngClass]="{'input-group-focus':focusNews===true}">-->
+                  <!--<div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="nc-icon nc-tv-2"></i>
+                    </span>
+                  </div>
+                -->
+  
+            
+                    <textarea type="text" name="message" class="form-control" placeholder="Mensaje" (focus)="focusNews=true" (blur)="focusNews=false" [(ngModel)]="message" required ></textarea>
+                
+  
+                <button [disabled]="!fNews.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i>Guardar</button>
+              </form>
+            </div>  
+
+            </div>
+          </div>
+        </div>
+  
+        <!-------------------------------------------------------------------------------------------------------->
+  </div>
+
+</div>

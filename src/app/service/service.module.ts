@@ -8,6 +8,8 @@ import {HeaderInterceptor} from './header-interceptor/header-interceptor.service
 import {SidebarScrollService} from './sidebar-scroll/sidebar-scroll.service';
 import { FirebaseService } from './firebase/firebase.service';
 import { FirebaseFunctionsService } from './firebase-functions/firebase-functions.service';
+import { FirebaseAuthService } from './firebase/firebase.auth.service';
+import { UtilService } from './utils/util.service';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { FirebaseFunctionsService } from './firebase-functions/firebase-function
    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
    SidebarScrollService,
    FirebaseService,
-   FirebaseFunctionsService
+   FirebaseFunctionsService,
+   FirebaseAuthService,
+   UtilService
   ]
 })
 export class ServicesModule {}

@@ -157,7 +157,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
           //console.log("Importing videos");
           this.videoService.getAllVideos(null, null, null)
             .subscribe((response: VideoModel[]) => {
-              response.forEach(video => this.firebaseService.addVideo(video).then((v)=>console.log(v)));
+              //response.forEach(video => this.firebaseService.addVideo(video).then((v)=>console.log(v)));
             });
         } else {
           console.log("Not importing");

@@ -27,6 +27,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PreacherModel } from '../../model/preacher.model';
 import { environment } from 'environments/environment';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
+import { UtilService } from 'app/service/utils/util.service';
 
 @Component({
   selector: 'app-watch-video',
@@ -48,7 +49,8 @@ export class WatchVideoComponent implements OnInit {
               private modalService: NgbModal,
               private router: Router,
               private route: ActivatedRoute,
-              private firebaseService: FirebaseService) {
+              private firebaseService: FirebaseService,
+              private utilService: UtilService) {
 
                 this.loading = true;
                 this.route.paramMap.subscribe(params => {
@@ -66,26 +68,14 @@ export class WatchVideoComponent implements OnInit {
   getVideoById(id) {
     this.firebaseService.getVideoById(id)
       .then((response) => {
-        debugger;
         this.video.id = response.id;
         this.video.date = response.data().date;
         this.video.url = response.data().url;
         this.video.preacher = response.data().preacher;
-        this.videoUrl = this.getVideoIframe(this.video.url);
+        this.videoUrl = this.utilService.getVideoIframe(this.video.url);
         this.videoContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
         this.loading = false;
       })
-  }
-
-  getVideoIframe(url: string) {
-    var video, results;
-
-    if (url === null) {
-      return '';
-    }
-    results = url.match('[\\?&]v=([^&#]*)');
-    video   = (results === null) ? results = url.substring(url.lastIndexOf('/') + 1, url.length) : results[1];
-    return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
   }
   
 }

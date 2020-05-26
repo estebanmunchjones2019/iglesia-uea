@@ -25,8 +25,10 @@ import localeEsAR from '@angular/common/locales/es-AR';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 registerLocaleData(localeEsAR, 'es-Ar');
 
@@ -50,7 +52,9 @@ registerLocaleData(localeEsAR, 'es-Ar');
     NgxPaginationModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    CKEditorModule
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]

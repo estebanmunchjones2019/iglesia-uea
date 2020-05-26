@@ -18,6 +18,7 @@ import { faBible } from '@fortawesome/free-solid-svg-icons';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
 import { CdkScrollable } from "@angular/cdk/scrolling";
 import { DomSanitizer } from '@angular/platform-browser';
+import { UtilService } from 'app/service/utils/util.service';
 
 
 @Component({
@@ -113,7 +114,8 @@ export class LandingComponent implements OnInit {
   
   constructor(private firebaseService: FirebaseService,
     private changeDetectorRef: ChangeDetectorRef,
-    private _sanitizer: DomSanitizer) { }
+    private _sanitizer: DomSanitizer,
+    private utilService: UtilService) { }
 
   ngOnInit() {
     this.getNews();
@@ -121,7 +123,6 @@ export class LandingComponent implements OnInit {
 
   showAnimations() {    
     let sizeHeader = this.header.nativeElement.getBoundingClientRect();
-    debugger;
     if (sizeHeader.y > -100) {
       if (sizeHeader.y == 0) {
         this.opacityValue = 1;
@@ -162,22 +163,11 @@ export class LandingComponent implements OnInit {
       .then(response => {
           this.isLive = response.data().isLive;
           this.showLive= response.data().isLive;
-          this.liveUrl = this.getVideoIframe(response.data().url);
+          this.liveUrl = this.utilService.getVideoIframe(response.data().url);
       });
   }
 
   onKnowMore() {
     this.isKnowMore = !this.isKnowMore;
-  }
-
-  getVideoIframe(url: string) {
-    var video, results;
-
-    if (url === null) {
-      return '';
-    }
-    results = url.match('[\\?&]v=([^&#]*)');
-    video   = (results === null) ? results = url.substring(url.lastIndexOf('/') + 1, url.length) : results[1];
-    return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
   }
 }

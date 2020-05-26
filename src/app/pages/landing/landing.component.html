@@ -1,14 +1,14 @@
 <!----------------------------------------------- Header-start-------------------------------------------->
-<div #header class="page-header animated fadeIn slow" data-parallax="true" style="background-image: url('./assets/img/frente.jpg');">
+<div #header class="page-header animated fadeIn" data-parallax="true" style="background-image: url('./assets/img/frente.jpg');">
     <div class="filter"></div>
     <div class="container">
-        <div class="motto text-center animated fadeIn slow">
+        <div class="motto text-center animated fadeIn">
             <h1 [ngStyle]="{'opacity': opacityValue}">Bienvenido</h1>
             <h3 [ngStyle]="{'opacity': opacityValue}">Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
             <br />
             <a href="#/multimedia" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
             <a (click)="showLive = !showLive" *ngIf="!showLive && isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
-            <div class="col-md-12 animated fadeIn slow" *ngIf="showLive">
+            <div class="col-md-12 animated fadeIn" *ngIf="showLive">
                 <div class="d-flex justify-content-center">
                     <p class="live w-100">EN VIVO!</p>
                     <p class="live"><i class="fa fa-window-close fa-lg mr-1 pointer" (click)="showLive = !showLive"></i></p>
@@ -33,7 +33,7 @@
         <div class="container">
 <!----------------------------------------------- Welcome-start--------------------------------------------->            
             <div class="row">
-                <div  class="col-md-10 mr-auto ml-auto" [ngClass]="{'animated fadeIn slow' : showTitle}" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
+                <div  class="col-md-10 mr-auto ml-auto" [ngClass]="{'animated fadeIn' : showTitle}" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
                     <h2 class="title">{{ title1 }}</h2>
                     <hr class="divider" size="5rem"/>
                     <br >
@@ -56,11 +56,11 @@
 
 <!----------------------------------------------- News-start--------------------------------------------->
             <div *ngIf="novedades" class="row">
-                <div class="col-md-10 mr-auto ml-auto" [ngClass]="{'animated fadeIn slow' : showTitle}" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
+                <div class="col-md-10 mr-auto ml-auto" [ngClass]="{'animated fadeIn' : showTitle}" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
                     <h2 class="title">Novedades</h2>
                     <hr class="divider" size="5rem"/>
                     <br >
-                    <h5 class="description">{{ message }}</h5>
+                    <h5 [innerHtml]="message" class="description"></h5>
                 </div>
             </div>
 <!------------------------------------------------News-end--------------------------------------------->
@@ -73,7 +73,7 @@
 
 <!----------------------------------------------- Reuniones-start---------------------------------------->
     <div #meetings class="section section-dark text-center">
-        <div class="container" [ngClass]="{'animated fadeIn slow' : showMeetings}" [ngStyle]="{'visibility': showMeetings ? 'visible': 'hidden'}">
+        <div class="container" [ngClass]="{'animated fadeIn' : showMeetings}" [ngStyle]="{'visibility': showMeetings ? 'visible': 'hidden'}">
             <h2 class="title">Actividades</h2>
             <h4 class="covid19" >{{ covid19Content }}</h4> 
             <div class="row">
@@ -102,7 +102,7 @@
     
 
 <!----------------------------------------------- Form-start---------------------------------------------->
-    <div #form class="section text-center" [ngClass]="{'animated fadeIn slow' : showForm}" [ngStyle]="{'visibility': showForm ? 'visible': 'hidden'}">   
+    <div #form class="section text-center" [ngClass]="{'animated fadeIn' : showForm}" [ngStyle]="{'visibility': showForm ? 'visible': 'hidden'}">   
         <app-form></app-form>
     </div>  
 <!----------------------------------------------- Form-end---------------------------------------------->

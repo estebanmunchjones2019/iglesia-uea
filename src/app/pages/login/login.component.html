@@ -1,0 +1,38 @@
+<div class="wrapper animated fadeIn">
+    <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
+        <div class="filter"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                      <div class="card card-register">
+                          <h3 class="title">Bienvenido</h3>
+                          <form class="register-form" (ngSubmit)="onSubmit(fLogin)" #fLogin="ngForm">
+                              <label>Email</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focusEmail===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-email-85"></i>
+                                  </span>
+                                </div>
+
+                                  <input type="text" name="email" class="form-control" placeholder="Email" (focus)="focusEmail=true" (blur)="focusEmail=false" ngModel required >
+                              </div>
+
+                              <label>Password</label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focusPass===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-key-25"></i>
+                                  </span>
+                                </div>
+                                  <input type="password" name="password" class="form-control" placeholder="Password" (focus)="focusPass=true" (blur)="focusPass=false" ngModel required >
+                              </div>
+                              <button [disabled]="!fLogin.valid" class="btn btn-danger btn-block btn-round">Ingresar</button>
+                          </form>
+                      </div>
+                    </div>
+                </div>
+              
+            </div>
+    </div>
+</div>

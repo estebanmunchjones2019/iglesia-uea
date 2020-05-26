@@ -14,6 +14,8 @@ import { LoadingComponent } from 'app/components/custom/loading/loading.componen
 import { VideoComponent } from 'app/components/custom/video/video.component';
 import { SpinnerComponent } from 'app/components/custom/spinner/spinner.component';
 import { WatchVideoComponent } from './watch-video/watch-video.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -34,7 +36,9 @@ import { WatchVideoComponent } from './watch-video/watch-video.component';
         LoadingComponent,
         VideoComponent,
         SpinnerComponent,
-        WatchVideoComponent
+        WatchVideoComponent,
+        AdminComponent,
+        LoginComponent
     ]
 })
 export class PagesModule { }

@@ -44,12 +44,13 @@ export class FirebaseService {
     return this.firestore.firestore.collection('videos').doc(id).get();
   }
 
-  addVideo(video: VideoModel) {
+  addVideo(url, preacher, date) {
 
+    debugger;
     return this.firestore.firestore.collection('videos').add({
-        date: video.date,
-        url: video.url,
-        preacher: video.preacher
+        date: date,
+        url: url,
+        preacher: preacher
     });
   }
 
@@ -71,6 +72,22 @@ export class FirebaseService {
 
   isLive() {
     return this.firestore.firestore.collection('novedades').doc('envivo').get()
+  }
+
+  updateIsLive(isLive, url) {
+    let data = {
+      "url": url,
+      "isLive": isLive
+    }
+    return this.firestore.firestore.collection('novedades').doc('envivo').set(data);
+  }
+
+  updateNews(showNews, message) {
+    let data = {
+      "show": showNews,
+      "message": message
+    }
+    return this.firestore.firestore.collection('novedades').doc('novedad').set(data);
   }
 
   getCount(search: string) {

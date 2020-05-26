@@ -3,6 +3,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { DOCUMENT } from '@angular/common';
 import { PageScrollService } from 'ngx-page-scroll-core';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { FirebaseAuthService } from 'app/service/firebase/firebase.auth.service';
 
 @Component({
     selector: 'app-navbar',
@@ -13,13 +14,26 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
+    public signInOutText; 
+    public userLogged;
+
     constructor(public location: Location, 
         private element : ElementRef,
         private pageScrollService: PageScrollService,
         private router: Router,
         private route: ActivatedRoute,
-        @Inject(DOCUMENT) private document: any) {  
-        this.sidebarVisible = false;
+        @Inject(DOCUMENT) private document: any,
+        private firebaseAuthService: FirebaseAuthService) {  
+        
+            this.sidebarVisible = false;
+        
+        this.firebaseAuthService.isUserLogged().subscribe(user => {
+            if (user) {
+                this.userLogged = true;
+            } else {
+                this.userLogged = false;
+            }
+        });
     }
 
     ngOnInit() {
@@ -102,4 +116,23 @@ export class NavbarComponent implements OnInit {
         }, 1000)
     }
   } 
+
+  signIn() {
+    this.sidebarToggle();
+    this.router.navigate(['login']);
+  }
+
+  signOut() {  
+    this.sidebarToggle();
+    if ( this.userLogged) {
+        let that = this;
+        this.firebaseAuthService.signOut()
+        .then(() => {
+            that.userLogged = false;
+            that.router.navigate(['']);
+        })
+    } else {
+        this.router.navigate(['']);
+    }
+  }
 }
