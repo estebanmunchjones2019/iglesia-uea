@@ -9,17 +9,17 @@ import {Observable} from "rxjs/index";
 @Injectable()
 export class NavbarService {
 
-  @Output() showLogin :EventEmitter<boolean> = new EventEmitter();
+  @Output() showSignOut :EventEmitter<boolean> = new EventEmitter();
 
   constructor() {
   }
 
   signIn() {
-    this.showLogin.emit(true);
+    this.showSignOut.emit(true);
   }
 
   signOut() {
-    this.showLogin.emit(false);
+    this.showSignOut.emit(false);
   }
   
 }

@@ -61,13 +61,6 @@ export class AdminComponent implements OnInit {
   ngAfterViewInit() {
     this.main.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-
-  signOut() {
-    let that = this;
-    this.firebaseAuthService.signOut().then(() => {
-        that.router.navigate(['']);
-    })
-  }
   
   getNews() {
     this.firebaseService.getNews()

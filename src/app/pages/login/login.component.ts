@@ -21,12 +21,10 @@ export class LoginComponent implements OnInit {
               public navbarService: NavbarService) {
                 
     this.firebaseAuthService.isUserLogged().subscribe(user => {
-      if (user) {
-        if (sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
-          this.router.navigate(['/admin']);
-        } else {
-          this.firebaseAuthService.signOut().then(() => {});
-        }
+      if (user && sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
+        this.router.navigate(['/admin']);
+      } else {
+        this.firebaseAuthService.signOut().then(() => {});
       }
     })
   } 

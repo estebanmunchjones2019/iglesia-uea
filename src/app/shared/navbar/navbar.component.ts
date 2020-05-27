@@ -16,8 +16,7 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
 
     public signInOutText; 
-    public userLogged;
-    public showLogin = true;
+    public showSignOut = false;
 
     constructor(public location: Location, 
         private element : ElementRef,
@@ -29,22 +28,22 @@ export class NavbarComponent implements OnInit {
         private navbarService: NavbarService) {  
         
             this.sidebarVisible = false;
-        
-        this.firebaseAuthService.isUserLogged().subscribe(user => {
-            if (user) {
-                this.userLogged = true;
-            } else {
-                this.userLogged = false;
-            }
-        });
+
+            this.firebaseAuthService.isUserLogged().subscribe(user => {
+                if (user && sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
+                    this.showSignOut = true;
+                  } else {
+                    this.showSignOut = false;
+                  }
+              })
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
 
-        this.navbarService.showLogin.subscribe(loggedIn => {
-            this.showLogin = !loggedIn;
+        this.navbarService.showSignOut.subscribe(showSignOut => {
+            this.showSignOut = showSignOut;
         })
     }
     sidebarOpen() {
@@ -132,11 +131,10 @@ export class NavbarComponent implements OnInit {
   signOut() {  
     sessionStorage.clear();
     this.sidebarToggle();
-    this.showLogin = true;
+    this.showSignOut = false;
     let that = this;
     this.firebaseAuthService.signOut()
     .then(() => {
-        that.userLogged = false;
         that.router.navigate(['']);
     })
   }
