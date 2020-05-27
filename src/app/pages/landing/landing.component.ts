@@ -123,14 +123,18 @@ export class LandingComponent implements OnInit {
 
   showAnimations() {    
     let sizeHeader = this.header.nativeElement.getBoundingClientRect();
-    if (sizeHeader.y > -100) {
-      if (sizeHeader.y == 0) {
-        this.opacityValue = 1;
+    if (this.isLive) {
+      if (sizeHeader.y > -30) {
+        if (sizeHeader.y == 0) {
+          this.opacityValue = 1;
+        } else {
+          this.opacityValue = 1 - (-sizeHeader.y / 100);
+        }
       } else {
-        this.opacityValue = 1 - (-sizeHeader.y / 100);
+        this.opacityValue = 0;
       }
     } else {
-      this.opacityValue = 0;
+      this.opacityValue = 1;
     }
     let sizeTitle = this.title.nativeElement.getBoundingClientRect();
     if (sizeTitle.y < (sizeTitle.height * 0.8)) {
