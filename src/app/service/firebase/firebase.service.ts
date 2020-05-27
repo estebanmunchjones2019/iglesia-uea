@@ -46,7 +46,6 @@ export class FirebaseService {
 
   addVideo(url, preacher, date) {
 
-    debugger;
     return this.firestore.firestore.collection('videos').add({
         date: date,
         url: url,

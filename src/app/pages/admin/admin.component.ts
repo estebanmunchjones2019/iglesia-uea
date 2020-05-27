@@ -118,8 +118,9 @@ export class AdminComponent implements OnInit {
   }
 
   addVideo(fAddVideo: NgForm) {
+    debugger;
     this.loadingAddVideos = true;
-    let selectedDate = this.date.year + "-" + this.date.month + "-" + this.date.day;
+    let selectedDate = this.date.year + "-" + this.fill(this.date.month) + "-" + this.fill(this.date.day);
     this.firebaseService.addVideo(this.videoUrl, this.preacher, selectedDate)
     .then((response) => {
       this.loadingAddVideos = false;
@@ -130,6 +131,13 @@ export class AdminComponent implements OnInit {
       console.log("Video not created");
     });;
 
+  }
+
+  fill(date) {
+    if (date !== null && date < 10 ){
+      date = `0${date}`;
+    }
+    return date;
   }
 
     /**

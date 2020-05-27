@@ -7,12 +7,13 @@ import { NavbarService } from 'app/service/navbar/navbar.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
   focusEmail: boolean;
   focusPass: boolean;
+  loggingIn = false;
 
   constructor(public firebaseAuthService: FirebaseAuthService,
               public router: Router,
@@ -20,7 +21,6 @@ export class LoginComponent implements OnInit {
               public navbarService: NavbarService) {
                 
     this.firebaseAuthService.isUserLogged().subscribe(user => {
-      debugger;
       if (user) {
         if (sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
           this.router.navigate(['/admin']);
@@ -39,15 +39,17 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(fLogin: NgForm) {
+    this.loggingIn = true;
     var that = this;
     // ******* TODO AGREGAR CONTROLES A LOS CAMPOS ********* //
     this.firebaseAuthService.signIn(fLogin.value.email, fLogin.value.password)
     .then(function(result) {
-      debugger;
+        that.loggingIn = false;
         sessionStorage.setItem('user', result.user.email);
         that.navbarService.signIn();
         that.router.navigate(['/admin']);
       }).catch((error) => {
+        that.loggingIn = false;
         sessionStorage.removeItem('user');
         window.alert(error.message)
       })
