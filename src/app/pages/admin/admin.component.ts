@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
 import { FirebaseApp } from '@angular/fire';
@@ -19,9 +19,7 @@ import { NavbarService } from 'app/service/navbar/navbar.service';
 export class AdminComponent implements OnInit {
   title: string = `Administracion`;
   
-  public model = {
-    editorData: '<p>Hello, world!</p>'
-};
+  @ViewChild('main') main : ElementRef;
 
   // En vivo
   focusUrl;
@@ -60,6 +58,10 @@ export class AdminComponent implements OnInit {
     this.getAllPreachers();
   }
 
+  ngAfterViewInit() {
+    this.main.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   signOut() {
     let that = this;
     this.firebaseAuthService.signOut().then(() => {
@@ -88,22 +90,6 @@ export class AdminComponent implements OnInit {
   }
 
   saveIsLive(fLive: NgForm) {
-   /* Swal.fire({
-      title: 'Actualizando',
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      timer: 20000,
-      onOpen: () => {
-        Swal.showLoading();
-      },
-      showClass: {
-        popup: 'animated fadeIn faster'
-      },
-      hideClass: {
-        popup: 'animated fadeOut faster'
-      },
-    })
-*/
     this.loadingIsLive = true;
     this.firebaseService.updateIsLive(fLive.value.isLive, fLive.value.liveUrl)
     .then(() => {
