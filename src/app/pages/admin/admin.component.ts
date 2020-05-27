@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
   focusPreacher;
   focusVideoUrl;
   focusDate;
-  loadingVideos = false;
+  loadingAddVideos = false;
 
   // Novedades
   showNews;
@@ -118,15 +118,15 @@ export class AdminComponent implements OnInit {
   }
 
   addVideo(fAddVideo: NgForm) {
-    this.loadingVideos = true;
+    this.loadingAddVideos = true;
     let selectedDate = this.date.year + "-" + this.date.month + "-" + this.date.day;
     this.firebaseService.addVideo(this.videoUrl, this.preacher, selectedDate)
     .then((response) => {
-      this.loadingVideos = false;
+      this.loadingAddVideos = false;
       console.log("Video created");
     })
     .catch(err => {
-      this.loadingVideos = false;
+      this.loadingAddVideos = false;
       console.log("Video not created");
     });;
 

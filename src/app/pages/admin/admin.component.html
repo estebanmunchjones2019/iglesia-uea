@@ -124,8 +124,8 @@
                 </div>
   
                 <div class="col-md-12">
-                  <app-spinner *ngIf="loadingAddVideo"></app-spinner>
-                  <button *ngIf="!loadingAddVideo" [disabled]="!fAddVideo.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i>Guardar</button>
+                  <app-spinner *ngIf="loadingAddVideos"></app-spinner>
+                  <button *ngIf="!loadingAddVideos" [disabled]="!fAddVideo.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i>Guardar</button>
                 </div>
               </form>
             </div>
