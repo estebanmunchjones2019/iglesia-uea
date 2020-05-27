@@ -13,6 +13,7 @@ export class AdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        return this.firebase.auth().currentUser !== null ? true : false;
+        //return this.firebase.auth().currentUser !== null ? true : false;
+        return sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0 ? true : false;
     }
 }

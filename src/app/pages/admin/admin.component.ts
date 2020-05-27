@@ -9,6 +9,7 @@ import { UtilService } from 'app/service/utils/util.service';
 import { VideoModel } from 'app/model/video.model';
 
 import Swal from 'sweetalert2'
+import { NavbarService } from 'app/service/navbar/navbar.service';
 
 @Component({
   selector: 'app-admin',
@@ -27,6 +28,7 @@ export class AdminComponent implements OnInit {
   liveUrl;
   liveUrlSat;
   isLive;
+  loadingIsLive = false;
 
   // Videos
   videoUrl
@@ -36,18 +38,24 @@ export class AdminComponent implements OnInit {
   focusPreacher;
   focusVideoUrl;
   focusDate;
+  loadingVideos = false;
 
   // Novedades
   showNews;
   message;
   focusNews;
+  loadingNews = false;
 
   constructor(private firebaseAuthService: FirebaseAuthService,
               private firebaseService: FirebaseService,
               private router: Router,
-              private utilService: UtilService) { } 
+              private utilService: UtilService,
+              private navbarService: NavbarService) { } 
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
+      this.navbarService.signIn();
+    }
     this.getNews();
     this.getAllPreachers();
   }
@@ -80,7 +88,7 @@ export class AdminComponent implements OnInit {
   }
 
   saveIsLive(fLive: NgForm) {
-    Swal.fire({
+   /* Swal.fire({
       title: 'Actualizando',
       allowEscapeKey: false,
       allowOutsideClick: false,
@@ -95,24 +103,30 @@ export class AdminComponent implements OnInit {
         popup: 'animated fadeOut faster'
       },
     })
-
+*/
+    this.loadingIsLive = true;
     this.firebaseService.updateIsLive(fLive.value.isLive, fLive.value.liveUrl)
     .then(() => {
-      Swal.close();
+      //Swal.close();
+      this.loadingIsLive = false;
       console.log("isLive updated");
     })
     .catch(err => {
+      this.loadingIsLive = false;
       console.log("isLive NOT updated");
     });;
   }
 
   addVideo(fAddVideo: NgForm) {
+    this.loadingVideos = true;
     let selectedDate = this.date.year + "-" + this.date.month + "-" + this.date.day;
     this.firebaseService.addVideo(this.videoUrl, this.preacher, selectedDate)
     .then((response) => {
+      this.loadingVideos = false;
       console.log("Video created");
     })
     .catch(err => {
+      this.loadingVideos = false;
       console.log("Video not created");
     });;
 
@@ -135,11 +149,14 @@ export class AdminComponent implements OnInit {
   }
 
   saveShowNews(fNews: NgForm) {
+    this.loadingNews = true;
     this.firebaseService.updateNews(fNews.value.showNews, fNews.value.message)
     .then(() => {
+      this.loadingNews = false;
       console.log("News updated");
     })
     .catch(err => {
+      this.loadingNews = false;
       console.log("News NOT updated");
     });;
   }

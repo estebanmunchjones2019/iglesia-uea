@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { PageScrollService } from 'ngx-page-scroll-core';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { FirebaseAuthService } from 'app/service/firebase/firebase.auth.service';
+import { NavbarService } from 'app/service/navbar/navbar.service';
 
 @Component({
     selector: 'app-navbar',
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
     public signInOutText; 
     public userLogged;
+    public showLogin = true;
 
     constructor(public location: Location, 
         private element : ElementRef,
@@ -23,7 +25,8 @@ export class NavbarComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         @Inject(DOCUMENT) private document: any,
-        private firebaseAuthService: FirebaseAuthService) {  
+        private firebaseAuthService: FirebaseAuthService,
+        private navbarService: NavbarService) {  
         
             this.sidebarVisible = false;
         
@@ -39,6 +42,10 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+
+        this.navbarService.showLogin.subscribe(loggedIn => {
+            this.showLogin = !loggedIn;
+        })
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -123,16 +130,14 @@ export class NavbarComponent implements OnInit {
   }
 
   signOut() {  
+    sessionStorage.clear();
     this.sidebarToggle();
-    if ( this.userLogged) {
-        let that = this;
-        this.firebaseAuthService.signOut()
-        .then(() => {
-            that.userLogged = false;
-            that.router.navigate(['']);
-        })
-    } else {
-        this.router.navigate(['']);
-    }
+    this.showLogin = true;
+    let that = this;
+    this.firebaseAuthService.signOut()
+    .then(() => {
+        that.userLogged = false;
+        that.router.navigate(['']);
+    })
   }
 }

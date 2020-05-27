@@ -22,12 +22,6 @@
     <!----------------------------------------------- SECTION-ENVIVO---------------------------------------------->
     <div class="section-gray section-with-space text-center">
       <div class="container">
-        <!--<hr class="divider" size="5rem"/>
-        <div class="info">
-          <div class="icon icon-danger">
-            <i class="nc-icon nc-settings"></i>
-          </div>
-        </div>-->
         <div class="row">
           <div class="col-md-12 mr-auto ml-auto">
             <h4 class="title">Podés agregar una reunión en vivo</h4>
@@ -55,7 +49,11 @@
                   <input type="text" name="liveUrl" class="form-control" placeholder="URL" (focus)="focusUrl=true" (blur)="focusUrl=false" [(ngModel)]="liveUrl" required >
               </div>
 
-              <button [disabled]="!fLive.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i> Guardar</button>
+              <div class="col-md-12">
+                <app-spinner *ngIf="loadingIsLive"></app-spinner>
+                <button *ngIf="!loadingIsLive" [disabled]="!fLive.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i> Guardar</button>
+              </div>
+    
             </form>
           </div>
 
@@ -69,12 +67,6 @@
 
       <div class="section section-with-space text-center">
         <div class="container">
-          <!--<hr class="divider" size="5rem"/>
-          <div class="info">
-            <div class="icon icon-danger">
-              <i class="nc-icon nc-settings"></i>
-            </div>
-          </div>-->
           <div class="row">
             <div class="col-md-12 mr-auto ml-auto">
               <h4 class="title">Podés gregar una predicación</h4>
@@ -131,7 +123,10 @@
                   </div>
                 </div>
   
-                <button [disabled]="!fAddVideo.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i>Guardar</button>
+                <div class="col-md-12">
+                  <app-spinner *ngIf="loadingAddVideo"></app-spinner>
+                  <button *ngIf="!loadingAddVideo" [disabled]="!fAddVideo.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i>Guardar</button>
+                </div>
               </form>
             </div>
   
@@ -143,16 +138,11 @@
       <!----------------------------------------------- SECTION-NOVEDADES---------------------------------------------->
       <div class="section-gray section-with-space text-center">
         <div class="container">
-          <!--<hr class="divider" size="5rem"/>
-          <div class="info">
-            <div class="icon icon-danger">
-              <i class="nc-icon nc-settings"></i>
-            </div>
-          </div>-->
+         
           <div class="row">
             <div class="col-md-12 mr-auto ml-auto">
               <h4 class="title">Podés agregar una texto para que se vea en la página principal</h4>
-              <h5 class="description">Agregá un texto con lo que quieras que se vean en la página principal</h5>
+              <h5 class="description">Agregá un texto con lo que quieras que se vea en la página principal</h5>
             </div>
         
             <div class="col-md-8 ml-auto mr-auto text-center">
@@ -165,20 +155,14 @@
                     <span class="form-check-sign"></span>
                   </label>
                 </div>
-
-                <!--<div class="input-group" [ngClass]="{'input-group-focus':focusNews===true}">-->
-                  <!--<div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="nc-icon nc-tv-2"></i>
-                    </span>
-                  </div>
-                -->
-  
             
-                    <textarea type="text" name="message" class="form-control" placeholder="Mensaje" (focus)="focusNews=true" (blur)="focusNews=false" [(ngModel)]="message" required ></textarea>
+                <textarea type="text" name="message" class="form-control" placeholder="Mensaje" (focus)="focusNews=true" (blur)="focusNews=false" [(ngModel)]="message" required ></textarea>
                 
   
-                <button [disabled]="!fNews.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i>Guardar</button>
+                <div class="col-md-12">
+                  <app-spinner *ngIf="loadingNews"></app-spinner>
+                  <button *ngIf="!loadingNews" [disabled]="!fNews.valid" class="btn btn-danger btn-round"><i class="fa fa-cog"></i>Guardar</button>
+                </div>
               </form>
             </div>  
 
