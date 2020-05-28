@@ -9,7 +9,7 @@
             <a href="#/multimedia" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
             <a (click)="showLive = !showLive" *ngIf="!showLive && isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
             <div class="row justify-content-center">
-                <div class="col-sm-8 col-md-6 animated fadeIn" *ngIf="showLive">
+                <div class="col-sm-10 col-md-10 animated fadeIn" *ngIf="showLive">
                     <div class="d-flex justify-content-center">
                         <p class="live live-text w-100 mb-0">EN VIVO!</p>
                         <p class="live live-close mb-0"><i class="fa fa-times mr-1 pointer" (click)="showLive = !showLive"></i></p>
