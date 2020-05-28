@@ -15,7 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes =[
     { path: '',                 component: LandingComponent, pathMatch: 'full' },
-    { path: 'multimedia',       component: MultimediaComponent },
+    { path: 'mensajes',       component: MultimediaComponent },
     { path: 'nosotros',         component: NosotrosComponent },
     { path: 'video/:id',        component: WatchVideoComponent },
     { path: 'admin',            component: AdminComponent, canActivate: [AdminGuard] },

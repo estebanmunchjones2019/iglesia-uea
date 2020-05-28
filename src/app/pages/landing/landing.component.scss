@@ -29,11 +29,20 @@ a.knowMore {
     color: #f5593d; 
 }
 .live {
-    background-color: red !important;
+    background-color: #f5593d !important;
     color: white;
     font-weight: bold;
     //margin: 1px;
     //padding: 4px;
+}
+
+.live-text {
+    border-radius: 5px 0px 0px 0px;
+}
+
+.live-close {
+    border-radius: 0px 5px 0px 0px;
+    cursor: pointer;
 }
 
 span {
@@ -41,7 +50,7 @@ span {
 }
 
 .iframe {
-    height: 30rem !important;
+    height: 17rem !important;
     width: 100% !important;
   }
   

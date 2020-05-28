@@ -3,21 +3,22 @@
     <div class="filter"></div>
     <div class="container">
         <div class="motto text-center animated fadeIn">
-            <h1 [ngStyle]="{'opacity': opacityValue}">Bienvenido</h1>
-            <h3 [ngStyle]="{'opacity': opacityValue}">Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
+            <h1 *ngIf="!isLive">Bienvenido</h1>
+            <h3 *ngIf="!isLive">Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
             <br />
             <a href="#/multimedia" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
             <a (click)="showLive = !showLive" *ngIf="!showLive && isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
-            <div class="col-md-12 animated fadeIn" *ngIf="showLive">
-                <div class="d-flex justify-content-center">
-                    <p class="live w-100">EN VIVO!</p>
-                    <p class="live"><i class="fa fa-window-close fa-lg mr-1 pointer" (click)="showLive = !showLive"></i></p>
-                    
+            <div class="row justify-content-center">
+                <div class="col-sm-8 col-md-6 animated fadeIn" *ngIf="showLive">
+                    <div class="d-flex justify-content-center">
+                        <p class="live live-text w-100 mb-0">EN VIVO!</p>
+                        <p class="live live-close mb-0"><i class="fa fa-times mr-1 pointer" (click)="showLive = !showLive"></i></p>
+                    </div>
+                    <div class="card-video">
+                      <iframe class="iframe" [src]="liveUrl" frameborder="0" allowfullscreen></iframe>
+                    </div> 
                 </div>
-                <div class="card-video">
-                  <iframe class="iframe" [src]="liveUrl" frameborder="0" allowfullscreen></iframe>
-                </div> 
-              </div>
+            </div>
         </div>
         
         <div class="shift text-center" *ngIf="!isLive">
@@ -84,7 +85,7 @@
                             <a><img src="{{ reunion.img }}" alt="..."></a>
                         </div>
                         <div class="card-block">
-                            <a href="#paper-kit">
+                            <a>
                                 <div class="author">
                                     <h4 class="card-title">{{ reunion.title }}</h4>
                                     <h6 class="card-category">{{reunion.time }} <span>h</span></h6>
