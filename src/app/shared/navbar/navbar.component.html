@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Multimedia" data-placement="bottom" href="#/multimedia" (click)="sidebarToggle()">
+                    <a class="nav-link" rel="tooltip" title="Mensajes" data-placement="bottom" href="#/mensajes" (click)="sidebarToggle()">
                         Mensajes
                     </a>
                 </li>
@@ -51,8 +51,8 @@
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
                     <div ngbDropdown class="nav-link">
-                        <a class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" ngbDropdownToggle>   
-                            ADMINISTRACION
+                        <!-- <a class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" ngbDropdownToggle>   
+                            ADMIN
                         </a>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                             <a class="dropdown-item" ngbDropdownItem rel="tooltip" title="Ingresar" data-placement="bottom"(click)="signIn()" >   
@@ -61,7 +61,13 @@
                             <a *ngIf="showSignOut" class="dropdown-item" ngbDropdownItem title="Salir" data-placement="bottom" (click)="signOut()" >   
                                 SALIR
                             </a>
-                        </div>
+                        </div> -->
+                        <a *ngIf="!showSignOut" class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" (click)="signIn()">   
+                            ADMIN
+                        </a>
+                        <a *ngIf="showSignOut" class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" (click)="signOut()">   
+                            SALIR
+                        </a>
                     </div>
                 </li>
             </ul>

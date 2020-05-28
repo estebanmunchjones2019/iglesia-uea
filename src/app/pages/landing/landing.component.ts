@@ -75,7 +75,7 @@ export class LandingComponent implements OnInit {
       content: `Enseñanza bíblica para todas las edades` 
     },
     {
-      img: `./assets/img/reunionGeneral.jpeg`,
+      img: `./assets/img/reunionGeneral.jpg`,
       time: `Domingo 20:00`,
       title: `Reunión general`,
       content: `Canciones y reflexión bíblica` 
