@@ -7,6 +7,10 @@
       <h2 class="title">Mensajes</h2>
 
       <div class="row content">
+        <div class="col-md-12">
+          <app-spinner *ngIf="loading"></app-spinner>
+        <div class="spinner-height" *ngIf="!loading"></div>
+      </div>
         <div class="col-sm-12">
           <div class="form-group">
               <input #preacherInput type="text" class="form-control" [(ngModel)]="preacher" [ngbTypeahead]="search" 
@@ -35,10 +39,7 @@
       </div>
 
       <div class="row mt-1">
-        <div class="col-md-12">
-            <app-spinner *ngIf="loading"></app-spinner>
-            <div class="spinner-height" *ngIf="!loading"></div>
-        </div>
+        
         <div class="col-md-12">
           <button type="button" [disabled]="prevDisabled" class="btn btn-danger btn-just-icon" (click)="pageChanged(config.currentPage - 1)"><i class="fa fa-angle-left"></i></button>
           <button type="button" class="btn btn-danger btn-round">{{config?.currentPage}}</button>              
