@@ -38,14 +38,7 @@ export class LandingComponent implements OnInit {
   a participar de nuestras reuniones virtuales todos los domingos, a las 19:00 h,
    a través de nuestro canal de YouTube.`;
   
-  knowMoreContent1:string = `Siguiendo las enseñanzas de la Biblia, procuramos vivir 
-  y demostrar a los demás el mismo amor que hemos recibido.`;
-  knowMoreContent2:string = `Disfrutamos encontrarnos regularmente para conocer más de Dios y enaltecer su nombre, 
-  así como para compartir nuestras alegrías y tristezas.`;
-  knowMoreContent3:string = `Cada vez que nos reunimos, nos alegramos de tener entre nosotros personas que nos 
-  visitan por primera vez.`
-  knowMoreContent4:string = `Si estás leyendo esto, no dudes en acercarte. 
-  ¡Nos encantaría conocerte!`;
+
  
   
  

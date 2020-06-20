@@ -3,20 +3,20 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
 @Component({
   selector: 'app-nosotros',
   templateUrl: './nosotros.component.html',
-  styleUrls: ['./nosotros.component.css']
+  styleUrls: ['./nosotros.component.scss']
 })
 export class NosotrosComponent implements OnInit {
   title: string = `Nuestras creencias`;
   
-  @ViewChild('main') main : ElementRef;
+  // @ViewChild('main') main : ElementRef; 
   
   constructor() { } 
 
   ngOnInit(): void {
   }
 
-  ngAfterViewInit() {
-    this.main.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  // ngAfterViewInit() {
+  //   this.main.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
+  // }
   
 }

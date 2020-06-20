@@ -45,6 +45,11 @@
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Mensajes" data-placement="bottom" href="#/creer" (click)="sidebarToggle()">
+                        Creer
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
                     <a class="nav-link" rel="tooltip" title="Contacto" data-placement="bottom" (click)="onClick()" >   
                         Contacto
                     </a>
