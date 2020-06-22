@@ -16,6 +16,7 @@ import { SpinnerComponent } from 'app/components/custom/spinner/spinner.componen
 import { WatchVideoComponent } from './watch-video/watch-video.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+import { CreerComponent } from './creer/creer.component';
 
 
 
@@ -38,7 +39,8 @@ import { LoginComponent } from './login/login.component';
         SpinnerComponent,
         WatchVideoComponent,
         AdminComponent,
-        LoginComponent
+        LoginComponent,
+        CreerComponent
     ]
 })
 export class PagesModule { }

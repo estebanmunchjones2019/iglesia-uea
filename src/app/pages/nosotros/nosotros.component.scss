@@ -1,0 +1,89 @@
+// b {
+//     font-weight: bold !important;
+// }
+
+.nosotros-title, .regalo {
+    text-align: center;
+}
+
+// .creencias .carousel-card {
+//     margin: 70px;
+// }
+
+.section--margin-null {
+    padding-top: 0px; 
+}
+
+// .creencias .carousel__row {
+//     margin-top: 40px;
+// }
+
+// .creencias .card {
+//     background-image: linear-gradient(#f8f8f8,#e3e3e3);
+// }
+
+.card-light {
+    background-image: linear-gradient(#f8f8f8,#e3e3e3);
+}
+
+.author {
+    padding: 2rem;
+}
+  
+
+.galeria .carousel__image {
+    height: 100% !important;
+}
+
+.a--higlighted {
+    color: #f5593d;
+}
+
+
+.nav-tabs-navigation p {
+    font-size: 1.35em !important;
+}
+
+.carousel-item.active {
+    display:block;
+    width:330px;
+    height: 366px;
+}
+
+.section{
+    .card-profile{
+        margin-top: 30px;
+    } 
+}
+
+
+@media screen and (max-width: 600px) {
+    .author {
+        height: 207px; 
+    }    
+} 
+
+@media screen and (min-width: 600px) and (max-width: 767px) {
+    .author {
+        height: 162px; 
+    } 
+} 
+
+@media screen and (min-width: 767px) and (max-width: 991px) {
+    .author {
+        height: 279px;
+    } 
+} 
+
+@media screen and (min-width: 991px) and (max-width: 1200px) {
+    .author {
+        height: 331px;
+    }  
+} 
+
+@media screen and (min-width: 1200px) {
+    .author {
+        height: 253px;
+    } 
+} 
+ 

@@ -36,30 +36,21 @@
             <div class="row">
                 <div  class="col-md-10 mr-auto ml-auto" [ngClass]="{'animated fadeIn' : showTitle}" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
                     <h2 class="title">{{ title1 }}</h2>
-                    <hr class="divider" size="5rem"/>
                     <br >
-                    <h5 class="description">{{ content1a }} <a *ngIf="!isKnowMore" class="knowMore" (click)="onKnowMore()">+Saber más</a></h5>
-                    
-                    <div  *ngIf="isKnowMore">
-                        <h5 class="description"><a class="knowMore" (click)="onKnowMore()">Ver menos</a></h5>
-                        <h5 class="description"> {{ knowMoreContent1 }}</h5>
-                        <h5 class="description"> {{ knowMoreContent2 }}</h5>
-                        <h5 class="description"> {{ knowMoreContent3 }}</h5>
-                        <h5 class="description"> {{ knowMoreContent4 }}</h5>  
-                    </div> 
+                    <h5 class="description">{{ content1a }} <a class="knowMore" href="#/nosotros">+Saber más</a></h5>
                     <br>
                     <h5 class="description">{{ content1b }}</h5>
                     
                     <br> 
                 </div>
             </div>
+            <hr class="divider" size="5rem"/>
 <!----------------------------------------------- Welcome-end--------------------------------------------->
 
 <!----------------------------------------------- News-start--------------------------------------------->
             <div *ngIf="novedades" class="row">
                 <div class="col-md-10 mr-auto ml-auto" [ngClass]="{'animated fadeIn' : showTitle}" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
                     <h2 class="title">Novedades</h2>
-                    <hr class="divider" size="5rem"/>
                     <br >
                     <h5 [innerHtml]="message" class="description"></h5>
                 </div>
@@ -88,7 +79,7 @@
                             <a>
                                 <div class="author">
                                     <h4 class="card-title">{{ reunion.title }}</h4>
-                                    <h6 class="card-category">{{reunion.time }} <span>h</span></h6>
+                                    <h6 class="card-category">{{reunion.time }} <span class="span--lowercase">h</span></h6>
                                 </div>
                             </a>
                             <p class="card-description text-center">{{ reunion.content}}</p>

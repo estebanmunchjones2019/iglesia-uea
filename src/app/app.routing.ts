@@ -12,6 +12,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminGuard } from './service/auth-guard/admin.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { CreerComponent } from './pages/creer/creer.component';
 
 const routes: Routes =[
     { path: '',                 component: LandingComponent, pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes =[
     { path: 'video/:id',        component: WatchVideoComponent },
     { path: 'admin',            component: AdminComponent, canActivate: [AdminGuard] },
     { path: 'login',            component: LoginComponent},
+    { path: 'creer',            component: CreerComponent},
     { path: '**',               redirectTo: ''}
 ];
 
