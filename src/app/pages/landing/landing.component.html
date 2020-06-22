@@ -6,7 +6,7 @@
             <h1 *ngIf="!isLive">Bienvenido</h1>
             <h3 *ngIf="!isLive">Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
             <br />
-            <a href="#/multimedia" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
+            <a href="#/mensajes" *ngIf="!isLive" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Nuestros mensajes</a>
             <a (click)="showLive = !showLive" *ngIf="!showLive && isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
             <div class="row justify-content-center">
                 <div class="col-sm-10 col-md-10 animated fadeIn" *ngIf="showLive">
