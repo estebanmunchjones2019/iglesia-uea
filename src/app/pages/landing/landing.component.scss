@@ -25,6 +25,11 @@ a.knowMore {
     cursor: pointer;
 }
 
+.btn-nuestros-mensajes:active,
+.btn-nuestros-mensajes:hover {
+    color: #403d39 !important;
+}
+
 .nav-tabs-navigation a {
     color: #f5593d; 
 }

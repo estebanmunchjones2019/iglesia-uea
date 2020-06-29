@@ -4,7 +4,7 @@ import { registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { CKEditorModule } from 'ckeditor4-angular';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 
 registerLocaleData(localeEsAR, 'es-Ar');
 
@@ -54,7 +55,8 @@ registerLocaleData(localeEsAR, 'es-Ar');
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    CKEditorModule
+    CKEditorModule,
+    ScullyLibModule
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
