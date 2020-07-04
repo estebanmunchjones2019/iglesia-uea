@@ -56,23 +56,23 @@
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
                     <div ngbDropdown class="nav-link">
-                        <!-- <a class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" ngbDropdownToggle>   
+                        <a class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" ngbDropdownToggle>   
                             ADMIN
                         </a>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-danger">
                             <a class="dropdown-item" ngbDropdownItem rel="tooltip" title="Ingresar" data-placement="bottom"(click)="signIn()" >   
                                 INGRESAR
                             </a>
                             <a *ngIf="showSignOut" class="dropdown-item" ngbDropdownItem title="Salir" data-placement="bottom" (click)="signOut()" >   
                                 SALIR
                             </a>
-                        </div> -->
-                        <a *ngIf="!showSignOut" class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" (click)="signIn()">   
+                        </div> 
+                        <!-- <a *ngIf="!showSignOut" class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" (click)="signIn()">   
                             ADMIN
                         </a>
                         <a *ngIf="showSignOut" class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" (click)="signOut()">   
                             SALIR
-                        </a>
+                        </a>-->
                     </div>
                 </li>
             </ul>
