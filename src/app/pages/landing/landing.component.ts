@@ -19,6 +19,7 @@ import { FirebaseService } from 'app/service/firebase/firebase.service';
 import { CdkScrollable } from "@angular/cdk/scrolling";
 import { DomSanitizer } from '@angular/platform-browser';
 import { UtilService } from 'app/service/utils/util.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -108,7 +109,8 @@ export class LandingComponent implements OnInit {
   constructor(private firebaseService: FirebaseService,
     private changeDetectorRef: ChangeDetectorRef,
     private _sanitizer: DomSanitizer,
-    private utilService: UtilService) { }
+    private utilService: UtilService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getNews();
@@ -164,7 +166,16 @@ export class LandingComponent implements OnInit {
       });
   }
 
-  onKnowMore() {
-    this.isKnowMore = !this.isKnowMore;
+  // onKnowMore() {
+  //   this.isKnowMore = !this.isKnowMore;
+  // }
+
+  onNuestrosMensajesClick() {
+    this.router.navigate(['/mensajes'])
   }
+
+  onSaberMasClick() {
+    this.router.navigate(['/nosotros'])
+  }
+
 }

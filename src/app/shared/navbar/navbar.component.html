@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500" #navbar>
     <div class="container">
         <div class="navbar-translate">
-            <a *ngIf="navbar.classList.contains('navbar-transparent')" class="navbar-brand" href="#/landing"><img src="./assets/img/logoUea1.png" alt="logo UEA" height="50px" width="50px"></a>
-            <a *ngIf="!navbar.classList.contains('navbar-transparent')" class="navbar-brand" href="#/landing"><img src="./assets/img/logoUea2.png" alt="logo UEA" height="50px" width="50px"></a>
+            <a *ngIf="navbar.classList.contains('navbar-transparent')" class="navbar-brand" routerLink="/"><img src="./assets/img/logoUea1.png" alt="logo UEA" height="50px" width="50px"></a>
+            <a *ngIf="!navbar.classList.contains('navbar-transparent')" class="navbar-brand" routerLink="/"><img src="./assets/img/logoUea2.png" alt="logo UEA" height="50px" width="50px"></a>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
@@ -30,22 +30,22 @@
                     </a>
                 </li>  
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Inicio" data-placement="bottom" href="#" (click)="sidebarToggle()">
+                    <a class="nav-link" rel="tooltip" title="Inicio" data-placement="bottom" routerLink="/" (click)="sidebarToggle()">
                         Inicio
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Nosotros" data-placement="bottom" href="#nosotros" (click)="sidebarToggle()">
+                    <a class="nav-link" rel="tooltip" title="Nosotros" data-placement="bottom" routerLink="/nosotros" (click)="sidebarToggle()">
                         Nosotros
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Mensajes" data-placement="bottom" href="#/mensajes" (click)="sidebarToggle()">
+                    <a class="nav-link" rel="tooltip" title="Mensajes" data-placement="bottom" routerLink="/mensajes" (click)="sidebarToggle()">
                         Mensajes
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Mensajes" data-placement="bottom" href="#/creer" (click)="sidebarToggle()">
+                    <a class="nav-link" rel="tooltip" title="Mensajes" data-placement="bottom" routerLink="/creer" (click)="sidebarToggle()">
                         Creer
                     </a>
                 </li>
