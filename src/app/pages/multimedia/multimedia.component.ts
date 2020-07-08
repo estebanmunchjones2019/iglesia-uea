@@ -27,6 +27,7 @@ import { Router } from '@angular/router';
 import { PreacherModel } from '../../model/preacher.model';
 import { environment } from 'environments/environment';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
+import { FirebaseV2Service } from 'app/service/firebase/firebase.v2.service';
 
 @Component({
   selector: 'app-multimedia',
@@ -59,12 +60,13 @@ export class MultimediaComponent implements OnInit, OnDestroy {
 
   constructor(private videoService: VideoService,
               private firebaseService: FirebaseService,
+              private firebaseV2Service: FirebaseV2Service,
               private changeDetectorRef: ChangeDetectorRef,
               private modalService: NgbModal,
               private router: Router) {
 
               this.getCountVideos(null);
-              this.importVideos();
+              //this.importVideos();
   }
 
   ngOnInit() {
@@ -86,9 +88,8 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    * @param search 
    */
   getAllVideosPaginated(video, action, size, search) {
-    this.firebaseService.getAllVideos(video, action, size, search)
+    this.firebaseV2Service.getAllVideos(video, action, size, search)
       .then((response) => {
-        
         this.videos = new Array();
         response.forEach(data => {
           this.videos.push({
@@ -115,7 +116,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    * Get all preachers in the database.
    */
   getAllPreachers() {
-    this.firebaseService.getAllPreachers()
+    this.firebaseV2Service.getAllPreachers()
       .subscribe((response) => {
         this.preachers = response;
       })
@@ -127,7 +128,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    */
   getCountVideos(search: string) {
     let count = 0;
-    this.firebaseService.getCount(search)
+    this.firebaseV2Service.getCount(search)
     .then(response => {
       response.forEach(resp => {
         count += 1;
@@ -146,7 +147,7 @@ export class MultimediaComponent implements OnInit, OnDestroy {
    * If count of videos is 0 then import videos from json.
    */
   importVideos() {
-    this.firebaseService.getCount(null)
+    this.firebaseV2Service.getCount(null)
       .then(response => {
         let count = 0;
         response.forEach(resp => {
@@ -210,7 +211,6 @@ export class MultimediaComponent implements OnInit, OnDestroy {
      * @param event Event trigger when a preacher is selected.
      */
   selectedItem(event: any) {
-    debugger;
     this.preacherInput.nativeElement.blur();
 
     event.preventDefault();

@@ -10,6 +10,7 @@ import { VideoModel } from 'app/model/video.model';
 
 import Swal from 'sweetalert2'
 import { NavbarService } from 'app/service/navbar/navbar.service';
+import { FirebaseV2Service } from 'app/service/firebase/firebase.v2.service';
 
 @Component({
   selector: 'app-admin',
@@ -46,6 +47,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private firebaseAuthService: FirebaseAuthService,
               private firebaseService: FirebaseService,
+              private firebaseV2Service: FirebaseV2Service,
               private router: Router,
               private utilService: UtilService,
               private navbarService: NavbarService) { } 
@@ -63,7 +65,7 @@ export class AdminComponent implements OnInit {
   }
   
   getNews() {
-    this.firebaseService.getNews()
+    this.firebaseV2Service.getNews()
       .then(response => {
         this.showNews = response.data().show;
         this.message = response.data().message;
@@ -71,7 +73,7 @@ export class AdminComponent implements OnInit {
       .catch(err => {
         
       });;
-    this.firebaseService.isLive()
+    this.firebaseV2Service.isLive()
       .then(response => {
           this.isLive = response.data().isLive;
           this.liveUrl = response.data().url;
@@ -84,9 +86,8 @@ export class AdminComponent implements OnInit {
 
   saveIsLive(fLive: NgForm) {
     this.loadingIsLive = true;
-    this.firebaseService.updateIsLive(fLive.value.isLive, fLive.value.liveUrl)
+    this.firebaseV2Service.updateIsLive(fLive.value.isLive, fLive.value.liveUrl)
     .then(() => {
-      //Swal.close();
       this.loadingIsLive = false;
       console.log("isLive updated");
     })
@@ -100,7 +101,7 @@ export class AdminComponent implements OnInit {
     debugger;
     this.loadingAddVideos = true;
     let selectedDate = this.date.year + "-" + this.fill(this.date.month) + "-" + this.fill(this.date.day);
-    this.firebaseService.addVideo(this.videoUrl, this.preacher, selectedDate)
+    this.firebaseV2Service.addVideo(this.videoUrl, this.preacher.preacher, selectedDate)
     .then((response) => {
       this.loadingAddVideos = false;
       console.log("Video created");
@@ -123,21 +124,22 @@ export class AdminComponent implements OnInit {
    * Get all preachers in the database.
    */
   getAllPreachers() {
-    this.firebaseService.getAllPreachers()
+    this.firebaseV2Service.getAllPreachers()
       .subscribe((response) => {
+        debugger;
         for (let i = 0; i< response.length; i++) {
           if (response[i].preacher === 'todos') {
             response.splice(i, 1);
           }
         }
         this.preachers = response;
-        this.preacher = this.preachers[0];
+        this.preacher = response[0];
       })
   }
 
   saveShowNews(fNews: NgForm) {
     this.loadingNews = true;
-    this.firebaseService.updateNews(fNews.value.showNews, fNews.value.message)
+    this.firebaseV2Service.updateNews(fNews.value.showNews, fNews.value.message)
     .then(() => {
       this.loadingNews = false;
       console.log("News updated");

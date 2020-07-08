@@ -28,6 +28,7 @@ import { PreacherModel } from '../../model/preacher.model';
 import { environment } from 'environments/environment';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
 import { UtilService } from 'app/service/utils/util.service';
+import { FirebaseV2Service } from 'app/service/firebase/firebase.v2.service';
 
 @Component({
   selector: 'app-watch-video',
@@ -50,6 +51,7 @@ export class WatchVideoComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private firebaseService: FirebaseService,
+              private firebaseV2Service: FirebaseV2Service,
               private utilService: UtilService) {
 
                 this.loading = true;
@@ -66,8 +68,9 @@ export class WatchVideoComponent implements OnInit {
   }
 
   getVideoById(id) {
-    this.firebaseService.getVideoById(id)
+    this.firebaseV2Service.getVideoById(id)
       .then((response) => {
+        debugger;
         this.video.id = response.id;
         this.video.date = response.data().date;
         this.video.url = response.data().url;

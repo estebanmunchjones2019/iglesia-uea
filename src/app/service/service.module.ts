@@ -9,6 +9,7 @@ import { FirebaseFunctionsService } from './firebase-functions/firebase-function
 import { FirebaseAuthService } from './firebase/firebase.auth.service';
 import { UtilService } from './utils/util.service';
 import { NavbarService } from './navbar/navbar.service';
+import { FirebaseV2Service } from './firebase/firebase.v2.service';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NavbarService } from './navbar/navbar.service';
    FirebaseFunctionsService,
    FirebaseAuthService,
    UtilService,
-   NavbarService
+   NavbarService,
+   FirebaseV2Service
   ]
 })
 export class ServicesModule {}

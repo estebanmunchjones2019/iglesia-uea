@@ -101,7 +101,7 @@
                       </div>
       
                         <select name="preacher" class="form-control preacher-select" (focus)="focusPreacher=true" (blur)="focusPreacher=false" [(ngModel)]="preacher" required >
-                          <option class="preacher-options" *ngFor="let preacher of preachers">{{preacher.preacher}}</option>
+                          <option class="preacher-options" *ngFor="let item of preachers" [ngValue]="item">{{item.preacher}}</option>
                         </select>
                     </div>
                   </div>
@@ -118,7 +118,7 @@
                         </div>
 
                         <input class="form-control" placeholder="yyyy-mm-dd"
-                              name="date" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focusDate=true" (blur)="focusDate=false" />
+                              name="date" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focusDate=true" (blur)="focusDate=false" required/>
                     </div>
                   </div>
                 </div>
