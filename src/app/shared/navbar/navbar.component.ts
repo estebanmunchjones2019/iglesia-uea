@@ -1,8 +1,9 @@
 import { Component, OnInit, ElementRef, Inject } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Location } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 import { PageScrollService } from 'ngx-page-scroll-core';
-import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+
 import { FirebaseAuthService } from 'app/service/firebase/firebase.auth.service';
 import { NavbarService } from 'app/service/navbar/navbar.service';
 
@@ -22,20 +23,19 @@ export class NavbarComponent implements OnInit {
         private element : ElementRef,
         private pageScrollService: PageScrollService,
         private router: Router,
-        private route: ActivatedRoute,
         @Inject(DOCUMENT) private document: any,
         private firebaseAuthService: FirebaseAuthService,
         private navbarService: NavbarService) {  
         
-            this.sidebarVisible = false;
+        this.sidebarVisible = false;
 
-            this.firebaseAuthService.isUserLogged().subscribe(user => {
-                if (user && sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
-                    this.showSignOut = true;
-                  } else {
-                    this.showSignOut = false;
-                  }
-              })
+        this.firebaseAuthService.isUserLogged().subscribe(user => {
+            if (user && sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
+                this.showSignOut = true;
+                } else {
+                this.showSignOut = false;
+                }
+            })
     }
 
     ngOnInit() {

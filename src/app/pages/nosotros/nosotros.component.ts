@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nosotros',
@@ -8,15 +8,9 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
 export class NosotrosComponent implements OnInit {
   title: string = `Nuestras creencias`;
   
-  // @ViewChild('main') main : ElementRef; 
-  
   constructor() { } 
 
   ngOnInit(): void {
   }
-
-  // ngAfterViewInit() {
-  //   this.main.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
-  // }
   
 }

@@ -14,18 +14,15 @@
  */
 
 import {
-  Component, ElementRef, OnInit, AfterViewInit, OnDestroy, ViewChild, ChangeDetectorRef
+  Component, ElementRef, OnInit, OnDestroy, ViewChild, ChangeDetectorRef
 } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { VideoService } from '../../service/video/video.service';
-import { VideoModel } from '../../model/video.model';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { VideoComponent } from 'app/components/custom/video/video.component';
 import { Router } from '@angular/router';
+
+import { VideoModel } from '../../model/video.model';
 import { PreacherModel } from '../../model/preacher.model';
-import { environment } from 'environments/environment';
+import { VideoService } from '../../service/video/video.service';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
 import { FirebaseV2Service } from 'app/service/firebase/firebase.v2.service';
 
@@ -62,7 +59,6 @@ export class MultimediaComponent implements OnInit, OnDestroy {
               private firebaseService: FirebaseService,
               private firebaseV2Service: FirebaseV2Service,
               private changeDetectorRef: ChangeDetectorRef,
-              private modalService: NgbModal,
               private router: Router) {
 
               this.getCountVideos(null);
@@ -239,19 +235,6 @@ export class MultimediaComponent implements OnInit, OnDestroy {
       const inputEvent: Event = new Event('input');
       e.target.dispatchEvent(inputEvent);
     }, 0);
-  }
-
-  /*deprecated */
-  public openModal(video: VideoModel) {
-    const modalRef = this.modalService.open(VideoComponent, { windowClass: 'my-class'});
-    modalRef.componentInstance.video = video;
-  }
-
-  /*deprecated*/
-  public openOnYoutube(video: VideoModel) {
-    let results = video.url.match('[\\?&]v=([^&#]*)');
-    let show = 'https://www.youtube.com/' + results[1];
-    this.router.navigate([show]);
   }
 
   public onClick(video: VideoModel) {

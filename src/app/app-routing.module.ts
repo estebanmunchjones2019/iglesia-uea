@@ -7,8 +7,6 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { MultimediaComponent } from './pages/multimedia/multimedia.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { WatchVideoComponent } from './pages/watch-video/watch-video.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminGuard } from './service/auth-guard/admin.guard';
 import { LoginComponent } from './pages/login/login.component';

@@ -13,19 +13,10 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 
-import {
-  Component, ElementRef, OnInit, AfterViewInit, ChangeDetectorRef, ViewChild
-} from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { VideoService } from '../../service/video/video.service';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { VideoModel } from '../../model/video.model';
-import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { VideoComponent } from 'app/components/custom/video/video.component';
-import { Router, ActivatedRoute } from '@angular/router';
-import { PreacherModel } from '../../model/preacher.model';
-import { environment } from 'environments/environment';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
 import { UtilService } from 'app/service/utils/util.service';
 import { FirebaseV2Service } from 'app/service/firebase/firebase.v2.service';
@@ -44,27 +35,19 @@ export class WatchVideoComponent implements OnInit {
 
   @ViewChild('videoContainer') videoContainer: ElementRef;
 
-  constructor(private videoService: VideoService,
-              private _sanitizer: DomSanitizer,
-              private changeDetectorRef: ChangeDetectorRef,
-              private modalService: NgbModal,
-              private router: Router,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private firebaseService: FirebaseService,
               private firebaseV2Service: FirebaseV2Service,
               private utilService: UtilService) {
 
-                this.loading = true;
-                this.route.paramMap.subscribe(params => {
-                  this.getVideoById(params.get('id'));
-                })
+    this.loading = true;
+    this.route.paramMap.subscribe(params => {
+      this.getVideoById(params.get('id'));
+    })
             
   }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit() {    
   }
 
   getVideoById(id) {
