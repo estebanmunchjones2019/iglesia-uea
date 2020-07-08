@@ -1,10 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FirebaseFunctionsService } from 'app/service/firebase-functions/firebase-functions.service';
-
 import Swal from 'sweetalert2'
-import { reduce } from 'rxjs/operators';
+
+import { FirebaseFunctionsService } from 'app/service/firebase-functions/firebase-functions.service';
 
 @Component({
   selector: 'app-form',
@@ -33,9 +31,6 @@ export class FormComponent implements OnInit {
       title: 'Enviando mensaje',
       allowEscapeKey: false,
       allowOutsideClick: false,
-      // customClass: {
-      //   title: 'custom'
-      // },
       timer: 20000,
       onOpen: () => {
         Swal.showLoading();

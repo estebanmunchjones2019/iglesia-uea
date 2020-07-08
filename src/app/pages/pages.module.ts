@@ -10,8 +10,6 @@ import { MultimediaComponent } from './multimedia/multimedia.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormComponent } from '../components/custom/form/form.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
-import { LoadingComponent } from 'app/components/custom/loading/loading.component';
-import { VideoComponent } from 'app/components/custom/video/video.component';
 import { SpinnerComponent } from 'app/components/custom/spinner/spinner.component';
 import { WatchVideoComponent } from './watch-video/watch-video.component';
 import { AdminComponent } from './admin/admin.component';
@@ -34,8 +32,6 @@ import { CreerComponent } from './creer/creer.component';
         MultimediaComponent,
         FormComponent,
         NosotrosComponent,
-        LoadingComponent,
-        VideoComponent,
         SpinnerComponent,
         WatchVideoComponent,
         AdminComponent,

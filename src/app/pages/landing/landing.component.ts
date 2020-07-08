@@ -14,7 +14,6 @@
  */
 
 import { Component, OnInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { FirebaseService } from 'app/service/firebase/firebase.service';
@@ -99,7 +98,6 @@ export class LandingComponent implements OnInit {
   
   constructor(private firebaseService: FirebaseService,
     private changeDetectorRef: ChangeDetectorRef,
-    private _sanitizer: DomSanitizer,
     private utilService: UtilService,
     private router: Router) { }
 

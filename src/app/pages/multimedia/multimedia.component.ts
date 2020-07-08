@@ -19,10 +19,8 @@ import {
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { VideoModel } from '../../model/video.model';
-import { VideoComponent } from 'app/components/custom/video/video.component';
 import { PreacherModel } from '../../model/preacher.model';
 import { VideoService } from '../../service/video/video.service';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
@@ -59,7 +57,6 @@ export class MultimediaComponent implements OnInit, OnDestroy {
   constructor(private videoService: VideoService,
               private firebaseService: FirebaseService,
               private changeDetectorRef: ChangeDetectorRef,
-              private modalService: NgbModal,
               private router: Router) {
 
               this.getCountVideos(null);
