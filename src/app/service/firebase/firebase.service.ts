@@ -1,18 +1,14 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {VideoModel} from "../../model/video.model";
+import { AngularFirestore } from '@angular/fire/firestore';
 import * as moment from "moment";
 import {map} from "rxjs/internal/operators";
 
-import { AngularFirestore } from '@angular/fire/firestore';
+import {VideoModel} from "../../model/video.model";
 
 @Injectable()
 export class FirebaseService {
 
-  private baseUrl: string = "/assets/json/videos.json";
-
-  constructor(private httpClient: HttpClient,
-    private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore) {
   }
 
   getAllVideos(video, action, size: number, search: string) {

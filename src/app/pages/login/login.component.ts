@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, NgZone } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
 import { FirebaseAuthService } from 'app/service/firebase/firebase.auth.service';
 import { NavbarService } from 'app/service/navbar/navbar.service';
 
@@ -30,10 +31,6 @@ export class LoginComponent implements OnInit {
   } 
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit() {
-
   }
 
   onSubmit(fLogin: NgForm) {

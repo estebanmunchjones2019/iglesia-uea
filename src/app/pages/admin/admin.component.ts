@@ -1,14 +1,8 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import * as firebase from 'firebase';
-import { FirebaseApp } from '@angular/fire';
-import { FirebaseAuthService } from 'app/service/firebase/firebase.auth.service';
-import { Router } from '@angular/router';
-import { FirebaseService } from 'app/service/firebase/firebase.service';
-import { UtilService } from 'app/service/utils/util.service';
-import { VideoModel } from 'app/model/video.model';
 
-import Swal from 'sweetalert2'
+import { UtilService } from 'app/service/utils/util.service';
+import { FirebaseService } from 'app/service/firebase/firebase.service';
 import { NavbarService } from 'app/service/navbar/navbar.service';
 
 @Component({
@@ -44,9 +38,7 @@ export class AdminComponent implements OnInit {
   focusNews;
   loadingNews = false;
 
-  constructor(private firebaseAuthService: FirebaseAuthService,
-              private firebaseService: FirebaseService,
-              private router: Router,
+  constructor(private firebaseService: FirebaseService,
               private utilService: UtilService,
               private navbarService: NavbarService) { } 
 

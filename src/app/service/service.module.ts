@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
+
 import {VideoService} from './video/video.service';
-import {HeaderInterceptor} from './header-interceptor/header-interceptor.service';
-import {SidebarScrollService} from './sidebar-scroll/sidebar-scroll.service';
 import { FirebaseService } from './firebase/firebase.service';
 import { FirebaseFunctionsService } from './firebase-functions/firebase-functions.service';
 import { FirebaseAuthService } from './firebase/firebase.auth.service';
@@ -18,8 +17,6 @@ import { NavbarService } from './navbar/navbar.service';
   ],
   providers: [
    VideoService,
-   { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
-   SidebarScrollService,
    FirebaseService,
    FirebaseFunctionsService,
    FirebaseAuthService,
