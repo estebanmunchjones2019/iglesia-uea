@@ -14,12 +14,11 @@
  */
 
 import { Component, OnInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
-import { faBible } from '@fortawesome/free-solid-svg-icons';
-import { FirebaseService } from 'app/service/firebase/firebase.service';
-import { CdkScrollable } from "@angular/cdk/scrolling";
 import { DomSanitizer } from '@angular/platform-browser';
-import { UtilService } from 'app/service/utils/util.service';
 import { Router } from '@angular/router';
+
+import { FirebaseService } from 'app/service/firebase/firebase.service';
+import { UtilService } from 'app/service/utils/util.service';
 
 
 @Component({
@@ -39,17 +38,10 @@ export class LandingComponent implements OnInit {
   a participar de nuestras reuniones virtuales todos los domingos, a las 19:00 h,
    a través de nuestro canal de YouTube.`;
   
-
- 
-  
- 
   novedades: boolean = false;
   message: string;
-  isKnowMore: boolean = false;
 
-  
-
-   reuniones = [
+  reuniones = [
     {
       img: `./assets/img/oracion.jpg`,
       time: `Miércoles 20:00`,
@@ -78,7 +70,6 @@ export class LandingComponent implements OnInit {
 
   focus: any;
   focus1: any;
-  faBible = faBible;
 
   isLive = false;
   showLive = false;
@@ -165,10 +156,6 @@ export class LandingComponent implements OnInit {
           this.liveUrl = this.utilService.getVideoIframe(response.data().url);
       });
   }
-
-  // onKnowMore() {
-  //   this.isKnowMore = !this.isKnowMore;
-  // }
 
   onNuestrosMensajesClick() {
     this.router.navigate(['/mensajes'])

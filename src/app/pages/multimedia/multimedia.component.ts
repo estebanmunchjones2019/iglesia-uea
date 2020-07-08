@@ -14,18 +14,17 @@
  */
 
 import {
-  Component, ElementRef, OnInit, AfterViewInit, OnDestroy, ViewChild, ChangeDetectorRef
+  Component, ElementRef, OnInit, OnDestroy, ViewChild, ChangeDetectorRef
 } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { VideoService } from '../../service/video/video.service';
-import { VideoModel } from '../../model/video.model';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { VideoComponent } from 'app/components/custom/video/video.component';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { VideoModel } from '../../model/video.model';
+import { VideoComponent } from 'app/components/custom/video/video.component';
 import { PreacherModel } from '../../model/preacher.model';
-import { environment } from 'environments/environment';
+import { VideoService } from '../../service/video/video.service';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
 
 @Component({
@@ -239,19 +238,6 @@ export class MultimediaComponent implements OnInit, OnDestroy {
       const inputEvent: Event = new Event('input');
       e.target.dispatchEvent(inputEvent);
     }, 0);
-  }
-
-  /*deprecated */
-  public openModal(video: VideoModel) {
-    const modalRef = this.modalService.open(VideoComponent, { windowClass: 'my-class'});
-    modalRef.componentInstance.video = video;
-  }
-
-  /*deprecated*/
-  public openOnYoutube(video: VideoModel) {
-    let results = video.url.match('[\\?&]v=([^&#]*)');
-    let show = 'https://www.youtube.com/' + results[1];
-    this.router.navigate([show]);
   }
 
   public onClick(video: VideoModel) {

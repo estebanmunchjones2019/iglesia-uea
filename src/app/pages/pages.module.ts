@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LandingComponent } from './landing/landing.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from '../components/profile/profile.component';
+import { SignupComponent } from '../components/signup/signup.component';
 import { MultimediaComponent } from './multimedia/multimedia.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormComponent } from '../components/custom/form/form.component';
