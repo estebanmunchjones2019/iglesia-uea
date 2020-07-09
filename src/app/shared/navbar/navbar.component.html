@@ -50,11 +50,22 @@
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Contacto" data-placement="bottom" (click)="onClick()" >   
+                    <a class="nav-link" rel="tooltip" title="Contacto" data-placement="bottom" (click)="onConctactoClick()" >   
                         Contacto
                     </a>
                 </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
+                <li class="nav-item" *ngIf="!isDocumentation() && showSignOut">
+                    <a class="nav-link" rel="tooltip" title="Contacto" data-placement="bottom" routerLink="/admin" >   
+                        Admin
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation() && showSignOut">
+                    <a class="nav-link" rel="tooltip" title="Contacto" data-placement="bottom" (click)="signOut()" >   
+                        Salir
+                    </a>
+                </li>
+
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
                     <div ngbDropdown class="nav-link">
                         <a class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" ngbDropdownToggle>   
                             ADMIN
@@ -67,14 +78,14 @@
                                 SALIR
                             </a>
                         </div> 
-                        <!-- <a *ngIf="!showSignOut" class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" (click)="signIn()">   
+                        <a *ngIf="!showSignOut" class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" (click)="signIn()">   
                             ADMIN
                         </a>
                         <a *ngIf="showSignOut" class="nav-link-admin" rel="tooltip" title="Admin" data-placement="bottom" id="administracion" (click)="signOut()">   
                             SALIR
-                        </a>-->
+                        </a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>        
     </div>

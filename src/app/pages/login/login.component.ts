@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { FirebaseAuthService } from 'app/service/firebase/firebase.auth.service';
-import { NavbarService } from 'app/service/navbar/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public firebaseAuthService: FirebaseAuthService,
               public router: Router,
-              public ngZone: NgZone,
-              public navbarService: NavbarService) {
+              public ngZone: NgZone) {
                 
     this.firebaseAuthService.isUserLogged().subscribe(user => {
       if (user && sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
@@ -41,7 +39,6 @@ export class LoginComponent implements OnInit {
     .then(function(result) {
         that.loggingIn = false;
         sessionStorage.setItem('user', result.user.email);
-        that.navbarService.signIn();
         that.router.navigate(['/admin']);
       }).catch((error) => {
         that.loggingIn = false;
