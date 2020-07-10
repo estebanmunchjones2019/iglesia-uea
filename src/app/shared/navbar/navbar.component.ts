@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { PageScrollService } from 'ngx-page-scroll-core';
 
 import { FirebaseAuthService } from 'app/service/firebase/firebase.auth.service';
-import { NavbarService } from 'app/service/navbar/navbar.service';
 
 @Component({
     selector: 'app-navbar',
@@ -16,7 +15,6 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    public signInOutText; 
     public showSignOut = false;
 
     constructor(public location: Location, 
@@ -24,8 +22,7 @@ export class NavbarComponent implements OnInit {
         private pageScrollService: PageScrollService,
         private router: Router,
         @Inject(DOCUMENT) private document: any,
-        private firebaseAuthService: FirebaseAuthService,
-        private navbarService: NavbarService) {  
+        private firebaseAuthService: FirebaseAuthService) {  
         
         this.sidebarVisible = false;
 
@@ -41,16 +38,11 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-
-        this.navbarService.showSignOut.subscribe(showSignOut => {
-            this.showSignOut = showSignOut;
-        })
     }
+
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
-        // console.log(html);
-        // console.log(toggleButton, 'toggle');
 
         setTimeout(function(){
             toggleButton.classList.add('toggled');
@@ -59,6 +51,7 @@ export class NavbarComponent implements OnInit {
 
         this.sidebarVisible = true;
     };
+
     sidebarClose() {
         const html = document.getElementsByTagName('html')[0];
         // console.log(html);
@@ -66,6 +59,7 @@ export class NavbarComponent implements OnInit {
         this.sidebarVisible = false;
         html.classList.remove('nav-open');
     };
+
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
@@ -75,6 +69,7 @@ export class NavbarComponent implements OnInit {
             this.sidebarClose();
         }
     };
+
     isHome() {
       var titlee = this.location.prepareExternalUrl(this.location.path());
       if(titlee.charAt(0) === '#'){
@@ -87,6 +82,7 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
     isDocumentation() {
       var titlee = this.location.prepareExternalUrl(this.location.path());
       if(titlee.charAt(0) === '#'){
@@ -104,24 +100,24 @@ export class NavbarComponent implements OnInit {
         el.scrollIntoView({behavior: 'smooth'}); 
       }
 
-  onClick() {
-      this.sidebarToggle();
-      console.log(this.router.url);
-    if (this.router.url == '/') {
-        this.pageScrollService.scroll({
-            document: this.document,
-            scrollTarget: '#contacto', 
-        }); 
-    } else {
-        this.router.navigate(['/']);
-        setTimeout(() => {
+    onContactoClick() {
+        this.sidebarToggle();
+        console.log(this.router.url);
+        if (this.router.url == '/') {
             this.pageScrollService.scroll({
                 document: this.document,
                 scrollTarget: '#contacto', 
-            });
-        }, 1000)
-    }
-  } 
+            }); 
+        } else {
+            this.router.navigate(['/']);
+            setTimeout(() => {
+                this.pageScrollService.scroll({
+                    document: this.document,
+                    scrollTarget: '#contacto', 
+                });
+            }, 1000)
+        }
+    } 
 
   signIn() {
     this.sidebarToggle();

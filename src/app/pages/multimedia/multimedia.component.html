@@ -1,4 +1,4 @@
-<div class="wrapper animated fadeIn">
+<div class="wrapper">
   <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biblia.jpg');">
       <div class="filter"></div>
   </div>
@@ -18,7 +18,7 @@
                 (focus)="onFocus($event)" placeholder="Buscar">
           </div>
         </div> 
-        <div class="col-md-4 animated fadeIn" *ngFor="let video of videos; let i = index">
+        <div class="col-md-4" *ngFor="let video of videos; let i = index">
           <div class="card card-profile card-light pointer" (click)="onClick(video)">
               <div class="card-block">
                 <a>

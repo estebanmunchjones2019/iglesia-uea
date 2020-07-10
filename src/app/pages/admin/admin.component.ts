@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { UtilService } from 'app/service/utils/util.service';
-import { FirebaseService } from 'app/service/firebase/firebase.service';
-import { NavbarService } from 'app/service/navbar/navbar.service';
 import { FirebaseV2Service } from 'app/service/firebase/firebase.v2.service';
 
 @Component({
@@ -41,12 +39,9 @@ export class AdminComponent implements OnInit {
 
   constructor(private firebaseV2Service: FirebaseV2Service,
               private utilService: UtilService,
-              private navbarService: NavbarService) { } 
+              ) { } 
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('user') !== null && sessionStorage.getItem('user').length > 0) {
-      this.navbarService.signIn();
-    }
     this.getNews();
     this.getAllPreachers();
   }

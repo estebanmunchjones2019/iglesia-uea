@@ -7,7 +7,6 @@ import { FirebaseService } from './firebase/firebase.service';
 import { FirebaseFunctionsService } from './firebase-functions/firebase-functions.service';
 import { FirebaseAuthService } from './firebase/firebase.auth.service';
 import { UtilService } from './utils/util.service';
-import { NavbarService } from './navbar/navbar.service';
 import { FirebaseV2Service } from './firebase/firebase.v2.service';
 
 
@@ -22,7 +21,6 @@ import { FirebaseV2Service } from './firebase/firebase.v2.service';
    FirebaseFunctionsService,
    FirebaseAuthService,
    UtilService,
-   NavbarService,
    FirebaseV2Service
   ]
 })
