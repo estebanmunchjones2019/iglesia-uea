@@ -21,7 +21,7 @@
             </div>
         </div>
         
-        <div class="shift text-center" *ngIf="!isLive">
+        <div class="scrollDown text-center" *ngIf="!isLive" (click)="scroll(main)">
             <!-- <a (click)="scroll(main)" class="btn btn-link"><i class="fa fa-angle-down"></i>Desplazar hacia abajo<i class="fa fa-angle-down"></i></a> -->
             <div class="arrow-container animated fadeInDown">
                 <div class="arrow-2">
