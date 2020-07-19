@@ -102,26 +102,27 @@ export class NavbarComponent implements OnInit {
 
     onContactoClick() {
         this.sidebarToggle();
-        console.log(this.router.url);
-        if (this.router.url == '/') {
-            this.pageScrollService.scroll({
-                document: this.document,
-                scrollTarget: '#contacto', 
-            }); 
-        } else {
-            this.router.navigate(['/']);
-            setTimeout(() => {
-                this.pageScrollService.scroll({
-                    document: this.document,
-                    scrollTarget: '#contacto', 
-                });
-            }, 1000)
-        }
+        this.router.navigate(['/'], { queryParams: { contacto: 'true' } });
+        // console.log(this.router.url);
+        // if (this.router.url == '/') {
+        //     this.pageScrollService.scroll({
+        //         document: this.document,
+        //         scrollTarget: '#contacto', 
+        //     }); 
+        // } else {
+        //     this.router.navigate(['/']);
+        //     setTimeout(() => {
+        //         this.pageScrollService.scroll({
+        //             document: this.document,
+        //             scrollTarget: '#contacto', 
+        //         });
+        //     }, 1000)
+        // } 
         // this.router.navigate(['/#form']); 
     } 
 
   signIn() {
-    this.sidebarToggle();
+    this.sidebarClose();
     this.router.navigate(['login']);
   }
 

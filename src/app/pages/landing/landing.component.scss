@@ -105,6 +105,11 @@ h3 {
     z-index: 1;
     display: table;
   }
+
+  .arrow-2:hover,
+  .arrow-2:active {
+       background-color: #ffa073;;
+   }
   
   .arrow-2:before{
     width: 52px;
