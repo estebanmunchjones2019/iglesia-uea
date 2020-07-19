@@ -117,6 +117,7 @@ export class NavbarComponent implements OnInit {
                 });
             }, 1000)
         }
+        // this.router.navigate(['/#form']); 
     } 
 
   signIn() {

@@ -45,25 +45,29 @@ export class LandingComponent implements OnInit {
       img: `./assets/img/oracion.jpg`,
       time: `Miércoles 20:00`,
       title: `Reunión de Oración`,
-      content: `Tiempo de oración y reflexión bíblica`
+      content: `Tiempo de oración y reflexión bíblica`,
+      alt: `reunion de oracion`
     },
     {
       img: `./assets/img/jovenes.jpg`,
       time: `Sábado 20:30`,
       title: `Reunión de Jóvenes`, 
-      content: `Encuentro de jóvenes y adolescentes`
+      content: `Encuentro de jóvenes y adolescentes`,
+      alt: `reunion de jovenes`
     },
     {
       img: `./assets/img/escuelaBiblica.jpg`,
       time: `Domingo 10:00`,
       title: `Escuela bíblica`,
-      content: `Enseñanza bíblica para todas las edades` 
+      content: `Enseñanza bíblica para todas las edades`,
+      alt: `escuela biblica`
     },
     {
       img: `./assets/img/reunionGeneral.jpg`,
       time: `Domingo 20:00`,
       title: `Reunión general`,
-      content: `Canciones y reflexión bíblica` 
+      content: `Canciones y reflexión bíblica`,
+      alt: `reunion general`
     }
   ];
 
