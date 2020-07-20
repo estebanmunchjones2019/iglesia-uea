@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-creer',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreerComponent implements OnInit {
 
+  @ViewChild('creerContainer') creerContainer: ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+    this.creerContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
 }

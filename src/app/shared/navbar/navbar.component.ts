@@ -13,7 +13,7 @@ import { FirebaseAuthService } from 'app/service/firebase/firebase.auth.service'
 })
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
-    private sidebarVisible: boolean;
+    public sidebarVisible: boolean;
 
     public showSignOut = false;
 

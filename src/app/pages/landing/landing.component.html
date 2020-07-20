@@ -36,11 +36,11 @@
 <!----------------------------------------------- Header-end---------------------------------------------->
 
 <div #main class="main" (scroll)="handleScroll($event)">    
-    <div #title class="section text-center animated fadeIn">
+    <div #title class="section text-center">
         <div class="container">
 <!----------------------------------------------- Welcome-start--------------------------------------------->            
             <div class="row">
-                <div  class="col-md-10 mr-auto ml-auto" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
+                <div  class="col-md-10 mr-auto ml-auto" [ngClass]="{'animated fadeIn' : showTitle}" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
                     <h2 class="title">{{ title1 }}</h2>
                     <br >
                     <h5 class="description">{{ content1a }} <a class="knowMore" (click)="onSaberMasClick()">+Saber más</a></h5>
@@ -71,7 +71,7 @@
 
 <!----------------------------------------------- Reuniones-start---------------------------------------->
     <div #meetings class="section section-dark text-center animated fadeIn">
-        <div class="container" [ngStyle]="{'visibility': showMeetings ? 'visible': 'hidden'}">
+        <div class="container" [ngClass]="{'animated fadeIn' : showMeetings}" [ngStyle]="{'visibility': showMeetings ? 'visible': 'hidden'}">
             <h2 class="title">Actividades</h2>
             <h4 class="covid19" >{{ covid19Content }}</h4> 
             <div class="row">
@@ -100,7 +100,7 @@
     
 
 <!----------------------------------------------- Form-start---------------------------------------------->
-    <div #form id="form" class="section text-center animated fadeIn" [ngStyle]="{'visibility': showForm ? 'visible': 'hidden'}">   
+    <div #form id="form" class="section text-center" [ngClass]="{'animated fadeIn' : showForm}" [ngStyle]="{'visibility': showForm ? 'visible': 'hidden'}">   
         <app-form></app-form>
     </div>  
 <!----------------------------------------------- Form-end---------------------------------------------->

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-nosotros',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nosotros.component.scss']
 })
 export class NosotrosComponent implements OnInit {
+
+  @ViewChild('nosotrosContainer') nosotrosContainer: ElementRef;
+  
   carouselPhotos = [
     {
       src: `./assets/img/musicos.jpg`
@@ -42,4 +45,8 @@ export class NosotrosComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  ngAfterViewInit() {
+    this.nosotrosContainer.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
 }
