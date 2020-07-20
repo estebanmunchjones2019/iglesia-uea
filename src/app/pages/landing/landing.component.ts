@@ -122,19 +122,13 @@ ngAfterViewInit() {
   console.log(this.route.snapshot.queryParams)
   let contacto = this.route.snapshot.queryParams.contacto;
   if (contacto == 'true') {
-    this.pageScrollService.scroll({
-        document: this.document,
-        scrollTarget: '#contacto', 
-    }); 
+    this.scrollTo('contacto');
   }
 
   this.paramSubs = this.route.queryParams.subscribe((params: Params) => { //suscribed to and observable, like an event emited in a service
     let contacto = params.contacto;
     if (contacto == 'true') {
-      this.pageScrollService.scroll({
-          document: this.document,
-          scrollTarget: '#contacto', 
-      }); 
+      this.scrollTo('contacto');
     } 
   })
 }
@@ -170,6 +164,13 @@ ngAfterViewInit() {
       this.showForm = true;
     } 
     this.changeDetectorRef.detectChanges();
+  }
+
+  scrollTo(element) {
+    this.pageScrollService.scroll({
+      document: this.document,
+      scrollTarget: `#${element}`, 
+    }); 
   }
 
   scroll(el: HTMLElement) {

@@ -21,7 +21,7 @@
             </div>
         </div>
         
-        <div class="scrollDown text-center" *ngIf="!isLive" (click)="scroll(main)">
+        <div class="scrollDown text-center" *ngIf="!isLive" (click)="scrollTo('main')">
             <!-- <a (click)="scroll(main)" class="btn btn-link"><i class="fa fa-angle-down"></i>Desplazar hacia abajo<i class="fa fa-angle-down"></i></a> -->
             <div class="arrow-container animated fadeInDown">
                 <div class="arrow-2">
@@ -29,13 +29,13 @@
                 </div>
                 <div class="arrow-1 animated hinge infinite zoomIn"></div>
             </div>
-            <div #main></div>
+            <!-- <div #main></div> -->
         </div>
     </div>
 </div>
 <!----------------------------------------------- Header-end---------------------------------------------->
 
-<div #main class="main" (scroll)="handleScroll($event)">    
+<div id="main" class="main" (scroll)="handleScroll($event)">    
     <div #title class="section text-center animated fadeIn">
         <div class="container">
 <!----------------------------------------------- Welcome-start--------------------------------------------->            
@@ -54,7 +54,7 @@
 <!----------------------------------------------- Welcome-end--------------------------------------------->
 
 <!----------------------------------------------- News-start--------------------------------------------->
-            <div *ngIf="novedades" class="row">
+            <div  *ngIf="novedades" class="row">
                 <div class="col-md-10 mr-auto ml-auto" [ngStyle]="{'visibility': showTitle ? 'visible': 'hidden'}">
                     <h2 class="title">Novedades</h2>
                     <br >

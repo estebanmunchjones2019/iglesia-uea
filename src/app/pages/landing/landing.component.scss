@@ -80,7 +80,7 @@ h3 {
     height: 100px;
     margin: 0 auto;
     position: absolute;
-    bottom: 25px;
+    // bottom: 25px;
     left: 0;
     right: 0;
   }
@@ -183,10 +183,22 @@ h3 {
 }
 
 .scrollDown {
-    margin-top: 150px;
+    margin-top: 75px;
     position: relative;
     z-index: 2;
     cursor: pointer;
 }
+
+@media(min-width: 768px) {
+  .scrollDown {
+    margin-top: 100px;
+  }
+}
+
+// @media(min-width: 991px) {
+//   .scrollDown {
+//     margin-top: 75px;
+//   }
+// }
 
 
