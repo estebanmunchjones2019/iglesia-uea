@@ -1,13 +1,13 @@
 <div class="wrapper">
 <!------------------------------------header start------------------------------------>
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/biblia.jpg');">
+    <div class="page-header page-header-xs animated fadeIn" data-parallax="true" style="background-image: url('./assets/img/biblia.jpg');">
         <div class="filter"></div>
     </div>
 <!------------------------------------header end-------------------------------------->
 
     <div class="main">
 <!------------------------------------sobre nosotros start-------------------------------------->   
-        <div class="section text-center">
+        <div class="section text-center animated fadeIn">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 mr-auto ml-auto">
@@ -29,7 +29,7 @@
 <!------------------------------------sobre nosotros end--------------------------------------> 
 
 <!------------------------------------ creencias start-------------------------------------->
-<div  #videoContainer class="section section--margin-null text-center">
+<div  #videoContainer class="section section--margin-null text-center animated fadeIn">
     <div class="container">
       <h2 class="title">Nuestras creencias</h2>
       <div class="row content">
@@ -157,7 +157,7 @@
 <!------------------------------------ creencias start-------------------------------------->
 <!------------------------------------carousel fotos start-------------------------------------->
 
-        <div class="section section--margin-null galeria">
+        <div class="section section--margin-null galeria animated fadeIn">
             <div class="container">
                 <div class="nosotros-title">
                     <h2 class="title">Galería</h2> 
@@ -166,32 +166,8 @@
                     <div class="col-md-8 mr-auto ml-auto"> 
                         <div class="card page-carousel">
                             <ngb-carousel>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image" src="./assets/img/musicos.jpg" alt="Random first slide">
-                                </ng-template>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image" src="./assets/img/juani.jpg" alt="Random second slide">
-                                </ng-template>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image"  src="./assets/img/dany.jpg" alt="Random third slide">
-                                </ng-template>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image"  src="./assets/img/ronda.jpg" alt="Random third slide">
-                                </ng-template>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image"  src="./assets/img/fernando.jpg" alt="Random third slide">
-                                </ng-template>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image"  src="./assets/img/tejo.jpg" alt="Random third slide">
-                                </ng-template>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image"  src="./assets/img/futbol.jpg" alt="Random third slide">
-                                </ng-template>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image"  src="./assets/img/abuelas.jpg" alt="Random third slide">
-                                </ng-template>
-                                <ng-template ngbSlide>
-                                    <img class="carousel__image"  src="./assets/img/chicos.jpg" alt="Random third slide">
+                                <ng-template ngbSlide *ngFor="let photo of carouselPhotos; let i=index">
+                                    <img class="carousel__image" src="{{ photo.src}}" alt="Random slide {{ i }}" tabindex="{{ i }}" >
                                 </ng-template>
                             </ngb-carousel>
                         </div>

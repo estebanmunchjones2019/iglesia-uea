@@ -58,6 +58,14 @@ a.knowMore {
     height: 30rem !important;
     width: 100% !important;
   }
+
+h1 {
+    font-size: 1.6rem;
+}  
+
+h3 {
+    font-size: 3.15rem;
+}
   
   @media screen and (max-width: 700px){
   .iframe {
@@ -65,5 +73,120 @@ a.knowMore {
     width: 100% !important;
   }
   }	
+
+//scroll arrow
+  .arrow-container{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+  }
+  
+  .arrow-1{
+    width: 100px;
+    height: 100px;
+    background: #a49e93;//color de la onda expansiva
+    opacity: 0.5;
+    border-radius: 50%;
+    position: absolute;
+  }
+  
+  .arrow-2{
+    width: 60px;
+    height: 60px;
+    background: #66615b ; //background del circulo
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    display: table;
+  }
+
+  .arrow-2:hover,
+  .arrow-2:active {
+       background-color: #9A9A9A;
+   }
+  
+  .arrow-2:before{
+    width: 52px;
+    height: 52px;
+    content: "";
+    border: 2px solid white; //border del circulo
+    border-radius: 50%;
+    position: absolute;
+    top: 2px; 
+    left: 2px;
+  }
+  
+  .arrow-2 i.fa{
+    font-size: 30px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: white; //color de la flecha
+  }
+  
+  /* Custom Animate.css */
+  
+  .animated.hinge {
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+  }
+  
+  @-webkit-keyframes zoomIn {
+    0% {
+      opacity: 0;
+      -webkit-transform: scale3d(.4, .4, .4);
+              transform: scale3d(.4, .4, .4);
+    }
+  
+    50% {
+      opacity: 0.5;
+    }
+    
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes zoomIn {
+    0% {
+      opacity: 0;
+      -webkit-transform: scale3d(.4, .4, .4);
+              transform: scale3d(.4, .4, .4);
+    }
+  
+    50% {
+      opacity: 0.5;
+    }
+    
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .zoomIn {
+    -webkit-animation-name: zoomIn;
+            animation-name: zoomIn;
+  }
+
+  .fa {
+      width: auto;
+  }
+
+::after, ::before {
+    box-sizing: content-box !important;
+}
+
+.scrollDown {
+    position: relative;
+    top: 30vh;
+    z-index: 2;
+    cursor: pointer;
+}
 
 

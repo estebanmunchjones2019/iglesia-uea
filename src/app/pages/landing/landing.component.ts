@@ -13,11 +13,14 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 
-import { Component, OnInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef, Inject, OnDestroy, AfterViewInit } from '@angular/core';
+import { Router, ActivatedRoute, Params} from '@angular/router';
 
+import { PageScrollService } from 'ngx-page-scroll-core';
+import { DOCUMENT } from '@angular/common';
 import { FirebaseService } from 'app/service/firebase/firebase.service';
 import { UtilService } from 'app/service/utils/util.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -26,7 +29,7 @@ import { UtilService } from 'app/service/utils/util.service';
     styleUrls: ['./landing.component.scss']
 })
 
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, OnDestroy, AfterViewInit {
   title1: string = '¡Hola!';
   content1a: string = `Te damos la bienvenida a nuestro sitio web. Aquí encontrarás una breve
    reseña sobre nosotros y lo que creemos. Además, podrás escuchar los mensajes, 
@@ -45,25 +48,29 @@ export class LandingComponent implements OnInit {
       img: `./assets/img/oracion.jpg`,
       time: `Miércoles 20:00`,
       title: `Reunión de Oración`,
-      content: `Tiempo de oración y reflexión bíblica`
+      content: `Tiempo de oración y reflexión bíblica`,
+      alt: `reunion de oracion`
     },
     {
       img: `./assets/img/jovenes.jpg`,
       time: `Sábado 20:30`,
       title: `Reunión de Jóvenes`, 
-      content: `Encuentro de jóvenes y adolescentes`
+      content: `Encuentro de jóvenes y adolescentes`,
+      alt: `reunion de jovenes`
     },
     {
       img: `./assets/img/escuelaBiblica.jpg`,
       time: `Domingo 10:00`,
       title: `Escuela bíblica`,
-      content: `Enseñanza bíblica para todas las edades` 
+      content: `Enseñanza bíblica para todas las edades`,
+      alt: `escuela biblica`
     },
     {
       img: `./assets/img/reunionGeneral.jpg`,
       time: `Domingo 20:00`,
       title: `Reunión general`,
-      content: `Canciones y reflexión bíblica` 
+      content: `Canciones y reflexión bíblica`,
+      alt: `reunion general`
     }
   ];
 
@@ -78,6 +85,8 @@ export class LandingComponent implements OnInit {
   public showForm = false;
   public showMeetings = false;
   public opacityValue = 1;
+
+  paramSubs: Subscription;
 
   @HostListener('window:scroll', ['$event'])
   handleScroll($event) {
@@ -99,11 +108,37 @@ export class LandingComponent implements OnInit {
   constructor(private firebaseService: FirebaseService,
     private changeDetectorRef: ChangeDetectorRef,
     private utilService: UtilService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute,
+    private pageScrollService: PageScrollService,
+    @Inject(DOCUMENT) private document: any) { }
 
   ngOnInit() {
     this.getNews();
+   
+}
+
+ngAfterViewInit() {
+  console.log(this.route.snapshot.queryParams)
+  let contacto = this.route.snapshot.queryParams.contacto;
+  if (contacto == 'true') {
+    this.pageScrollService.scroll({
+        document: this.document,
+        scrollTarget: '#contacto', 
+    }); 
   }
+
+  this.paramSubs = this.route.queryParams.subscribe((params: Params) => { //suscribed to and observable, like an event emited in a service
+    let contacto = params.contacto;
+    if (contacto == 'true') {
+      this.pageScrollService.scroll({
+          document: this.document,
+          scrollTarget: '#contacto', 
+      }); 
+    } 
+  })
+}
+
 
   showAnimations() {    
     let sizeHeader = this.header.nativeElement.getBoundingClientRect();
@@ -161,6 +196,10 @@ export class LandingComponent implements OnInit {
 
   onSaberMasClick() {
     this.router.navigate(['/nosotros'])
+  }
+
+  ngOnDestroy() {
+    this.paramSubs.unsubscribe();
   }
 
 }

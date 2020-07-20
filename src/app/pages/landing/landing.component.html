@@ -3,8 +3,8 @@
     <div class="filter"></div>
     <div class="container">
         <div class="motto text-center">
-            <h1 *ngIf="!isLive">Bienvenido</h1>
-            <h3 *ngIf="!isLive">Iglesia de la Unión Evangélica de Coronel Suárez.</h3>
+            <h3 *ngIf="!isLive">Bienvenido</h3>
+            <h1 *ngIf="!isLive">Iglesia de la Unión Evangélica de Coronel Suárez.</h1>
             <br />
             <a *ngIf="!isLive" class="btn btn-outline-neutral btn-round btn-nuestros-mensajes" (click)="onNuestrosMensajesClick()"><i class="fa fa-play"></i>Nuestros mensajes</a>
             <a (click)="showLive = !showLive" *ngIf="!showLive && isLive" class="btn btn-danger btn-round live"><i class="fa fa-play"></i>Ver en Vivo!</a>
@@ -21,8 +21,14 @@
             </div>
         </div>
         
-        <div class="shift text-center" *ngIf="!isLive">
-            <a (click)="scroll(main)" class="btn btn-link"><i class="fa fa-angle-down"></i>Desplazar hacia abajo<i class="fa fa-angle-down"></i></a>
+        <div class="scrollDown text-center" *ngIf="!isLive" (click)="scroll(main)">
+            <!-- <a (click)="scroll(main)" class="btn btn-link"><i class="fa fa-angle-down"></i>Desplazar hacia abajo<i class="fa fa-angle-down"></i></a> -->
+            <div class="arrow-container animated fadeInDown">
+                <div class="arrow-2">
+                  <i class="fa fa-angle-down"></i>
+                </div>
+                <div class="arrow-1 animated hinge infinite zoomIn"></div>
+            </div>
             <div #main></div>
         </div>
     </div>
@@ -30,7 +36,7 @@
 <!----------------------------------------------- Header-end---------------------------------------------->
 
 <div #main class="main" (scroll)="handleScroll($event)">    
-    <div #title class="section text-center">
+    <div #title class="section text-center animated fadeIn">
         <div class="container">
 <!----------------------------------------------- Welcome-start--------------------------------------------->            
             <div class="row">
@@ -64,16 +70,16 @@
 <!----------------------------------------------- Intro-end---------------------------------------------->
 
 <!----------------------------------------------- Reuniones-start---------------------------------------->
-    <div #meetings class="section section-dark text-center">
+    <div #meetings class="section section-dark text-center animated fadeIn">
         <div class="container" [ngStyle]="{'visibility': showMeetings ? 'visible': 'hidden'}">
             <h2 class="title">Actividades</h2>
             <h4 class="covid19" >{{ covid19Content }}</h4> 
             <div class="row">
                 
-                <div class="col-md-3" *ngFor="let reunion of reuniones" >
+                <div class="col-md-3" *ngFor="let reunion of reuniones; let i=index;" >
                     <div class="card card-profile card-plain">
                         <div class="card-avatar">
-                            <a><img src="{{ reunion.img }}" alt="..."></a>
+                            <a><img src="{{ reunion.img }}" alt="{{ reunion.alt}}" tabindex="{{ i }}"></a>
                         </div>
                         <div class="card-block">
                             <a>
@@ -94,7 +100,7 @@
     
 
 <!----------------------------------------------- Form-start---------------------------------------------->
-    <div #form class="section text-center" [ngStyle]="{'visibility': showForm ? 'visible': 'hidden'}">   
+    <div #form id="form" class="section text-center animated fadeIn" [ngStyle]="{'visibility': showForm ? 'visible': 'hidden'}">   
         <app-form></app-form>
     </div>  
 <!----------------------------------------------- Form-end---------------------------------------------->
