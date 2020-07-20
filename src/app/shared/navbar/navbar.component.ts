@@ -101,7 +101,7 @@ export class NavbarComponent implements OnInit {
       }
 
     onContactoClick() {
-        this.sidebarToggle();
+        this.sidebarClose();
         this.router.navigate(['/'], { queryParams: { contacto: 'true' } });
         // console.log(this.router.url);
         // if (this.router.url == '/') {
@@ -128,7 +128,7 @@ export class NavbarComponent implements OnInit {
 
   signOut() {  
     sessionStorage.clear();
-    this.sidebarToggle();
+    this.sidebarClose();
     this.showSignOut = false;
     let that = this;
     this.firebaseAuthService.signOut()

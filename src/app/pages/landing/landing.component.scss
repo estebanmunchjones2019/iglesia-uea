@@ -88,7 +88,7 @@ h3 {
   .arrow-1{
     width: 100px;
     height: 100px;
-    background: #ffc68c;//color de la onda expansiva
+    background: #a49e93;//color de la onda expansiva
     opacity: 0.5;
     border-radius: 50%;
     position: absolute;
@@ -97,7 +97,7 @@ h3 {
   .arrow-2{
     width: 60px;
     height: 60px;
-    background: #f5593d; //background del circulo
+    background: #66615b ; //background del circulo
     border-radius: 50%;
     position: absolute;
     top: 20px;
@@ -108,7 +108,7 @@ h3 {
 
   .arrow-2:hover,
   .arrow-2:active {
-       background-color: #ffa073;;
+       background-color: #9A9A9A;
    }
   
   .arrow-2:before{

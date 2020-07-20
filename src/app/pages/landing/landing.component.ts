@@ -13,7 +13,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 
-import { Component, OnInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, ChangeDetectorRef, Inject, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 
 import { PageScrollService } from 'ngx-page-scroll-core';
@@ -29,7 +29,7 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./landing.component.scss']
 })
 
-export class LandingComponent implements OnInit, OnDestroy {
+export class LandingComponent implements OnInit, OnDestroy, AfterViewInit {
   title1: string = '¡Hola!';
   content1a: string = `Te damos la bienvenida a nuestro sitio web. Aquí encontrarás una breve
    reseña sobre nosotros y lo que creemos. Además, podrás escuchar los mensajes, 
@@ -115,25 +115,30 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getNews();
-    console.log(this.route.snapshot.queryParams)
-    let contacto = this.route.snapshot.queryParams.contacto;
+   
+}
+
+ngAfterViewInit() {
+  console.log(this.route.snapshot.queryParams)
+  let contacto = this.route.snapshot.queryParams.contacto;
+  if (contacto == 'true') {
+    this.pageScrollService.scroll({
+        document: this.document,
+        scrollTarget: '#contacto', 
+    }); 
+  }
+
+  this.paramSubs = this.route.queryParams.subscribe((params: Params) => { //suscribed to and observable, like an event emited in a service
+    let contacto = params.contacto;
     if (contacto == 'true') {
       this.pageScrollService.scroll({
           document: this.document,
           scrollTarget: '#contacto', 
       }); 
-    }
-
-    this.paramSubs = this.route.queryParams.subscribe((params: Params) => { //suscribed to and observable, like an event emited in a service
-      let contacto = params.contacto;
-      if (contacto == 'true') {
-        this.pageScrollService.scroll({
-            document: this.document,
-            scrollTarget: '#mensaje', 
-        }); 
     } 
   })
 }
+
 
   showAnimations() {    
     let sizeHeader = this.header.nativeElement.getBoundingClientRect();
