@@ -102,7 +102,16 @@ export class NavbarComponent implements OnInit {
 
     onContactoClick() {
         this.sidebarClose();
-        this.router.navigate(['/'], { queryParams: { contacto: 'true' } });
+        if (this.router.url == '/' || this.router.url == '/?contacto=true') {
+            this.pageScrollService.scroll({
+                document: this.document,
+                scrollTarget: '#contacto', 
+            }); 
+        } else {
+            this.router.navigate(['/'], { queryParams: { contacto: 'true' } });
+        }
+    }
+        
         // console.log(this.router.url);
         // if (this.router.url == '/') {
         //     this.pageScrollService.scroll({
@@ -119,7 +128,6 @@ export class NavbarComponent implements OnInit {
         //     }, 1000)
         // } 
         // this.router.navigate(['/#form']); 
-    } 
 
   signIn() {
     this.sidebarClose();
