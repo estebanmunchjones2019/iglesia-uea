@@ -1,5 +1,5 @@
 # Iglesia UEA
-> An mobile responsive [Angular](https://angular.io/) app with minimalist design for a local church, prerendered with [Scully](https://scully.io/) to achieve the best time to first paint and SEO.
+> A mobile responsive [Angular](https://angular.io/) app with minimalist design for a local church, prerendered with [Scully](https://scully.io/) to achieve the best time to first paint and SEO.
 
 
 
@@ -18,7 +18,7 @@
 
 ## General info
 
-This project was coded for [Iglesia UEA](https://ueasuarez.org/) to provide them with a simple, well looking and fast app, to allow them to get them known and connect with a broader audience. The project was deployed as prerendered static files thanks to [Scully](https://scully.io/), a modern static site generator for [Angular](https://angular.io/) apps. There's a CMS in place handled by [Cloud Firestore](https://firebase.google.com/docs/firestore). The CMS interface can be accessed going to https://ueasuarez.org/login. 
+This project was coded for [Iglesia UEA](https://ueasuarez.org/) to provide them with a simple, well looking and fast app, and to allow them to get them known and connect with a broader audience. The project was deployed as prerendered static files thanks to [Scully](https://scully.io/), a modern static site generator for [Angular](https://angular.io/) apps. There's a CMS in place handled by [Cloud Firestore](https://firebase.google.com/docs/firestore). The CMS interface can be accessed going to https://ueasuarez.org/login. 
 
 This app was developed having inclusivity in mind, so non-tech or old people can easily use it.
 
